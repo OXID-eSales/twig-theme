@@ -1,0 +1,32 @@
+{
+    "name": "oxid-esales/twig-theme",
+    "description": "This is twig version of Flow Theme for OXID eShop.",
+    "type": "oxideshop-theme",
+    "keywords": [
+        "oxid",
+        "themes",
+        "eShop"
+    ],
+    "homepage": "https://www.oxid-esales.com/en/home.html",
+    "license": [
+        "GPL-3.0-only"
+    ],
+    "minimum-stability": "dev",
+    "extra": {
+        "oxideshop": {
+            "target-directory": "twig",
+            "assets-directory": "out/twig",
+            "blacklist-filter": [
+                "build/**/*",
+                "grunt/**/*",
+                ".gitattributes",
+                ".gitignore",
+                "CHANGELOG.md",
+                "composer.json",
+                "CONTRIBUTING.md",
+                "Gruntfile.js",
+                "package.json"
+            ]
+        }
+    }
+}
