@@ -28,7 +28,7 @@
         {% set basketitemlist = oView.getBasketArticles() %}
         {% for basketindex, basketitem in oxcmp_basket.getContents() %}
             {% block checkout_basketcontents_basketitem %}
-                {% set basketproduct = basketitemlist[basketindex] %}
+                {% set basketproduct = basketitemlist.$basketindex %}
                 {% set oArticle = basketitem.getArticle() %}
                 {% set oAttributes = oArticle.getAttributesDisplayableInBasket() %}
 
@@ -72,7 +72,7 @@
                                             {% set result = "" %}
                                             {% for oArtAttributes, oAttr in oAttributes.getArray() %}
                                                 {% set temp = oAttr.oxattribute__oxvalue.value %}
-                                                {% set result = result ~ temp ~ sep %}
+                                                {% set result = result$temp$sep %}
                                             {% endfor %}
                                             {{ result|trim("sep") }}
                                         </div>
@@ -85,7 +85,7 @@
                                                 <div class="selectorsBox clear" id="cartItemSelections_{{ loop.index }}">
                                                     {% for oList in oSelections %}
                                                         {% if oViewConf.showSelectListsInList() %}
-                                                            {% include "widget/product/selectbox.html.twig" with {oSelectionList: oList, sFieldName: "aproducts[" ~ basketindex ~ "][sel]", iKey: loop.index0, blHideDefault: true, sSelType: "seldrop"} %}
+                                                            {% include "widget/product/selectbox.html.twig" with {oSelectionList: oList, sFieldName: "aproducts[`$basketindex`][sel]", iKey: loop.index0, blHideDefault: true, sSelType: "seldrop"} %}
                                                         {% else %}
                                                             {% set oActiveSelection = oList.getActiveSelection() %}
                                                             {% if oActiveSelection %}

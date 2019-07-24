@@ -38,7 +38,9 @@
             {% endfor %}
         {% endif %}
         {% if oView.getArticleCount() %}
-            {% include "widget/locator/listlocator.html.twig" with {locator: oView.getPageNavigationLimitedBottom(), place: "bottom"} %}
+            {% block search_bottom_listlocator %}
+                {% include "widget/locator/listlocator.html.twig" with {locator: oView.getPageNavigationLimitedBottom(), place: "bottom"} %}
+            {% endblock %}
         {% endif %}
     {% endblock %}
     {{ insert_tracker({title: template_title}) }}

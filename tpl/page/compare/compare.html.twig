@@ -23,13 +23,13 @@
                                 <td class="item-wrapper text-center">
                                     <div class="move-controls btn-group">
                                         {% if not product.hidePrev %}
-                                            <a id="compareLeft_{{ product.oxarticles__oxid.value }}" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=")|cat(oViewConf.getActiveClassName()), params: "fnc=moveleft&amp;aid=" ~ product.oxarticles__oxnid.value ~ "&amp;pgNr="|cat(oView.getActPage()) }) }}" class="btn btn-default movePrev">&laquo;</a>
+                                            <a id="compareLeft_{{ product.oxarticles__oxid.value }}" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=")|cat(oViewConf.getActiveClassName()), params: "fnc=moveleft&amp;aid=`$product.oxarticles__oxnid.value`&amp;pgNr="|cat(oView.getActPage()) }) }}" class="btn btn-default movePrev">&laquo;</a>
                                         {% endif %}
 
                                         <a href="javascript:;" class="btn btn-default disabled">{{ translate({ ident: "MOVE" }) }}</a>
 
                                         {% if not product.hideNext %}
-                                            <a id="compareRight_{{ product.oxarticles__oxid.value }}" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=")|cat(oViewConf.getActiveClassName()), params: "fnc=moveright&amp;aid=" ~ product.oxarticles__oxnid.value ~ "&amp;pgNr="|cat(oView.getActPage()) }) }}" class="btn btn-default moveNext">&raquo;</a>
+                                            <a id="compareRight_{{ product.oxarticles__oxid.value }}" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=")|cat(oViewConf.getActiveClassName()), params: "fnc=moveright&amp;aid=`$product.oxarticles__oxnid.value`&amp;pgNr="|cat(oView.getActPage()) }) }}" class="btn btn-default moveNext">&raquo;</a>
                                         {% endif %}
                                     </div>
                                     {% include "page/compare/inc/compareitem.html.twig" with {product: product, testid: loop.index} %}
@@ -42,8 +42,8 @@
 
                                 {% for iProdNr, product in articleList %}
                                     <td class="attrib-text">
-                                        {% if oAttrib.aProd.iProdNr and oAttrib.aProd.iProdNr.value %}
-                                            {{ oAttrib.aProd.iProdNr.value }}
+                                        {% if oAttrib.aProd.$iProdNr and oAttrib.aProd.$iProdNr.value %}
+                                            {{ oAttrib.aProd.$iProdNr.value }}
                                         {% else %}
                                             -
                                         {% endif %}

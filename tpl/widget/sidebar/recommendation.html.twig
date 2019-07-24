@@ -12,7 +12,7 @@
                     {% if _oRecommendationList.current() %}
                         {% set _oFirstRecommendationList = _oRecommendationList.current() %}
                         {% set _oBoxTopProduct = _oFirstRecommendationList.getFirstArticle() %}
-                        {% set _sTitle = _oBoxTopProduct.oxarticles__oxtitle.value ~ " " ~ _oBoxTopProduct.oxarticles__oxvarselect.value|striptags %}
+                        {% set _sTitle = "`$_oBoxTopProduct.oxarticles__oxtitle.value` `$_oBoxTopProduct.oxarticles__oxvarselect.value`"|striptags %}
                         <div class="text-center">
                             <a href="{{ _oBoxTopProduct.getMainLink() }}" class="featured img-thumbnail" title="{{ _sTitle }}">
                                 <img src="{{ _oBoxTopProduct.getIconUrl() }}" alt="{{ _sTitle }}">
@@ -31,10 +31,10 @@
                     {% endif %}
                     {% if _oRecommendationList or oRecommList.getRecommSearch() %}
                     <li>
-                        <form name="basket" class="recommendationsSearchForm" action="{{ oViewConf.getSelfActionLink()|raw() }}" method="post">
+                        <form name="basket" class="recommendationsSearchForm" action="{{ oViewConf.getSelfActionLink() }}" method="post">
                             <div>
                                 <input type="hidden" name="cl" value="recommlist">
-                                {{ oViewConf.getHiddenSid()|raw() }}
+                                {{ oViewConf.getHiddenSid() }}
                             </div>
                             <label>{{ translate({ ident: "SEARCH_FOR_LISTS" }) }}</label>
                             <div class="input-group">

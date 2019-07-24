@@ -8,7 +8,7 @@
                     {% if oxcmp_user %}
                         <i class="fa fa-pencil"></i> <a id="writeNewReview" data-toggle="collapse" data-parent="#review_form_accordion" href="#review_form">{{ translate({ ident: "WRITE_REVIEW" }) }}</a>
                     {% else %}
-                        <i class="fa fa-user"></i> <a id="reviewsLogin" rel="nofollow" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account"), params: "anid=" ~ oDetailsProduct.oxarticles__oxnid.value|cat("&amp;sourcecl=details")|cat(oViewConf.getNavUrlParams()) }) }}">{{ translate({ ident: "MESSAGE_LOGIN_TO_WRITE_REVIEW" }) }}</a>
+                        <i class="fa fa-user"></i> <a id="reviewsLogin" rel="nofollow" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account"), params: "anid=`$oDetailsProduct.oxarticles__oxnid.value`"|cat("&amp;sourcecl=details")|cat(oViewConf.getNavUrlParams()) }) }}">{{ translate({ ident: "MESSAGE_LOGIN_TO_WRITE_REVIEW" }) }}</a>
                     {% endif %}
                 </div>
             </div>
@@ -17,15 +17,15 @@
                 <div id="review_form" class="panel-collapse collapse">
                     <div class="panel-body">
                         {% block widget_reviews_form %}
-                            <form action="{{ oViewConf.getSelfActionLink()|raw() }}" method="post" id="rating" class="form-horizontal" novalidate="novalidate">
+                            <form action="{{ oViewConf.getSelfActionLink() }}" method="post" id="rating" class="form-horizontal" novalidate="novalidate">
                                 <div id="writeReview">
                                     <div class="hidden">
                                         {% if oView.canRate() %}
                                             <input id="productRating" type="hidden" name="artrating" value="0">
                                             <input id="recommListRating" type="hidden" name="recommlistrating" value="0">
                                         {% endif %}
-                                        {{ oViewConf.getHiddenSid()|raw() }}
-                                        {{ oViewConf.getNavFormParams()|raw() }}
+                                        {{ oViewConf.getHiddenSid() }}
+                                        {{ oViewConf.getNavFormParams() }}
                                         {% include_dynamic "form/formparams.html.twig" %}
                                         <input type="hidden" name="fnc" value="savereview">
                                         <input type="hidden" name="cl" value="{{ oViewConf.getTopActiveClassName() }}">
@@ -45,8 +45,8 @@
                                         {% if oView.canRate() %}
                                             <ul id="reviewRating" class="rating list-inline">
                                                 {% for star in 1..6 %}
-                                                    <li class="s{{ loop.index0 }}" data-rate-value="{{ loop.index0 }}">
-                                                        <a class="ox-write-review ox-rateindex-{{ loop.index0 }} text-warning" title="{{ loop.index0 }} {% if loop.index0==1 %}{{ translate({ ident: "STAR" }) }}{% else %}{{ translate({ ident: "STARS" }) }}{% endif %}">
+                                                    <li class="s{{ loop.index0 }}">
+                                                        <a class="ox-write-review ox-rateindex-[{loop.index0==1 %}{{ translate({ ident: "STAR" }) }}{% else %}{{ translate({ ident: "STARS" }) }}{% endif %}">
                                                             <i class="fa fa-star-o"></i>
                                                         </a>
                                                     </li>
@@ -86,7 +86,7 @@
                 <div class="panel panel-default" id="reviewName_{{ loop.index }}" itemprop="review" itemscope itemtype="http://schema.org/Review">
                     {# Bloofusion Google-Produkt-Markup für Google #}
                     <div class="hidden">
-                        <span itemprop="itemreviewed">{{ oDetailsProduct.oxarticles__oxtitle.value|raw }} {{ oDetailsProduct.oxarticles__oxvarselect.value|raw }}</span>
+                        <span itemprop="itemreviewed">{{ oDetailsProduct.oxarticles__oxtitle.value }} {{ oDetailsProduct.oxarticles__oxvarselect.value }}</span>
                         <span itemprop="name">{{ review.oxreviews__oxtext.value|truncate(100) }}</span>
                     </div>
                     {% block widget_reviews_record %}
@@ -102,7 +102,7 @@
                                     {% if review.oxreviews__oxrating.value %}
                                         <div class="pull-right text-warning" itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
                                             {% for starRatings in 0..5 %}
-                                                {% if review.oxreviews__oxrating.value >= loop.index %}
+                                                {% if review.oxreviews__oxrating.value >= smarty.section.starRatings.iteration %}
                                                     <i class="fa fa-star"></i>
                                                 {% else %}
                                                     <i class="fa fa-star-o"></i>

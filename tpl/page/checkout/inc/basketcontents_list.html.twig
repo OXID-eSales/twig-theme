@@ -3,7 +3,7 @@
     {% set basketitemlist = oView.getBasketArticles() %}
     {% for basketindex, basketitem in oxcmp_basket.getContents() %}
         {% block checkout_basketcontents_basketitem %}
-            {% set basketproduct = basketitemlist[basketindex] %}
+            {% set basketproduct = basketitemlist.$basketindex %}
             {% set oArticle = basketitem.getArticle() %}
             {% set oAttributes = oArticle.getAttributesDisplayableInBasket() %}
 
@@ -52,7 +52,7 @@
                                         <div class="selectorsBox clear" id="cartItemSelections_{{ loop.index }}">
                                             {% for oList in oSelections %}
                                                 {% if oViewConf.showSelectListsInList() %}
-                                                    {% include "widget/product/selectbox.html.twig" with {oSelectionList: oList, sFieldName: "aproducts[" ~ basketindex ~ "][sel]", iKey: loop.index0, blHideDefault: true, sSelType: "seldrop"} %}
+                                                    {% include "widget/product/selectbox.html.twig" with {oSelectionList: oList, sFieldName: "aproducts[`$basketindex`][sel]", iKey: loop.index0, blHideDefault: true, sSelType: "seldrop"} %}
                                                 {% else %}
                                                     {% set oActiveSelection = oList.getActiveSelection() %}
                                                     {% if oActiveSelection %}
@@ -136,8 +136,8 @@
                             <span class="amount">
                                 <small>
                                     {% if basketitem.getFUnitPrice() %} | {% endif %}
-                                    {% if basketitem[oxarticles__oxunitname][value] is empty %}
-                                        {{ basketitem.getAmount() }} {{ basketitem[oxarticles__oxunitname][value] }}
+                                    {% if basketitem.oxarticles__oxunitname.value %}
+                                        {{ basketitem.getAmount() }} {{ basketitem.oxarticles__oxunitname.value }}
                                     {% else %}
                                         {{ basketitem.getAmount() }} {{ translate({ ident: "PCS" }) }}
                                     {% endif %}
@@ -188,8 +188,8 @@
                                         <div class="input-group input-group-sm">
                                             <input id="am_{{ loop.index }}" type="number" class="textbox form-control text-center" name="aproducts[{{ basketindex }}][am]" value="{{ basketitem.getAmount() }}" size="3" min="0" style="width:60px;float:right;"{% if oConfig.getConfigParam('blAllowUnevenAmounts') %} step="any"{% endif %}>
                                             <span class="input-group-addon">
-                                                {% if basketitem[oxarticles__oxunitname][value] %}
-                                                    {{ basketitem[oxarticles__oxunitname][value] }}
+                                                {% if basketitem.oxarticles__oxunitname.value %}
+                                                    {{ basketitem.oxarticles__oxunitname.value }}
                                                 {% else %}
                                                     {{ translate({ ident: "PCS" }) }}
                                                 {% endif %}

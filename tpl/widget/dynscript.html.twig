@@ -3,7 +3,7 @@
 {% set oConfig = oViewConf.getConfig() %}
 
 <script type="text/javascript">{% spaceless %}
-    var sBaseUrl = '{{ oViewConf.getSelfActionLink()|raw() }}';
+    var sBaseUrl = '{{ oViewConf.getSelfActionLink() }}';
     var sActCl = '{{ oViewConf.getTopActiveClassName() }}';
 {% endspaceless %}</script>
 
@@ -179,16 +179,16 @@
 
                     {# voraussichtliches Versanddatum berechnen #}
                     {% if blHasPreOrder %}
-                        {% set sShipDate = sShippingDaysNotOnStock ~ " weekdays"|strtotime %}
+                        {% set sShipDate = "`$sShippingDaysNotOnStock` weekdays"|strtotime %}
                     {% else %}
-                        {% set sShipDate = sShippingDaysOnStock ~ " weekdays"|strtotime %}
+                        {% set sShipDate = "`$sShippingDaysOnStock` weekdays"|strtotime %}
                     {% endif %}
 
                     {# voraussichtliches Lieferdatum berechnen #}
                     {% if blHasPreOrder %}
-                        {% set sDeliveryDate = sDeliveryDaysNotOnStock ~ " weekdays"|strtotime %}
+                        {% set sDeliveryDate = "`$sDeliveryDaysNotOnStock` weekdays"|strtotime %}
                     {% else %}
-                        {% set sDeliveryDate = sDeliveryDaysOnStock ~ " weekdays"|strtotime %}
+                        {% set sDeliveryDate = "`$sDeliveryDaysOnStock` weekdays"|strtotime %}
                     {% endif %}
 
                     <span id="gts-o-id">{{ oOrder.oxorder__oxordernr.value }}</span>
@@ -205,8 +205,8 @@
                     <span id="gts-o-has-preorder">{% if blHasPreOrder %}Y{% else %}N{% endif %}</span>
                     <span id="gts-o-has-digital">{% if oBasket.hasDownloadableProducts() %}Y{% else %}N{% endif %}</span>
 
-                    {% if twig.capture.sGtsItems %}
-                        {{ twig.capture.sGtsItems }}
+                    {% if smarty.capture.sGtsItems %}
+                        {{ smarty.capture.sGtsItems }}
                     {% endif %}
                 </div>
             {% endif %}

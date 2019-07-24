@@ -8,14 +8,14 @@
 
     <div class="row picture">
         <div class="col-xs-12">
-            <a href="{{ _productLink|raw() }}" {% if oView.noIndex() %}rel="nofollow"{% endif %}>
-                <img src="{% if size=='big' %}{{ product.getPictureUrl(1) }}{% elseif size=='thinest' %}{{ product.getIconUrl() }}{% else %}{{ product.getThumbnailUrl() }}{% endif %}" alt="{{ product.oxarticles__oxtitle.value|raw|striptags }} {{ product.oxarticles__oxvarselect.value|raw|default('') }}" class="img-responsive">
+            <a href="{{ _productLink }}" {% if oView.noIndex() %}rel="nofollow"{% endif %}>
+                <img src="{% if size=='big' %}{{ product.getPictureUrl(1) }}{% elseif size=='thinest' %}{{ product.getIconUrl() }}{% else %}{{ product.getThumbnailUrl() }}{% endif %}" alt="{{ product.oxarticles__oxtitle.value|striptags }} {{ product.oxarticles__oxvarselect.value|default('') }}" class="img-responsive">
             </a>
         </div>
     </div>
 
     <strong class="title">
-        <a class="fn" href="{{ _productLink|raw() }}" {% if oView.noIndex() %}rel="nofollow"{% endif %}>{{ product.oxarticles__oxtitle.value|raw }} {{ product.oxarticles__oxvarselect.value|raw }}</a>
+        <a class="fn" href="{{ _productLink }}" {% if oView.noIndex() %}rel="nofollow"{% endif %}>{{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}</a>
     </strong><br/>
     <span class="identifier">
         {% if product.oxarticles__oxweight.value %}
@@ -34,16 +34,16 @@
 
     {% set aVariantSelections = product.getVariantSelections("null", "null", 1) %}
     {% set blShowToBasket = true %} {# tobasket or more info ? #}
-    {% if product.isNotBuyable() or (aVariantSelections and aVariantSelections.selections) or product.hasMdVariants() or (oViewConf.showSelectListsInList() and product.getSelections(1)) or product.getVariants() %}
+    {% if product.isNotBuyable()||(aVariantSelections&&$aVariantSelections.selections)||$product.hasMdVariants() or (oViewConf.showSelectListsInList() and product.getSelections(1)) or product.getVariants() %}
         {% set blShowToBasket = false %}
     {% endif %}
 
-    <form name="tobasket.{{ testid }}" {% if blShowToBasket %}action="{{ oViewConf.getSelfActionLink()|raw() }}" method="post"{% else %}action="{{ _productLink|raw() }}" method="get"{% endif %}>
+    <form name="tobasket.{{ testid }}" {% if blShowToBasket %}action="{{ oViewConf.getSelfActionLink() }}" method="post"{% else %}action="{{ _productLink }}" method="get"{% endif %}>
         <div class="variants">
-            {% hasrights { "ident": "TOBASKET",} %}
+            {% hasrights { ident: "TOBASKET" } %}
                 {% if blShowToBasket %}
-                    {{ oViewConf.getHiddenSid()|raw() }}
-                    {{ oViewConf.getNavFormParams()|raw() }}
+                    {{ oViewConf.getHiddenSid() }}
+                    {{ oViewConf.getNavFormParams() }}
                     <input type="hidden" name="cl" value="{{ oViewConf.getActiveClassName() }}">
                     {% if owishid %}
                         <input type="hidden" name="owishid" value="{{ owishid }}">
@@ -68,7 +68,7 @@
         </div>
 
         <div class="tobasket">
-            {% hasrights { "ident": "SHOWARTICLEPRICE",} %}
+            {% hasrights { ident: "SHOWARTICLEPRICE" } %}
                 {% set tprice = product.getTPrice() %}
                 {% set price = product.getPrice() %}
                 <p class="oldPrice">
@@ -80,7 +80,7 @@
                 </p>
             {% endhasrights %}
             <div class="tobasketFunction clear">
-                {% hasrights { "ident": "SHOWARTICLEPRICE",} %}
+                {% hasrights { ident: "SHOWARTICLEPRICE" } %}
                     <span id="productPrice_{{ testid }}" class="price lead{% if tprice and tprice.getBruttoPrice() > price.getBruttoPrice() %} text-danger{% endif %}">{{ product.getFPrice() }} {{ currency.sign }} {% if blShowToBasket %}*{% endif %}</span>
                     {% if product.loadAmountPriceInfo() %}
                         {% include "page/details/inc/priceinfo.html.twig" with {oDetailsProduct: product} %}
@@ -88,7 +88,7 @@
 
                 {% endhasrights %}
                 {% if blShowToBasket %}
-                    {% hasrights { "ident": "TOBASKET",} %}
+                    {% hasrights { ident: "TOBASKET" } %}
                         <div class="input-group">
                             <input type="text" name="am" value="1" size="3" autocomplete="off" class="form-control" title="{{ translate({ ident: "QUANTITY" }) }}">
                             <span class="input-group-btn">
@@ -100,7 +100,7 @@
                     {% endhasrights %}
                 {% else %}
                     <span >
-                        <a id="variantMoreInfo_{{ testid }}" class="btn btn-primary btn-block" href="{{ _productLink|raw() }}" onclick="oxid.mdVariants.getMdVariantUrl('mdVariant_{{ testid }}'); return false;">{{ translate({ ident: "MORE_INFO" }) }}</a>
+                        <a id="variantMoreInfo_{{ testid }}" class="btn btn-primary btn-block" href="{{ _productLink }}" onclick="oxid.mdVariants.getMdVariantUrl('mdVariant_{{ testid }}'); return false;">{{ translate({ ident: "MORE_INFO" }) }}</a>
                     </span>
                 {% endif %}
             </div>
@@ -142,10 +142,10 @@
 
     </form>
 
-    <form action="{{ oViewConf.getSelfActionLink()|raw() }}" method="post">
+    <form action="{{ oViewConf.getSelfActionLink() }}" method="post">
         <div class="hidden">
-            {{ oViewConf.getHiddenSid()|raw() }}
-            {{ oViewConf.getNavFormParams()|raw() }}
+            {{ oViewConf.getHiddenSid() }}
+            {{ oViewConf.getNavFormParams() }}
             <input type="hidden" name="cl" value="{{ oViewConf.getActiveClassName() }}">
             <input type="hidden" name="fnc" value="tocomparelist">
             <input type="hidden" name="aid" value="{{ product.oxarticles__oxid.value }}">
@@ -154,7 +154,7 @@
             <input type="hidden" name="am" value="1">
             <input type="hidden" name="removecompare" value="1">
         </div>
-        {% hasrights { "ident": "TOBASKET",} %}
+        {% hasrights { ident: "TOBASKET" } %}
             <button class="btn btn-danger btn-sm" id="remove_cmp_{{ product.oxarticles__oxid.value }}" type="submit" title="{{ translate({ ident: "REMOVE" }) }}" name="send">
                 <i class="fa fa-trash"></i> {{ translate({ ident: "REMOVE" }) }}
             </button>

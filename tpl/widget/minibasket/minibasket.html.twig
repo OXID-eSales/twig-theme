@@ -4,7 +4,7 @@
 
 {% block widget_minibasket %}
     {% if oxcmp_basket.getProductsCount() %}
-        {% hasrights { "ident": "TOBASKET",} %}
+        {% hasrights { ident: "TOBASKET" } %}
             {% set currency = oView.getActCurrency() %}
 
             {% if _prefix == 'modal' %}
@@ -23,7 +23,7 @@
                             {% block widget_minibasket_modal_content %}
                             <div class="modal-body">
                                 {% if oxcmp_basket.getProductsCount() %}
-                                    {% hasrights { "ident": "TOBASKET",} %}
+                                    {% hasrights { ident: "TOBASKET" } %}
                                         <div id="{{ _prefix }}basketFlyout" class="basketFlyout">
                                             <div class="">
                                                 <table class="table table-striped">
@@ -35,7 +35,7 @@
                                                     </thead>
                                                     <tbody>
                                                         {% for _product in oxcmp_basket.getContents() %}
-                                                            {% block modal_widget_minibasket_product %}
+                                                            {% block widget_minibasket_product %}
                                                                 {% set minibasketItemTitle = _product.getTitle() %}
                                                                 <tr>
                                                                     <td>
@@ -57,7 +57,7 @@
                                                     </tbody>
                                                     <tfoot>
                                                         <tr>
-                                                            {% block modal_widget_minibasket_total %}
+                                                            {% block widget_minibasket_total %}
                                                                 <td><strong>{{ translate({ ident: "TOTAL" }) }}</strong></td>
                                                                 <td class="text-right">
                                                                     <strong class="price">

@@ -29,7 +29,7 @@
                                             {% if review.getRating() %}
                                                 <div itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
                                                     {% for starRatings in 0..5 %}
-                                                        {% if review.getRating() >= loop.index %}
+                                                        {% if review.getRating() >= smarty.section.starRatings.iteration %}
                                                             <i class="fa fa-star"></i>
                                                         {% else %}
                                                             <i class="fa fa-star-o"></i>

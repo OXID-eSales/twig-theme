@@ -18,24 +18,24 @@
         {% endif %}
         {% set iColIdent = 12 / iBargainArticlesCount %}
         {% for _product in oView.getBargainArticleList() %}
-            {% set sBargainArtTitle = _product.oxarticles__oxtitle.value ~ " " ~ _product.oxarticles__oxvarselect.value %}
+            {% set sBargainArtTitle = "`$_product->oxarticles__oxtitle->value` `$_product->oxarticles__oxvarselect->value`" %}
 
             {% set aVariantSelections = _product.getVariantSelections("null", "null", 1) %}
             {% set blShowToBasket = true %} {# tobasket or more info ? #}
-            {% if blDisableToCart or _product.isNotBuyable() or (aVariantSelections and aVariantSelections.selections) or _product.hasMdVariants() or (oViewConf.showSelectListsInList() and _product.getSelections(1)) or _product.getVariants() %}
+            {% if blDisableToCart or _product.isNotBuyable() or (aVariantSelections&&$aVariantSelections.selections) or _product.hasMdVariants() or (oViewConf.showSelectListsInList() and _product.getSelections(1)) or _product.getVariants() %}
                 {% set blShowToBasket = false %}
             {% endif %}
 
-            <form name="tobasket{{ testid }}" {% if blShowToBasket %}action="{{ oViewConf.getSelfActionLink()|raw() }}" method="post"{% else %}action="{{ _productLink|raw() }}" method="get"{% endif %}>
+            <form name="tobasket{{ testid }}" {% if blShowToBasket %}action="{{ oViewConf.getSelfActionLink() }}" method="post"{% else %}action="{{ _productLink }}" method="get"{% endif %}>
                 <div class="hidden">
-                    {{ oViewConf.getNavFormParams()|raw() }}
-                    {{ oViewConf.getHiddenSid()|raw() }}
+                    {{ oViewConf.getNavFormParams() }}
+                    {{ oViewConf.getHiddenSid() }}
                     <input type="hidden" name="pgNr" value="{{ oView.getActPage() }}">
                     {% if recommid %}
                         <input type="hidden" name="recommid" value="{{ recommid }}">
                     {% endif %}
                     {% if blShowToBasket %}
-                        {% hasrights { "ident": "TOBASKET",} %}
+                        {% hasrights { ident: "TOBASKET" } %}
                             <input type="hidden" name="cl" value="{{ oViewConf.getActiveClassName() }}">
                             <input type="hidden" name="fnc" value="tobasket">
                             <input type="hidden" name="aid" value="{{ _product.oxarticles__oxid.value }}">
@@ -59,7 +59,7 @@
                     </div>
                     <div class="price text-center">
                         {% block widget_product_bargainitem_price %}
-                            {% hasrights { "ident": "SHOWARTICLEPRICE",} %}
+                            {% hasrights { ident: "SHOWARTICLEPRICE" } %}
                             {% set oUnitPrice = _product.getUnitPrice() %}
                             {% set tprice = _product.getTPrice() %}
                             {% set price = _product.getPrice() %}
@@ -86,7 +86,7 @@
                         {% block widget_product_bargainitem_tobasket %}
                             <div class="btn-group">
                                 {% if not ( _product.hasMdVariants() or (oViewConf.showSelectListsInList() and _product.getSelections(1)) or _product.getVariants() ) %}
-                                    {% hasrights { "ident": "TOBASKET",} %}
+                                    {% hasrights { ident: "TOBASKET" } %}
                                         <button type="submit" class="btn btn-default hasTooltip" data-placement="bottom" title="{{ translate({ ident: "TO_CART" }) }}">
                                             <i class="fa fa-shopping-cart"></i>
                                         </button>

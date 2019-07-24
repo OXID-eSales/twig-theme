@@ -5,13 +5,13 @@
             {% if oView.isConfirmAGBActive() %}
                 {% ifcontent ident "oxrighttocancellegend" set oContent %}
                     <div class="panel-heading">
-                        <h3 class="panel-title">{{ oContent.oxcontents__oxtitle.value }}</strong></h3>
+                        <h3 class="panel-title">{{ oContent.oxcontents__oxtitle.value }}</h3>
                     </div>
                 {% endifcontent %}
             {% else %}
                 {% ifcontent ident "oxrighttocancellegend2" set oContent %}
                     <div class="panel-heading">
-                        <h3 class="panel-title">{{ oContent.oxcontents__oxtitle.value }}</strong></h3>
+                        <h3 class="panel-title">{{ oContent.oxcontents__oxtitle.value }}</h3>
                     </div>
                 {% endifcontent %}
             {% endif %}
@@ -23,14 +23,14 @@
                     {% ifcontent ident "oxrighttocancellegend" set oContent %}
                         <p class="agbConfirmation checkbox">
                             <label>
-                                <input id="checkAgbTop" type="checkbox" name="ord_agb" value="1"> {{ oContent.oxcontents__oxcontent.value|raw() }}
+                                <input id="checkAgbTop" type="checkbox" name="ord_agb" value="1"> {{ oContent.oxcontents__oxcontent.value }}
                             </label>
                         </p>
                     {% endifcontent %}
                 {% else %}
                     {% ifcontent ident "oxrighttocancellegend2" set oContent %}
                         <p class="agbConfirmation">
-                            {{ oContent.oxcontents__oxcontent.value|raw() }}
+                            {{ oContent.oxcontents__oxcontent.value }}
                         </p>
                     {% endifcontent %}
                 {% endif %}
@@ -43,7 +43,7 @@
                         <p id="noteForDownloadableArticles" class="agbConfirmation checkbox">
                             <label>
                                 <input id="oxdownloadableproductsagreement" type="checkbox" name="oxdownloadableproductsagreement" value="1">
-                                {{ oExplanationMarks.getMark('downloadable') }} {{ oContent.oxcontents__oxcontent.value|raw() }}
+                                {{ oExplanationMarks.getMark('downloadable') }} {{ oContent.oxcontents__oxcontent.value }}
                             </label>
                         </p>
                     {% endifcontent %}
@@ -53,7 +53,7 @@
                         <p id="noteForIntangibleArticles" class="agbConfirmation checkbox">
                             <label>
                                 <input id="oxserviceproductsagreement" type="checkbox" name="oxserviceproductsagreement" value="1">
-                                {{ oExplanationMarks.getMark('intangible') }} {{ oContent.oxcontents__oxcontent.value|raw() }}
+                                {{ oExplanationMarks.getMark('intangible') }} {{ oContent.oxcontents__oxcontent.value }}
                             </label>
                         </p>
                     {% endifcontent %}

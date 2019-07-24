@@ -165,7 +165,7 @@
                     <section class="col-sm-12">
                         {% block dd_footer_copyright %}
                             {% ifcontent ident "oxstdfooter" set oCont %}
-                                {{ include(template_from_string(oCont.oxcontents__oxcontent.value)) }}
+                                {{ oCont.oxcontents__oxcontent.value }}
                             {% endifcontent %}
                         {% endblock %}
                     </section>

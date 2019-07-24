@@ -1,7 +1,7 @@
 {% if oxcmp_basket.getProductsCount() and _newitem %}
     {% set blFullwidth = oViewConf.getViewThemeParam('blFullwidthLayout') %}
 
-    {% hasrights { "ident": "TOBASKET",} %}
+    {% hasrights { ident: "TOBASKET" } %}
         {% if blFullwidth %}
             <div class="container">
         {% endif %}

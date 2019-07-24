@@ -47,7 +47,7 @@
 
     <a class="{% if oView.canRate() %}ox-write-review{% endif %}"
         {% if not oxcmp_user %}
-            href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account"), params: "anid=" ~ oDetailsProduct.oxarticles__oxnid.value|cat("&amp;sourcecl=")|cat(oViewConf.getTopActiveClassName())|cat(oViewConf.getNavUrlParams()) }) }}"
+            href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account"), params: "anid=`$oDetailsProduct.oxarticles__oxnid.value`"|cat("&amp;sourcecl=")|cat(oViewConf.getTopActiveClassName())|cat(oViewConf.getNavUrlParams()) }) }}"
         {% elseif oView.canRate() %}
             href="#review" data-toggle="collapse" data-target="#review_form"
         {% endif %}

@@ -44,7 +44,7 @@
 
     {% block start_top_articles %}
         {% if oTopArticles and oTopArticles.count() %}
-            {% include "widget/product/list.html.twig" with {type: "infogrid", head: "START_TOP_PRODUCTS_HEADER"|translate, subhead: "START_TOP_PRODUCTS_SUBHEADER"|translate(oTopArticles.count()), listId: "topBox", products: oTopArticles, rsslink: rsslinks.topArticles, rssId: "rssTopProducts", showMainLink: true, iProductsPerLine: 2} %}
+            {% include "widget/product/list.html.twig" with {type: oViewConf.getViewThemeParam('sStartPageListDisplayType'), head: "START_TOP_PRODUCTS_HEADER"|translate, subhead: "START_TOP_PRODUCTS_SUBHEADER"|translate(oTopArticles.count()), listId: "topBox", products: oTopArticles, rsslink: rsslinks.topArticles, rssId: "rssTopProducts", showMainLink: true, iProductsPerLine: 4} %}
         {% endif %}
     {% endblock %}
 

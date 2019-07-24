@@ -76,32 +76,32 @@
             {% set sFavicon512File = oViewConf.getViewThemeParam('sFavicon512File') %}
             {% if sFavicon512File %}
                 <!-- iOS Homescreen Icon (version < 4.2)-->
-                <link rel="apple-touch-icon-precomposed" media="screen and (resolution: 163dpi)" href="{{ oViewConf.getImageUrl("favicons / " ~ sFavicon512File) }}" />
+                <link rel="apple-touch-icon-precomposed" media="screen and (resolution: 163dpi)" href="{{ oViewConf.getImageUrl("favicons / `$sFavicon512File`") }}" />
                 <!-- iOS Homescreen Icon -->
-                <link rel="apple-touch-icon-precomposed" href="{{ oViewConf.getImageUrl("favicons / " ~ sFavicon512File) }}" />
+                <link rel="apple-touch-icon-precomposed" href="{{ oViewConf.getImageUrl("favicons / `$sFavicon512File`") }}" />
 
                 <!-- iPad Homescreen Icon (version < 4.2) -->
-                <link rel="apple-touch-icon-precomposed" media="screen and (resolution: 132dpi)" href="{{ oViewConf.getImageUrl("favicons / " ~ sFavicon512File) }}" />
+                <link rel="apple-touch-icon-precomposed" media="screen and (resolution: 132dpi)" href="{{ oViewConf.getImageUrl("favicons / `$sFavicon512File`") }}" />
                 <!-- iPad Homescreen Icon -->
-                <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ oViewConf.getImageUrl("favicons / " ~ sFavicon512File) }}" />
+                <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ oViewConf.getImageUrl("favicons / `$sFavicon512File`") }}" />
 
                 <!-- iPhone 4 Homescreen Icon (version < 4.2) -->
-                <link rel="apple-touch-icon-precomposed" media="screen and (resolution: 326dpi)" href="{{ oViewConf.getImageUrl("favicons / " ~ sFavicon512File) }}" />
+                <link rel="apple-touch-icon-precomposed" media="screen and (resolution: 326dpi)" href="{{ oViewConf.getImageUrl("favicons / `$sFavicon512File`") }}" />
                 <!-- iPhone 4 Homescreen Icon -->
-                <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ oViewConf.getImageUrl("favicons / " ~ sFavicon512File) }}" />
+                <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ oViewConf.getImageUrl("favicons / `$sFavicon512File`") }}" />
 
                 <!-- new iPad Homescreen Icon and iOS Version > 4.2 -->
-                <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ oViewConf.getImageUrl("favicons / " ~ sFavicon512File) }}" />
+                <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ oViewConf.getImageUrl("favicons / `$sFavicon512File`") }}" />
 
                 <!-- Windows 8 -->
                 {% set sFaviconMSTileColor = oViewConf.getViewThemeParam('sFaviconMSTileColor') %}
                 {% if sFaviconMSTileColor %}
                     <meta name="msapplication-TileColor" content="{{ sFaviconMSTileColor }}"> <!-- Kachel-Farbe -->
                 {% endif %}
-                <meta name="msapplication-TileImage" content="{{ oViewConf.getImageUrl("favicons / " ~ sFavicon512File) }}">
+                <meta name="msapplication-TileImage" content="{{ oViewConf.getImageUrl("favicons / `$sFavicon512File`") }}">
 
                 <!-- Fluid -->
-                <link rel="fluid-icon" href="{{ oViewConf.getImageUrl("favicons / " ~ sFavicon512File) }}" title="{{ sPageTitle }}" />
+                <link rel="fluid-icon" href="{{ oViewConf.getImageUrl("favicons / `$sFavicon512File`") }}" title="{{ sPageTitle }}" />
             {% endif %}
 
             <!-- Shortcut Icons -->
@@ -113,22 +113,22 @@
             {% set sFavicon128File = oViewConf.getViewThemeParam('sFavicon128File') %}
 
             {% if sFaviconFile %}
-                <link rel="shortcut icon" href="{{ oViewConf.getImageUrl("favicons/" ~ sFaviconFile) }}?rand=1" type="image/x-icon" />
+                <link rel="shortcut icon" href="{{ oViewConf.getImageUrl("favicons / `$sFaviconFile`") }}?rand=1" type="image/x-icon" />
             {% endif %}
             {% if sFavicon16File %}
-                <link rel="icon" href="{{ oViewConf.getImageUrl("favicons/" ~ sFavicon16File) }}" sizes="16x16" />
+                <link rel="icon" href="{{ oViewConf.getImageUrl("favicons / `$sFavicon16File`") }}" sizes="16x16" />
             {% endif %}
             {% if sFavicon32File %}
-                <link rel="icon" href="{{ oViewConf.getImageUrl("favicons/" ~ sFavicon32File) }}" sizes="32x32" />
+                <link rel="icon" href="{{ oViewConf.getImageUrl("favicons / `$sFavicon32File`") }}" sizes="32x32" />
             {% endif %}
             {% if sFavicon48File %}
-                <link rel="icon" href="{{ oViewConf.getImageUrl("favicons/" ~ sFavicon48File) }}" sizes="48x48" />
+                <link rel="icon" href="{{ oViewConf.getImageUrl("favicons / `$sFavicon48File`") }}" sizes="48x48" />
             {% endif %}
             {% if sFavicon64File %}
-                <link rel="icon" href="{{ oViewConf.getImageUrl("favicons/" ~ sFavicon64File) }}" sizes="64x64" />
+                <link rel="icon" href="{{ oViewConf.getImageUrl("favicons / `$sFavicon64File`") }}" sizes="64x64" />
             {% endif %}
             {% if sFavicon128File %}
-                <link rel="icon" href="{{ oViewConf.getImageUrl("favicons/" ~ sFavicon128File) }}" sizes="128x128" />
+                <link rel="icon" href="{{ oViewConf.getImageUrl("favicons / `$sFavicon128File`") }}" sizes="128x128" />
             {% endif %}
         {% endblock %}
 
@@ -151,7 +151,7 @@
 
         {% block head_css %}
             {% for _block in oxidBlock_head %}
-                {{ include(template_from_string(_block)) }}
+                {{ _block }}
             {% endfor %}
         {% endblock %}
     {% endspaceless %}
@@ -164,7 +164,7 @@
 {# Fullpage Background #}
 {% if oViewConf.getViewThemeParam('blUseBackground') %}
     {% set sBackgroundPath = oViewConf.getViewThemeParam('sBackgroundPath') %}
-    {% set sBackgroundUrl = oViewConf.getImageUrl("backgrounds/" ~ sBackgroundPath) %}
+    {% set sBackgroundUrl = oViewConf.getImageUrl("backgrounds/`$sBackgroundPath`") %}
     {% set sBackgroundRepeat = oViewConf.getViewThemeParam('sBackgroundRepeat') %}
     {% set sBackgroundPosHorizontal = oViewConf.getViewThemeParam('sBackgroundPosHorizontal') %}
     {% set sBackgroundPosVertical = oViewConf.getViewThemeParam('sBackgroundPosVertical') %}
@@ -172,81 +172,80 @@
     {% set blBackgroundAttachment = oViewConf.getViewThemeParam('blBackgroundAttachment') %}
 
     {% if sBackgroundUrl %}
-        {% set sStyle = "background: " ~ sBackgroundColor ~ " url(" ~ sBackgroundUrl ~ ") " ~ sBackgroundRepeat ~ " " ~ sBackgroundPosHorizontal ~ " " ~ sBackgroundPosVertical ~ ";" %}
-
+        {% set sStyle = "background:`$sBackgroundColor` url(`$sBackgroundUrl`) `$sBackgroundRepeat` `$sBackgroundPosHorizontal` `$sBackgroundPosVertical`;" %}
 
         {% if sBackgroundSize %}
-            {% set sStyle = sStyle|cat("background-size, " ~ sBackgroundSize ~ ";") %}
+            {% set sStyle = sStyle|cat("background-size, `$sBackgroundSize`;") %}
         {% endif %}
 
         {% if blBackgroundAttachment %}
             {% set sStyle = sStyle|cat("background-attachment, fixed;") %}
         {% endif %}
     {% else %}
-        {% set sStyle = "background: " ~ sBackgroundColor ~ ";" %}
+        {% set sStyle = "background:`$sBackgroundColor`;" %}
     {% endif %}
 {% elseif sBackgroundColor %}
-    {% set sStyle = "background: " ~ sBackgroundColor ~ ";" %}
+    {% set sStyle = "background:`$sBackgroundColor`;" %}
 {% endif %}
 
 <!DOCTYPE html>
 <html lang="{{ oView.getActiveLangAbbr() }}" {% block head_html_namespace %}{% endblock %}>
-<head>
-    {% for _block in oxidBlock_pageHead %}
-        {{ include(template_from_string(_block)) }}
-    {% endfor %}
-    {{ style() }}
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-</head>
-<body class="cl-{{ oView.getClassName() }}{% if get_global_get('plain') == '1' %} popup{% endif %}{% if blIsCheckout %} is-checkout{% endif %}{% if oxcmp_user and oxcmp_user.oxuser__oxpassword.value %} is-logged-in{% endif %}"{% if sStyle %} style="{{ sStyle }}"{% endif %}>
-
-{# Theme SVG icons block #}
-{% block theme_svg_icons %}{% endblock %}
-
-<div class="{% if blFullwidth %}fullwidth-container{% else %}container{% endif %}">
-    <div class="main-row">
-        {% for _block in oxidBlock_pageBody %}
-            {{ include(template_from_string(_block)) }}
+    <head>
+        {% for _block in oxidBlock_pageHead %}
+            {{ _block }}
         {% endfor %}
-    </div>
-</div>
+        {{ style() }}
 
-{% for _block in oxidBlock_pagePopup %}
-    {{ include(template_from_string(_block)) }}
-{% endfor %}
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body class="cl-{{ oView.getClassName() }}{% if smarty.get.plain == '1' %} popup{% endif %}{% if blIsCheckout %} is-checkout{% endif %}{% if oxcmp_user and oxcmp_user.oxuser__oxpassword.value %} is-logged-in{% endif %}"{% if sStyle %} style="{{ sStyle }}"{% endif %}>
 
-{% if oViewConf.getTopActiveClassName() == 'details' and oView.showZoomPics() %}
-    {% include "page/details/inc/photoswipe.html.twig" %}
-{% endif %}
+    {# Theme SVG icons block #}
+    {% block theme_svg_icons %}{% endblock %}
 
-{% block base_js %}
-    {% include "i18n/js_vars.html.twig" %}
+    <div class="{% if blFullwidth %}fullwidth-container{% else %}container{% endif %}">
+            <div class="main-row">
+                {% for _block in oxidBlock_pageBody %}
+                    {{ _block }}
+                {% endfor %}
+            </div>
+        </div>
 
-    {{ script({ include: "js/libs/jquery.min.js", priority: 1, dynamic: __oxid_include_dynamic }) }}
-    {{ script({ include: "js/libs/jquery-ui.min.js", priority: 1, dynamic: __oxid_include_dynamic }) }}
-    {{ script({ include: "js/scripts.min.js", priority: 1, dynamic: __oxid_include_dynamic }) }}
-{% endblock %}
+        {% for _block in oxidBlock_pagePopup %}
+            {{ _block }}
+        {% endfor %}
 
-{% if oViewConf.isTplBlocksDebugMode() %}
-    {{ script({ include: "js/widgets/oxblockdebug.min.js", dynamic: __oxid_include_dynamic }) }}
-    {{ script({ add: "$( 'body' ).oxBlockDebug();", dynamic: __oxid_include_dynamic }) }}
-{% endif %}
+        {% if oViewConf.getTopActiveClassName() == 'details' and oView.showZoomPics() %}
+            {% include "page/details/inc/photoswipe.html.twig" %}
+        {% endif %}
 
-<!--[if gte IE 9]><style type="text/css">.gradient {filter:none;}</style><![endif]-->
-{{ script({ dynamic: __oxid_include_dynamic }) }}
+        {% block base_js %}
+            {% include "i18n/js_vars.html.twig" %}
 
-{% if not oView.isDemoShop() %}
-    {% include_dynamic "widget/dynscript.html.twig" %}
-{% endif %}
+            {{ script({ include: "js/libs/jquery.min.js", priority: 1, dynamic: __oxid_include_dynamic }) }}
+            {{ script({ include: "js/libs/jquery-ui.min.js", priority: 1, dynamic: __oxid_include_dynamic }) }}
+            {{ script({ include: "js/scripts.min.js", priority: 1, dynamic: __oxid_include_dynamic }) }}
+        {% endblock %}
 
-{% for _block in oxidBlock_pageScript %}
-    {{ include(template_from_string(_block)) }}
-{% endfor %}
+        {% if oViewConf.isTplBlocksDebugMode() %}
+            {{ script({ include: "js/widgets/oxblockdebug.min.js", dynamic: __oxid_include_dynamic }) }}
+            {{ script({ add: "$( 'body' ).oxBlockDebug();", dynamic: __oxid_include_dynamic }) }}
+        {% endif %}
 
-</body>
+        <!--[if gte IE 9]><style type="text/css">.gradient {filter:none;}</style><![endif]-->
+        {{ script({ dynamic: __oxid_include_dynamic }) }}
+
+        {% if not oView.isDemoShop() %}
+            {% include_dynamic "widget/dynscript.html.twig" %}
+        {% endif %}
+
+        {% for _block in oxidBlock_pageScript %}
+            {{ _block }}
+        {% endfor %}
+
+    </body>
 </html>

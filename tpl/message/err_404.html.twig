@@ -7,7 +7,7 @@
                     {% if sUrl %}
                         {% set sModifiedUrl = sUrl|escape %}
                         {% set sModifiedUrl = "<i><strong>'"|cat(sModifiedUrl)|cat("'</strong></i>") %}
-                        {{ translate({ ident: "ERROR_404", args: sModifiedUrl })|raw() }}
+                        {{ translate({ ident: "ERROR_404", args: sModifiedUrl }) }}
                     {% else %}
                         {{ translate({ ident: "ERROR_404" }) }}
                     {% endif %}
@@ -19,7 +19,7 @@
                 </p>
 
                 <p>
-                    {{ translate({ ident: "DD_ERR_404_CONTACT_TEXT" })|raw() }}<br>
+                    {{ translate({ ident: "DD_ERR_404_CONTACT_TEXT" }) }}<br>
                     <a href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=contact") }) }}" class="btn btn-default" title="{{ translate({ ident: "DD_ERR_404_CONTACT_BUTTON" }) }}">{{ translate({ ident: "DD_ERR_404_CONTACT_BUTTON" }) }}</a>
                 </p>
             </div>

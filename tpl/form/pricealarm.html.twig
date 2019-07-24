@@ -3,10 +3,10 @@
 
 {% set currency = oView.getActCurrency() %}
 <p class="alert alert-info">{{ translate({ ident: "MESSAGE_PRICE_ALARM_PRICE_CHANGE" }) }}</p>
-<form class="js-oxValidate form-horizontal" name="pricealarm" action="{{ oViewConf.getSelfActionLink()|raw() }}" method="post" novalidate="novalidate">
+<form class="js-oxValidate form-horizontal" name="pricealarm" action="{{ oViewConf.getSelfActionLink() }}" method="post" novalidate="novalidate">
     <div>
-        {{ oViewConf.getHiddenSid()|raw() }}
-        {{ oViewConf.getNavFormParams()|raw() }}
+        {{ oViewConf.getHiddenSid() }}
+        {{ oViewConf.getNavFormParams() }}
         <input type="hidden" name="cl" value="{{ oViewConf.getTopActiveClassName() }}">
         {% if oDetailsProduct %}
             <input type="hidden" name="anid" value="{{ oDetailsProduct.oxarticles__oxid.value }}">
@@ -16,7 +16,7 @@
     <div class="form-group">
         <label class="req control-label col-lg-3">{{ translate({ ident: "YOUR_PRICE" }) }} ({{ currency.sign }}):</label>
         <div class="col-lg-9">
-            <input class="form-control" type="text" name="pa[price]" value="{% hasrights { "ident": "SHOWARTICLEPRICE",} %}{% if product %}{{ product.getFPrice() }}{% endif %}{% endhasrights %}" maxlength="32" required="required">
+            <input class="form-control" type="text" name="pa[price]" value="{% hasrights { ident: "SHOWARTICLEPRICE" } %}{% if product %}{{ product.getFPrice() }}{% endif %}{% endhasrights %}" maxlength="32" required="required">
             <div class="help-block"></div>
         </div>
     </div>

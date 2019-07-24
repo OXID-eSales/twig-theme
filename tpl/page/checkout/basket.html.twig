@@ -27,9 +27,9 @@
                 <div class="well well-sm cart-buttons">
                     {% block checkout_basket_backtoshop_top %}
                         {% if oView.showBackToShop() %}
-                            <form action="{{ oViewConf.getSslSelfLink()|raw() }}" method="post" class="pull-left">
+                            <form action="{{ oViewConf.getSslSelfLink() }}" method="post" class="pull-left">
                                 <div class="hidden">
-                                    {{ oViewConf.getHiddenSid()|raw() }}
+                                    {{ oViewConf.getHiddenSid() }}
                                     <input type="hidden" name="cl" value="basket">
                                     <input type="hidden" name="fnc" value="backtoshop">
                                 </div>
@@ -46,9 +46,9 @@
 
                     {% if not oView.isLowOrderPrice() %}
                         {% block basket_btn_next_top %}
-                            <form action="{{ oViewConf.getSslSelfLink()|raw() }}" method="post" class="pull-right">
+                            <form action="{{ oViewConf.getSslSelfLink() }}" method="post" class="pull-right">
                                 <div class="hidden">
-                                    {{ oViewConf.getHiddenSid()|raw() }}
+                                    {{ oViewConf.getHiddenSid() }}
                                     <input type="hidden" name="cl" value="user">
                                 </div>
                                 <button type="submit" class="btn btn-primary submitButton largeButton nextStep pull-right">
@@ -71,9 +71,9 @@
 
                     {% block checkout_basket_backtoshop_bottom %}
                         {% if oView.showBackToShop() %}
-                            <form action="{{ oViewConf.getSslSelfLink()|raw() }}" method="post" class="pull-left">
+                            <form action="{{ oViewConf.getSslSelfLink() }}" method="post" class="pull-left">
                                 <div class="backtoshop">
-                                    {{ oViewConf.getHiddenSid()|raw() }}
+                                    {{ oViewConf.getHiddenSid() }}
                                     <input type="hidden" name="cl" value="basket">
                                     <input type="hidden" name="fnc" value="backtoshop">
                                     <button type="submit" class="btn btn-default submitButton largeButton pull-left">
@@ -90,9 +90,9 @@
 
                     {% if not oView.isLowOrderPrice() %}
                         {% block basket_btn_next_bottom %}
-                            <form action="{{ oViewConf.getSslSelfLink()|raw() }}" method="post">
+                            <form action="{{ oViewConf.getSslSelfLink() }}" method="post">
                                 <div class="hidden">
-                                    {{ oViewConf.getHiddenSid()|raw() }}
+                                    {{ oViewConf.getHiddenSid() }}
                                     <input type="hidden" name="cl" value="user">
                                 </div>
                                 <button type="submit" class="btn btn-primary submitButton largeButton nextStep pull-right">

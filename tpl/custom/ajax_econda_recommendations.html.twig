@@ -20,7 +20,7 @@
 
     {% if sWidgetId %}
         {# econda-Recommendations abholen #}
-        {% set sUrl = "http://widgets.crosssell.info/eps/crosssell/recommendations.do?aid=" ~ sAccountId ~ "&wid=" ~ sWidgetId ~ "&csize=20&start=0&type=cs&widgetdetails=true" %}
+        {% set sUrl = "http://widgets.crosssell.info/eps/crosssell/recommendations.do?aid=`$sAccountId`&wid=`$sWidgetId`&csize=20&start=0&type=cs&widgetdetails=true" %}
         {% set oResponse = sUrl|file_get_contents|json_decode %}
 
         {# Prüfen, ob Artikel-IDs zurückgekommen sind #}
@@ -37,7 +37,7 @@
             {% set sArticles = "','"|implode(aArticles) %}
             {% set sViewName = "oxarticles"|getViewName %}
             {% set oArtList = "oxArticleList"|oxNew %}
-            {{ oArtList.selectString("SELECT * "FROM sViewName WHERE" "OXARTNUM" IN( "sArticles" ) "AND" "OXACTIVE" = 1") }}
+            {{ oArtList.selectString("SELECT * "FROM" `$sViewName` "WHERE" "OXARTNUM" IN('`$sArticles`') "AND" "OXACTIVE" = 1") }}
 
             {% include "widget/product/list.html.twig" with {listId: sListId, head: oResponse.widgetdetails.title, products: oArtList} %}
         {% endif %}

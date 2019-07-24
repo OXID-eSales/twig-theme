@@ -1,8 +1,8 @@
 {% block dd_footer_newsletter_form %}
-    <form class="form-inline" role="form" action="{{ oViewConf.getSslSelfLink()|raw() }}" method="post">
+    <form class="form-inline" role="form" action="{{ oViewConf.getSslSelfLink() }}" method="post">
         {% block dd_footer_newsletter_form_inner %}
             <div class="hidden">
-                {{ oViewConf.getHiddenSid()|raw() }}
+                {{ oViewConf.getHiddenSid() }}
                 <input type="hidden" name="fnc" value="fill">
                 <input type="hidden" name="cl" value="newsletter">
                 {% if oView.getProduct() %}

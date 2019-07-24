@@ -1,6 +1,3 @@
-{% set shop = oEmailView.getShop() %}
-{% set user = oEmailView.getUser() %}
-
-{% include 'content::ident::' ~ contentplainident|default("oxregisterplainemail") with {shop: shop, user: user} %}
+{% include 'content::ident::contentplainident|default("oxregisterplainemail")' %}
 
 {% include 'content::ident::oxemailfooterplain' %}

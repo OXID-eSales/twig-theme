@@ -25,9 +25,9 @@
                     {% if not oxcmp_basket.getProductsCount() %}
                         <div class="alert alert-danger">{{ translate({ ident: "BASKET_EMPTY" }) }}</div>
                     {% else %}
-                        <form name="basket" action="{{ oViewConf.getSelfActionLink()|raw() }}" method="post" role="form" id="giftoptions_modal_form">
+                        <form name="basket" action="{{ oViewConf.getSelfActionLink() }}" method="post" role="form" id="giftoptions_modal_form">
                             <div class="hidden">
-                                {{ oViewConf.getHiddenSid()|raw() }}
+                                {{ oViewConf.getHiddenSid() }}
                                 <input type="hidden" name="cl" value="basket">
                                 <input type="hidden" name="fnc" value="changewrapping">
                             </div>
@@ -41,7 +41,7 @@
                                     <div class="well well-sm">
                                         <div class="row">
                                             {% block checkout_wrapping_item %}
-                                                {% set basketproduct = basketitemlist[basketindex] %}
+                                                {% set basketproduct = basketitemlist.$basketindex %}
 
                                                 <div class="col-xs-4">
                                                     <img src="{{ basketproduct.getIconUrl() }}" alt="{{ basketitem.getTitle()|striptags }}" class="img-thumbnail img-responsive">
@@ -91,12 +91,12 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                {% set ictr = ictr+1 %}
+                                                {% set ictr = "`$ictr+1`" %}
                                             {% endfor %}
-                                            {{ script({ add: "$( '#wrapp_" ~ loop.index ~ " img' ).click(function(){ $(this).parent().parent().find('input').click(); });", dynamic: __oxid_include_dynamic }) }}
+                                            {{ script({ add: "$( '#wrapp_`$loop.index` img' ).click(function(){ $(this).parent().parent().find('input').click(); });", dynamic: __oxid_include_dynamic }) }}
                                         </div>
 
-                                                {% set icounter = icounter+1 %}
+                                                {% set icounter = "`$icounter+1`" %}
                                             {% endblock %}
                                         </div>
                                 {% endfor %}
@@ -144,7 +144,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            {% set icounter = icounter+1 %}
+                                            {% set icounter = "`$icounter+1`" %}
                                         {% endfor %}
                                         {{ script({ add: "$( '#wrappCard img' ).click(function(){ $(this).parent().siblings().find('input').click(); });", dynamic: __oxid_include_dynamic }) }}
                                     </div>

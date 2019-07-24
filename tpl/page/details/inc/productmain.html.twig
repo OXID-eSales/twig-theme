@@ -10,20 +10,18 @@
     {% for iKey, oSelectionList in aVariantSelections.rawselections %}
         {% set _sSelectionHash = "" %}
         {% for iPos, oListItem in oSelectionList %}
-            {% set _sSelectionHash = _sSelectionHash ~ iPos ~ ":" ~ oListItem.hash ~ "|" %}
+            {% set _sSelectionHash = _sSelectionHash|cat(iPos)|cat(", ")|cat(oListItem.hash)|cat(")|" %}
         {% endfor %}
         {% if _sSelectionHash %}
-            {% if _sSelectionHashCollection is not same as("") %}
-                {% set _sSelectionHashCollection = _sSelectionHashCollection|cat(",") %}
-            {% endif %}
-            {% set _sSelectionHashCollection = _sSelectionHashCollection ~ "'" ~ _sSelectionHash ~ "'" %}
+            {% if _sSelectionHashCollection %}{% set _sSelectionHashCollection = _sSelectionHashCollection|cat(",") %}{% endif %}
+            {% set _sSelectionHashCollection = _sSelectionHashCollection|cat("'`$_sSelectionHash`'") %}
         {% endif %}
     {% endfor %}
-    {{ script({ add: "oxVariantSelections  = [" ~ _sSelectionHashCollection ~ "];", dynamic: __oxid_include_dynamic }) }}
+    {{ script({ add: "oxVariantSelections  = [`$_sSelectionHashCollection`];", dynamic: __oxid_include_dynamic }) }}
 
     <form class="js-oxWidgetReload" action="{{ oView.getWidgetLink() }}" method="get">
-        {{ oViewConf.getHiddenSid()|raw() }}
-        {{ oViewConf.getNavFormParams()|raw() }}
+        {{ oViewConf.getHiddenSid() }}
+        {{ oViewConf.getNavFormParams() }}
         <input type="hidden" name="cl" value="{{ oView.getClassName() }}">
         <input type="hidden" name="oxwparent" value="{{ oViewConf.getTopActiveClassName() }}">
         <input type="hidden" name="listtype" value="{{ oView.getListType() }}">
@@ -37,11 +35,11 @@
     </form>
 {% endif %}
 
-{% hasrights { "ident": "TOBASKET",} %}
-    <form class="js-oxProductForm" action="{{ oViewConf.getSelfActionLink()|raw() }}" method="post">
+{% hasrights { ident: "TOBASKET" } %}
+    <form class="js-oxProductForm" action="{{ oViewConf.getSelfActionLink() }}" method="post">
         <div class="hidden">
-            {{ oViewConf.getHiddenSid()|raw() }}
-            {{ oViewConf.getNavFormParams()|raw() }}
+            {{ oViewConf.getHiddenSid() }}
+            {{ oViewConf.getNavFormParams() }}
             <input type="hidden" name="cl" value="{{ oViewConf.getTopActiveClassName() }}">
             <input type="hidden" name="aid" value="{{ oDetailsProduct.oxarticles__oxid.value }}">
             <input type="hidden" name="anid" value="{{ oDetailsProduct.oxarticles__oxnid.value }}">
@@ -73,7 +71,7 @@
                         {% set aPictureInfo = oPictureProduct.getMasterZoomPictureUrl(1)|getimagesize %}
                     {% else %}
                         {% set sPictureName = oPictureProduct.oxarticles__oxpic1.value %}
-                        {% set aPictureInfo = oConfig.getMasterPicturePath("product/1/" ~ sPictureName)|getimagesize %}
+                        {% set aPictureInfo = oConfig.getMasterPicturePath("product/1/`$sPictureName`")|getimagesize %}
                     {% endif %}
 
                     <div class="picture text-center">
@@ -96,7 +94,7 @@
         <div class="col-xs-12 col-sm-8 col-md-5 col-lg-6 details-col-middle">
             {% block details_productmain_title %}
                 <h1 id="productTitle" itemprop="name">
-                    {{ oDetailsProduct.oxarticles__oxtitle.value|raw }} {{ oDetailsProduct.oxarticles__oxvarselect.value|raw }}
+                    {{ oDetailsProduct.oxarticles__oxtitle.value }} {{ oDetailsProduct.oxarticles__oxvarselect.value }}
                 </h1>
             {% endblock %}
 
@@ -109,14 +107,14 @@
             <div class="star-ratings">
                 {% if oView.ratingIsActive() %}
                     {% block details_productmain_ratings %}
-                        {% include "widget/reviews/rating.html.twig" with {itemid: "anid=" ~ oDetailsProduct.oxarticles__oxnid.value, sRateUrl: oDetailsProduct.getLink()} %}
+                        {% include "widget/reviews/rating.html.twig" with {itemid: "anid=`$oDetailsProduct->oxarticles__oxnid->value`", sRateUrl: oDetailsProduct.getLink()} %}
                     {% endblock %}
                 {% endif %}
             </div>
 
             {# short description #}
             {% block details_productmain_shortdesc %}
-                {% hasrights { "ident": "SHOWSHORTDESCRIPTION",} %}
+                {% hasrights { ident: "SHOWSHORTDESCRIPTION" } %}
                     {% if oDetailsProduct.oxarticles__oxshortdesc.rawValue %}
                         <p class="shortdesc" id="productShortdesc" itemprop="description">{{ oDetailsProduct.oxarticles__oxshortdesc.rawValue }}</p>
                     {% endif %}
@@ -128,7 +126,7 @@
                 <div class="productMainInfo{% if oManufacturer.oxmanufacturers__oxicon.value %} hasBrand{% endif %}">
 
                     {# additional info #}
-                    {% hasrights { "ident": "SHOWARTICLEPRICE",} %}
+                    {% hasrights { ident: "SHOWARTICLEPRICE" } %}
                     <div class="additionalInfo clearfix">
                         {% set oUnitPrice = oDetailsProduct.getUnitPrice() %}
                         {% block details_productmain_priceperunit %}
@@ -197,7 +195,7 @@
 
                 <div class="pricebox">
                     {% block details_productmain_tprice %}
-                        {% hasrights { "ident": "SHOWARTICLEPRICE",} %}
+                        {% hasrights { ident: "SHOWARTICLEPRICE" } %}
                             {% if oDetailsProduct.getTPrice() %}
                                 <del>{{ format_price(oDetailsProduct.getTPrice(), { currency: currency }) }}</del>
                                 <br/>
@@ -208,7 +206,7 @@
                     {% block details_productmain_watchlist %}{% endblock %}
 
                     {% block details_productmain_price %}
-                        {% hasrights { "ident": "SHOWARTICLEPRICE",} %}
+                        {% hasrights { ident: "SHOWARTICLEPRICE" } %}
                             {% block details_productmain_price_value %}
                                 {% if oDetailsProduct.getFPrice() %}
                                     <label id="productPrice" class="price">
@@ -253,7 +251,7 @@
 
                     {% block details_productmain_tobasket %}
                         <div class="tobasketFunction clear">
-                            {% hasrights { "ident": "TOBASKET",} %}
+                            {% hasrights { ident: "TOBASKET" } %}
                                 {% if not oDetailsProduct.isNotBuyable() %}
                                     <div class="input-group">
                                         <input id="amountToBasket" type="text" name="am" value="1" autocomplete="off" class="form-control">
@@ -300,7 +298,7 @@
                         {% endif %}
                     {% endblock %}
 
-                    {% hasrights { "ident": "TOBASKET",} %}
+                    {% hasrights { ident: "TOBASKET" } %}
                         {% if oDetailsProduct.isBuyable() %}
 							{% block details_productmain_deliverytime %}
 								{% include "page/details/inc/deliverytime.html.twig" %}
@@ -329,8 +327,6 @@
                 </div>
             {% endif %}
 
-            {% set oSession = oViewConf.getSession() %}
-
             {% block details_productmain_productlinksselector %}
                 {% block details_productmain_productlinks %}
                     <ul class="list-unstyled action-links">
@@ -341,32 +337,32 @@
 						{% endif %}
                         <li>
                             {% if oViewConf.getShowSuggest() %}
-                                <a id="suggest" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=suggest"), params: "anid=" ~ oDetailsProduct.oxarticles__oxnid.value|cat(oViewConf.getNavUrlParams()) }) }}">{{ translate({ ident: "RECOMMEND" }) }}</a>
+                                <a id="suggest" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=suggest"), params: "anid=`$oDetailsProduct.oxarticles__oxnid.value`"|cat(oViewConf.getNavUrlParams()) }) }}">{{ translate({ ident: "RECOMMEND" }) }}</a>
                             {% endif %}
                         </li>
 
 						{% if oViewConf.getShowListmania() %}
 							<li>
 								{% if oxcmp_user %}
-                                    <a id="recommList" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=recommadd"), params: "aid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;anid=" ~ oDetailsProduct.oxarticles__oxnid.value|cat(oViewConf.getNavUrlParams())|cat("&amp;stoken=")|cat(oSession.getSessionChallengeToken()) }) }}">{{ translate({ ident: "ADD_TO_LISTMANIA_LIST" }) }}</a>
+                                    <a id="recommList" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=recommadd"), params: "aid=`$oDetailsProduct.oxarticles__oxnid.value`&amp;anid=`$oDetailsProduct.oxarticles__oxnid.value`"|cat(oViewConf.getNavUrlParams())|cat("&amp;stoken=")|cat(oViewConf.getSessionChallengeToken()) }) }}">{{ translate({ ident: "ADD_TO_LISTMANIA_LIST" }) }}</a>
                                 {% else %}
-                                    <a id="loginToRecommlist" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account"), params: "anid=" ~ oDetailsProduct.oxarticles__oxnid.value|cat("&amp;sourcecl=")|cat(oViewConf.getTopActiveClassName())|cat(oViewConf.getNavUrlParams()) }) }}">{{ translate({ ident: "ADD_TO_LISTMANIA_LIST" }) }}</a>
+                                    <a id="loginToRecommlist" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account"), params: "anid=`$oDetailsProduct.oxarticles__oxnid.value`"|cat("&amp;sourcecl=")|cat(oViewConf.getTopActiveClassName())|cat(oViewConf.getNavUrlParams()) }) }}">{{ translate({ ident: "ADD_TO_LISTMANIA_LIST" }) }}</a>
                                 {% endif %}
 							</li>
                        {% endif %}
                         <li>
                             {% if oxcmp_user %}
-                                <a id="linkToNoticeList" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=")|cat(oViewConf.getTopActiveClassName()), params: "aid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;fnc=tonoticelist&amp;am=1"|cat(oViewConf.getNavUrlParams())|cat("&amp;stoken=")|cat(oSession.getSessionChallengeToken()) }) }}">{{ translate({ ident: "ADD_TO_WISH_LIST" }) }}</a>
+                                <a id="linkToNoticeList" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=")|cat(oViewConf.getTopActiveClassName()), params: "aid=`$oDetailsProduct.oxarticles__oxnid.value`&amp;anid=`$oDetailsProduct.oxarticles__oxnid.value`&amp;fnc=tonoticelist&amp;am=1"|cat(oViewConf.getNavUrlParams())|cat("&amp;stoken=")|cat(oViewConf.getSessionChallengeToken()) }) }}">{{ translate({ ident: "ADD_TO_WISH_LIST" }) }}</a>
                             {% else %}
-                                <a id="loginToNotice" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account"), params: "anid=" ~ oDetailsProduct.oxarticles__oxnid.value|cat("&amp;sourcecl=")|cat(oViewConf.getTopActiveClassName())|cat(oViewConf.getNavUrlParams()) }) }}">{{ translate({ ident: "ADD_TO_WISH_LIST" }) }}</a>
+                                <a id="loginToNotice" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account"), params: "anid=`$oDetailsProduct.oxarticles__oxnid.value`"|cat("&amp;sourcecl=")|cat(oViewConf.getTopActiveClassName())|cat(oViewConf.getNavUrlParams()) }) }}">{{ translate({ ident: "ADD_TO_WISH_LIST" }) }}</a>
                             {% endif %}
                         </li>
                        {% if oViewConf.getShowWishlist() %}
 	                        <li>
                                 {% if oxcmp_user %}
-                                    <a id="linkToWishList" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=")|cat(oViewConf.getTopActiveClassName()), params: "aid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;fnc=towishlist&amp;am=1"|cat(oViewConf.getNavUrlParams())|cat("&amp;stoken=")|cat(oSession.getSessionChallengeToken()) }) }}">{{ translate({ ident: "ADD_TO_GIFT_REGISTRY" }) }}</a>
+                                    <a id="linkToWishList" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=")|cat(oViewConf.getTopActiveClassName()), params: "aid=`$oDetailsProduct.oxarticles__oxnid.value`&anid=`$oDetailsProduct.oxarticles__oxnid.value`&amp;fnc=towishlist&amp;am=1"|cat(oViewConf.getNavUrlParams())|cat("&amp;stoken=")|cat(oViewConf.getSessionChallengeToken()) }) }}">{{ translate({ ident: "ADD_TO_GIFT_REGISTRY" }) }}</a>
                                 {% else %}
-                                    <a id="loginToWish" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account"), params: "anid=" ~ oDetailsProduct.oxarticles__oxnid.value|cat("&amp;sourcecl=")|cat(oViewConf.getTopActiveClassName())|cat(oViewConf.getNavUrlParams()) }) }}">{{ translate({ ident: "ADD_TO_GIFT_REGISTRY" }) }}</a>
+                                    <a id="loginToWish" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account"), params: "anid=`$oDetailsProduct.oxarticles__oxnid.value`"|cat("&amp;sourcecl=")|cat(oViewConf.getTopActiveClassName())|cat(oViewConf.getNavUrlParams()) }) }}">{{ translate({ ident: "ADD_TO_GIFT_REGISTRY" }) }}</a>
                                 {% endif %}
 							</li>
                        {% endif %}
@@ -384,6 +380,6 @@
     {% endif %}
 </div>
 
-{% hasrights { "ident": "TOBASKET",} %}
+{% hasrights { ident: "TOBASKET" } %}
     </form>
 {% endhasrights %}

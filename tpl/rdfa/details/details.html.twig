@@ -18,7 +18,7 @@
 {% if oProduct.oxarticles__oxtitle.value %}
     <div property="gr:name" content="{{ oProduct.oxarticles__oxtitle.value|striptags|strip }}" {% if oView.getActiveLangAbbr() %} xml:lang="{{ oView.getActiveLangAbbr() }}"{% endif %}></div>
 {% endif %}
-{% hasrights { "ident": "SHOWLONGDESCRIPTION",} %}
+{% hasrights { ident: "SHOWLONGDESCRIPTION" } %}
 {% set oLongdesc = oProduct.getLongDescription() %}
 {% if oLongdesc.value %}
     <div property="gr:description" content="{{ oLongdesc.value|striptags|strip }}" {% if oView.getActiveLangAbbr() %} xml:lang="{{ oView.getActiveLangAbbr() }}"{% endif %}></div>
@@ -48,7 +48,7 @@
         </div>
     </div>
 {% endif %}
-{% hasrights { "ident": "SHOWARTICLEPRICE",} %}
+{% hasrights { ident: "SHOWARTICLEPRICE" } %}
 {% include "rdfa/details/inc/price.html.twig" with {oDetailsProduct: oProduct} %}
 {% endhasrights %}
 {% if oProduct.getDeliveryDate() %}
@@ -71,7 +71,7 @@
     <div property="gr:eligibleRegions" content="{{ oRegion.oxcountry__oxisoalpha2.value }}" datatype="xsd:string"></div>
 {% endfor %}
 {% endif %}
-{% hasrights { "ident": "SHOWARTICLEPRICE",} %}
+{% hasrights { ident: "SHOWARTICLEPRICE" } %}
 {% include "rdfa/details/inc/payment.html.twig" %}
 {% if oProduct.oxarticles__oxfreeshipping.value %}
     <div rel="gr:hasPriceSpecification">

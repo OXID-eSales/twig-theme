@@ -31,7 +31,7 @@
                         {% endblock %}
                     {% endif %}
 
-                    {{ twig.capture.loginErrors }}
+                    {{ smarty.capture.loginErrors }}
 
                     <div class="row">
                         {% if sidebar and sidebar != "Right" %}
@@ -49,7 +49,7 @@
                                     {% include "message/errors.html.twig" %}
 
                                     {% for _block in oxidBlock_content %}
-                                        {{ include(template_from_string(_block)) }}
+                                        {{ _block }}
                                     {% endfor %}
                                 {% endblock %}
                             </div>

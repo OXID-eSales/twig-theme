@@ -22,9 +22,9 @@
     {% elseif oView.updateSuccess() %}
         <div class="alert alert-success">{{ translate({ ident: "PASSWORD_CHANGED" }) }}</div>
 
-        <form action="{{ oViewConf.getSelfActionLink()|raw() }}" name="forgotpwd" method="post" role="form">
+        <form action="{{ oViewConf.getSelfActionLink() }}" name="forgotpwd" method="post" role="form">
             <div>
-                {{ oViewConf.getHiddenSid()|raw() }}
+                {{ oViewConf.getHiddenSid() }}
                 <input type="hidden" name="cl" value="start">
                 <button id="backToShop" class="submitButton largeButton btn btn-primary" type="submit">
                     <i class="fa fa-caret-left"></i> {{ translate({ ident: "BACK_TO_SHOP" }) }}
@@ -35,9 +35,9 @@
         {% if oView.getForgotEmail() %}
             <div class="alert alert-info">{{ translate({ ident: "PASSWORD_WAS_SEND_TO" }) }} {{ oView.getForgotEmail() }}</div>
             <div class="bar">
-                <form action="{{ oViewConf.getSelfActionLink()|raw() }}" name="forgotpwd" method="post">
+                <form action="{{ oViewConf.getSelfActionLink() }}" name="forgotpwd" method="post">
                     <div>
-                        {{ oViewConf.getHiddenSid()|raw() }}
+                        {{ oViewConf.getHiddenSid() }}
                         <input type="hidden" name="cl" value="start">
                         <button id="backToShop" class="btn btn-primary submitButton largeButton" type="submit">
                             <i class="fa fa-caret-left"></i> {{ translate({ ident: "BACK_TO_SHOP" }) }}

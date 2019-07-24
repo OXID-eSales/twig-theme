@@ -18,12 +18,12 @@
                             <div class="col-md-12">
                                 {% block delete_review_confirmation_modal_form %}
                                     <form
-                                        action="{{ oViewConf.getSslSelfLink()|raw() }}"
+                                        action="{{ oViewConf.getSslSelfLink() }}"
                                         method="post"
                                         id="remove_review_{{ reviewCounterIteration }}"
                                     >
-                                        {{ oViewConf.getNavFormParams()|raw() }}
-                                        {{ oViewConf.getHiddenSid()|raw() }}
+                                        {{ oViewConf.getNavFormParams() }}
+                                        {{ oViewConf.getHiddenSid() }}
                                         <input name="pgNr" value="{{ oView.getActPage() }}"  type="hidden">
                                         <input name="cl" value="account_reviewlist" type="hidden">
                                         <input name="fnc" value="deleteReviewAndRating" type="hidden">
