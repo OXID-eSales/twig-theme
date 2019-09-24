@@ -1,7 +1,23 @@
-# twig-theme
-
+# Twig theme
 Templates based on the twig engine
 
-## Issues
+## Requirements
 
-Please forward all issues to https://bugs.oxid-esales.com/ for the project **TBD**.
+* OXID eShop compilation ^v6.2.0
+
+## Installation
+
+Run the following command to install theme:
+
+```bash
+composer require oxid-esales/twig-theme
+```
+
+## Activation
+
+Open OXID eShop administration panel and got to:`Extensions --> Themes`,
+select a twig theme and click activation button.
+
+## License
+
+See LICENSE file for license details.
