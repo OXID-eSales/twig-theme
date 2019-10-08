@@ -3,6 +3,12 @@
     {% set blDisableToCart = oView.getDisableToCart() %}
     {% set iIndex = oView.getIndex() %}
     {% set showMainLink = oView.getShowMainLink() %}
+    {% set owishid = oView.getWishId() %}
+    {% set removeFunction = oView.getRemoveFunction() %}
+    {% set recommid = oView.getRecommId() %}
+    {% set toBasketFunction = oView.getToBasketFunction() %}
+    {% set altproduct = oView.getAltProduct() %}
+    {% set testid = oView.getIndex() %}
 
     {% set currency = oView.getActCurrency() %}
     {% if showMainLink %}
@@ -56,7 +62,7 @@
             <div class="col-xs-12 col-sm-2">
                 <div class="picture">
                     {% block widget_product_listitem_line_picturebox %}
-                        <a id="{{ testid }}" href="{{ _productLink|raw() }}" title="{{ product.oxarticles__oxtitle.value|raw }} {{ product.oxarticles__oxvarselect.value|raw }}">
+                        <a id="img_{{ testid }}" href="{{ _productLink|raw() }}" title="{{ product.oxarticles__oxtitle.value|raw }} {{ product.oxarticles__oxvarselect.value|raw }}">
                             <img src="{{ oViewConf.getImageUrl('spinner.gif') }}" data-src="{{ product.getThumbnailUrl() }}" alt="{{ product.oxarticles__oxtitle.value|raw }} {{ product.oxarticles__oxvarselect.value|raw }}" class="img-responsive">
                         </a>
                     {% endblock %}
@@ -183,7 +189,7 @@
                                             <button id="toBasket_{{ testid }}" type="submit" class="btn btn-primary hasTooltip" title="{{ translate({ ident: "TO_CART" }) }}" data-container="body">
                                                 <i class="fa fa-shopping-cart"></i>
                                             </button>
-                                            {% if removeFunction and (owishid and (owishid==oxcmp_user.oxuser__oxid.value)) or (wishid==oxcmp_user.oxuser__oxid.value)) or recommid) %}
+                                            {% if removeFunction and ((owishid and (owishid==oxcmp_user.oxuser__oxid.value)) or (wishid==oxcmp_user.oxuser__oxid.value) or recommid) %}
                                                 <button triggerForm="remove_{{ removeFunction }}{{ testid }}" type="submit" class="btn btn-danger removeButton hasTooltip" title="{{ translate({ ident: "REMOVE" }) }}">
                                                     <i class="fa fa-times"></i>
                                                 </button>
@@ -195,7 +201,7 @@
                         {% else %}
                             <a class="btn btn-primary" href="{{ _productLink|raw() }}" >{{ translate({ ident: "MORE_INFO" }) }}</a>
 
-                            {% if removeFunction and (owishid and (owishid==$oxcmp_user.oxuser__oxid.value)) or (wishid==$oxcmp_user.oxuser__oxid.value)) or recommid) %}
+                            {% if removeFunction and ((owishid and (owishid==oxcmp_user.oxuser__oxid.value)) or (wishid==oxcmp_user.oxuser__oxid.value) or recommid) %}
                                 <button triggerForm="remove_{{ removeFunction }}{{ testid }}" type="submit" class="btn btn-danger btn-block removeButton">
                                     <i class="fa fa-times"></i> {{ translate({ ident: "REMOVE" }) }}
                                 </button>
@@ -207,7 +213,7 @@
         </div>
     </form>
 
-    {% if removeFunction and (owishid and (owishid==$oxcmp_user.oxuser__oxid.value)) or (wishid==$oxcmp_user.oxuser__oxid.value)) or recommid) %}
+    {% if removeFunction and ((owishid and (owishid==oxcmp_user.oxuser__oxid.value)) or (wishid==oxcmp_user.oxuser__oxid.value) or recommid) %}
         <form action="{{ oViewConf.getSelfActionLink()|raw() }}" method="post" id="remove_{{ removeFunction }}{{ testid }}" class="hidden">
             <div>
                 {{ oViewConf.getHiddenSid()|raw() }}

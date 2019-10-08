@@ -45,7 +45,7 @@
             <div class="detailsParams listRefine bottomRound">
                 <div class="row refineParams clear" id="detailsItemsPager">
                     <div class="col-xs-3 text-left pager-overview-link">
-                        <i class="fa fa-bars"></i> <a href="{{ actCategory.toListLink }}">{{ translate({ ident: "BACK_TO_OVERVIEW" }) }}</a>
+                        <i class="fa fa-bars"></i> <a href="{{ actCategory.toListLink|raw }}">{{ translate({ ident: "BACK_TO_OVERVIEW" }) }}</a>
                     </div>
                     <div class="col-xs-3 text-left pager-prev">
                         {% if actCategory.prevProductLink %}

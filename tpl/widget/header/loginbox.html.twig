@@ -1,4 +1,5 @@
 {% set bIsError = 0 %}
+{{ dump(Errors.loginBoxErrors) }}
 {% capture name = "loginErrors" %}
     {% for key, oEr in Errors.loginBoxErrors %}
         <p id="errorBadLogin" class="alert alert-danger">{{ oEr.getOxMessage() }}</p>

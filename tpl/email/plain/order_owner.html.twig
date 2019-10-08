@@ -159,7 +159,8 @@
 {% block email_plain_order_ownergrandtotal %}
 {# grand total price #}
 {{ translate({ ident: "GRAND_TOTAL" }) }} {{ basket.getFPrice() }} {{ currency.name }}
-{% if basket.oCard %}
+{% set oCard = basket.getCard() %}
+{% if oCard %}
     {{ translate({ ident: "ATENTION_GREETING_CARD" }) }}
     {{ translate({ ident: "WHAT_I_WANTED_TO_SAY" }) }}
     {{ basket.getCardMessage() }}
@@ -206,7 +207,7 @@
 {% endblock %}
 
 {% block email_plain_order_ownerdeliveryinfo %}
-{% if payment.oxuserpayments__oxpaymentsid.value != "oxempty" %}{{ translate({ ident: "SHIPPING_CARRIER", suffix: "COLON" }) }} {{ order.oDelSet.oxdeliveryset__oxtitle.getRawValue() }}
+{% if payment.oxuserpayments__oxpaymentsid.value != "oxempty" %}{{ translate({ ident: "SHIPPING_CARRIER", suffix: "COLON" }) }} {{ oDelSet.oxdeliveryset__oxtitle.getRawValue() }}
 {% endif %}
 {% endblock %}
 

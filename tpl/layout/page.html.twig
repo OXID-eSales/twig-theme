@@ -31,7 +31,10 @@
                         {% endblock %}
                     {% endif %}
 
-                    {{ twig.capture.loginErrors }}
+                    {% for key, oEr in Errors.loginBoxErrors %}
+                        <p id="errorBadLogin" class="alert alert-danger">{{ oEr.getOxMessage() }}</p>
+                        {% set bIsError = 1 %}
+                    {% endfor %}
 
                     <div class="row">
                         {% if sidebar and sidebar != "Right" %}

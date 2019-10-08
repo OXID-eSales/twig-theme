@@ -1,5 +1,5 @@
 # Twig theme
-Templates based on the twig engine
+Theme based on the twig engine
 
 ## Requirements
 
@@ -15,7 +15,7 @@ composer require oxid-esales/twig-theme
 
 ## Activation
 
-Open OXID eShop administration panel and got to:`Extensions --> Themes`,
+Open OXID eShop administration panel and go to:`Extensions --> Themes`,
 select a twig theme and click activation button.
 
 ## License

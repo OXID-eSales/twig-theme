@@ -58,7 +58,7 @@
                             <h3 style="margin: 0; padding: 0 0 5px; line-height: 20px; text-transform: uppercase;">{{ translate({ ident: "BILLING_ADDRESS" }) }}</h3>
                             <p>
                                 {{ order.oxorder__oxbillcompany.value }}<br>
-                                {{ |translate_salutation }} {{ order.oxorder__oxbillfname.value }} {{ order.oxorder__oxbilllname.value }}<br>
+                                {{ order.oxorder__oxbillsal.value|translate_salutation }} {{ order.oxorder__oxbillfname.value }} {{ order.oxorder__oxbilllname.value }}<br>
                                 {% if order.oxorder__oxbilladdinfo.value %}{{ order.oxorder__oxbilladdinfo.value }}<br>{% endif %}
                                 {{ order.oxorder__oxbillstreet.value }} {{ order.oxorder__oxbillstreetnr.value }}<br>
                                 {{ order.oxorder__oxbillstateid.value }}
@@ -163,13 +163,6 @@
                                 <br><s>{{ basketitem.getFRegularUnitPrice() }}&nbsp;{{ currency.sign }}</s>
                             {% endif %}
                         {% endif %}
-                        {% if basketitem.aDiscounts %}<br><br>
-                            <em style="font-size: 7pt;font-weight: normal;">{{ translate({ ident: "DISCOUNT" }) }}
-                                {% for oDiscount in basketitem.aDiscounts %}
-                                    <br>{{ oDiscount.sDiscount }}
-                                {% endfor %}
-                            </em>
-                        {% endif %}
                         {% if basketproduct.oxarticles__oxorderinfo.value %}
                             {{ basketproduct.oxarticles__oxorderinfo.value }}
                         {% endif %}
@@ -184,10 +177,11 @@
         {% endblock %}
     {% endfor %}
     {% block email_html_order_owner_giftwrapping %}
-        {% if basket.oCard %}
+        {% set oCard = basket.getCard() %}
+        {% if oCard %}
             <tr valign="top">
                 <td>
-                    <img src="{{ basket.oCard.getPictureUrl() }}" alt="{{ basket.oCard.oxwrapping__oxname.value }}" hspace="0" vspace="0" border="0" align="top">
+                    <img src="{{ oCard.getPictureUrl() }}" alt="{{ oCard.oxwrapping__oxname.value }}" hspace="0" vspace="0" border="0" align="top">
                 </td>
                 <td colspan="{{ iFooterColspan }}">
                     <b>{{ translate({ ident: "ATENTION_GREETING_CARD" }) }}</b><br>

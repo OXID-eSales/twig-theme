@@ -45,8 +45,8 @@
                                         {% if oView.canRate() %}
                                             <ul id="reviewRating" class="rating list-inline">
                                                 {% for star in 1..6 %}
-                                                    <li class="s{{ loop.index0 }}" data-rate-value="{{ loop.index0 }}">
-                                                        <a class="ox-write-review ox-rateindex-{{ loop.index0 }} text-warning" title="{{ loop.index0 }} {% if loop.index0==1 %}{{ translate({ ident: "STAR" }) }}{% else %}{{ translate({ ident: "STARS" }) }}{% endif %}">
+                                                    <li class="s{{ loop.index }}" data-rate-value="{{ loop.index }}">
+                                                        <a class="ox-write-review ox-rateindex-{{ loop.index }} text-warning" title="{{ loop.index }} {% if loop.index==1 %}{{ translate({ ident: "STAR" }) }}{% else %}{{ translate({ ident: "STARS" }) }}{% endif %}">
                                                             <i class="fa fa-star-o"></i>
                                                         </a>
                                                     </li>
@@ -95,7 +95,7 @@
                                 <div class="col-md-6 writer">
                                     <span itemprop="author">{{ review.oxuser__oxfname.value }}</span> {{ translate({ ident: "WRITES" }) }}
                                     <span>
-                                        <time itemprop="datePublished" datetime="{{ review.oxreviews__oxcreate.value|date_format("%Y-%m- % d") }}">{{ review.oxreviews__oxcreate.value|date_format("%d.%m. % Y") }}</time>
+                                        <time itemprop="datePublished" datetime="{{ review.oxreviews__oxcreate.value|date_format("%Y-%m-%d") }}">{{ review.oxreviews__oxcreate.value|date_format("%d.%m.%Y") }}</time>
                                     </span>
                                 </div>
                                 <div class="col-md-6 rating">

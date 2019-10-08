@@ -1,4 +1,8 @@
-{% capture name = "sRDFaPriceStart" %}
+{% if oProduct.loadAmountPriceInfo() %}
+    {% for priceItem in oProduct.loadAmountPriceInfo() %}
+        {% if loop.first %}
+            {% set iRDFaMinAmount = priceItem.oxprice2article__oxamount.value %}
+        {% endif %}
     <div rel="gr:hasPriceSpecification">
         <div typeof="gr:UnitPriceSpecification">
             {% if oView.getRDFaValidityPeriod("iRDFaPriceValidity") %}
@@ -11,13 +15,7 @@
             {% endif %}
             <div property="gr:hasUnitOfMeasurement" content="C62" datatype="xsd:string"></div>
             <div property="gr:hasCurrency" content="{{ currency.name }}" datatype="xsd:string"></div>
-{% endcapture %}
-{% if oProduct.loadAmountPriceInfo() %}
-    {% for priceItem in oProduct.loadAmountPriceInfo() %}
-        {% if loop.first %}
-            {% set iRDFaMinAmount = priceItem.oxprice2article__oxamount.value %}
-        {% endif %}
-{{ twig.capture.sRDFaPriceStart }}
+
             <div property="gr:hasCurrencyValue" content="{{ priceItem.oxpricealarm__oxprice.value }}" datatype="xsd:float"></div>
             <div rel="gr:hasEligibleQuantity">
                 <div typeof="gr:QuantitativeValue">
@@ -31,7 +29,19 @@
     {% endfor %}
 {% endif %}
 {% if oProduct.getFPrice() %}
-{{ twig.capture.sRDFaPriceStart }}
+    <div rel="gr:hasPriceSpecification">
+        <div typeof="gr:UnitPriceSpecification">
+            {% if oView.getRDFaValidityPeriod("iRDFaPriceValidity") %}
+                {% set aRDFaPValidity = oView.getRDFaValidityPeriod("iRDFaPriceValidity") %}
+                <div property="gr:validFrom" content="{{ aRDFaPValidity.from }}" datatype="xsd:dateTime"></div>
+                <div property="gr:validThrough" content="{{ aRDFaPValidity.through }}" datatype="xsd:dateTime"></div>
+            {% endif %}
+            {% if oView.getRDFaVAT() > 0 %}
+                <div property="gr:valueAddedTaxIncluded" content="{% if oView.getRDFaVAT() == 1 %}true{% else %}false{% endif %}" datatype="xsd:boolean"></div>
+            {% endif %}
+            <div property="gr:hasUnitOfMeasurement" content="C62" datatype="xsd:string"></div>
+            <div property="gr:hasCurrency" content="{{ currency.name }}" datatype="xsd:string"></div>
+
             {% set price = oDetailsProduct.getPrice() %}
             <div property="gr:hasCurrencyValue" content="{{ price.getBruttoPrice() }}" datatype="xsd:float"></div>
             {% if isset(iRDFaMinAmount) %}

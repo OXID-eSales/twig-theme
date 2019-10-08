@@ -235,11 +235,11 @@
 {% endblock %}
 
 {% block email_plain_order_cust_deliveryinfo %}
-{% if payment.oxuserpayments__oxpaymentsid.value != "oxempty" %}{{ translate({ ident: "SHIPPING_CARRIER", suffix: "COLON" }) }} {{ order.oDelSet.oxdeliveryset__oxtitle.getRawValue() }}
+{% if payment.oxuserpayments__oxpaymentsid.value != "oxempty" %}{{ translate({ ident: "SHIPPING_CARRIER", suffix: "COLON" }) }} {{ oDelSet.oxdeliveryset__oxtitle.getRawValue() }}
 {% endif %}
 {% endblock %}
 
-{% block email_plain_order_cust_paymentinfo %}
+{% block email_plain_order_cust_paymentdetails %}
 {% if payment.oxuserpayments__oxpaymentsid.value == "oxidpayadvance" %}
 {{ translate({ ident: "BANK" }) }} {{ shop.oxshops__oxbankname.getRawValue() }}<br>
 {{ translate({ ident: "BANK_CODE" }) }} {{ shop.oxshops__oxbankcode.value }}<br>

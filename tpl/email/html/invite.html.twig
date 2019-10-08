@@ -9,19 +9,19 @@
         <td style="white-space:nowrap;">
             <b style="white-space:nowrap;">{{ translate({ ident: "FROM" }) }}</b>
         </td>
-        <td style="white-space:nowrap;">{{ userinfo.send_name|oxescape }}</td>
+        <td style="white-space:nowrap;">{{ userinfo.send_name|escape }}</td>
     </tr>
     <tr>
         <td style="white-space:nowrap;">
             <b style="white-space:nowrap;">{{ translate({ ident: "EMAIL" }) }}</b>
         </td>
-        <td style="white-space:nowrap;">{{ userinfo.send_email|oxescape }}</td>
+        <td style="white-space:nowrap;">{{ userinfo.send_email|escape }}</td>
     </tr>
     <tr>
         <td colspan="2">&nbsp;</td>
     </tr>
     <tr>
-        <td colspan="2">{{ userinfo.send_message|oxescape|nl2br }}</td>
+        <td colspan="2">{{ userinfo.send_message|escape|nl2br }}</td>
     </tr>
     <tr>
         <td colspan="2">&nbsp;</td>
@@ -33,7 +33,7 @@
         <td colspan="2">&nbsp;</td>
     </tr>
     <tr>
-        <td colspan="2">{{ translate({ ident: "MANY_GREETINGS" }) }} {{ userinfo.send_name|oxescape }}</td>
+        <td colspan="2">{{ translate({ ident: "MANY_GREETINGS" }) }} {{ userinfo.send_name|escape }}</td>
     </tr>
 </table>
 <br/>

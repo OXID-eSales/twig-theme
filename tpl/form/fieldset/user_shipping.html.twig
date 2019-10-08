@@ -20,7 +20,7 @@
         {{ script({ include: "js/widgets/oxusershipingaddressselect.min.js", priority: 10, dynamic: __oxid_include_dynamic }) }}
         {{ script({ include: "js/widgets/oxequalizer.min.js", priority: 10, dynamic: __oxid_include_dynamic }) }}
         {{ script({ add: "$( '.dd-add-delivery-address' ).click( function() {  $('.dd-available-addresses .dd-action').remove(); $( this ).find( 'label.btn' ).button('toggle'); } );", dynamic: __oxid_include_dynamic }) }}
-        {{ script({ add: "$( 'input[name=\"oxaddressid\"]', ).oxUserShipingAddressSelect();: ).oxUserShipingAddressSelect();", dynamic: __oxid_include_dynamic }) }}
+        {{ script({ add: "$( 'input[name=\"oxaddressid\"]' ).oxUserShipingAddressSelect();", dynamic: __oxid_include_dynamic }) }}
         {{ script({ add: "$( window ).load( function() { if( !isMobileDevice() ) { oxEqualizer.equalHeight( $( '.dd-available-addresses .panel .panel-body' ) ); } } );", dynamic: __oxid_include_dynamic }) }}
         {{ script({ add: "$( '.dd-edit-shipping-address' ).click(function(){ $( '#shippingAddressForm' ).show(); $( 'html, body' ).animate( { scrollTop: $( '#shippingAddressForm' ).offset().top - 80 }, 600 ); } );", dynamic: __oxid_include_dynamic }) }}
 
@@ -181,19 +181,16 @@
     </div>
     {% block form_user_shipping_country %}
         <div class="form-group{% if aErrors.oxaddress__oxcountryid %} oxInValid{% endif %}">
-            <label class="control-label col-lg-3{% if oView.isFieldRequired("oxaddress__oxcountryid") %} req{% endif %}"
-                   for="delCountrySelect">{{ translate({ ident: "COUNTRY" }) }}</label>
+            <label class="control-label col-lg-3{% if oView.isFieldRequired("oxaddress__oxcountryid") %} req{% endif %}" for="delCountrySelect">{{ translate({ ident: "COUNTRY" }) }}</label>
             <div class="col-lg-9">
-                <select class="form-control{% if oView.isFieldRequired("oxaddress__oxcountryid") %} js-oxValidate js-oxValidate_notEmpty{% endif %} selectpicker"
-                        id="delCountrySelect"
-                        name="deladr[oxaddress__oxcountryid]"{% if oView.isFieldRequired("oxaddress__oxcountryid") %} required=""{% endif %}>
+                <select class="form-control{% if oView.isFieldRequired("oxaddress__oxcountryid") %} js-oxValidate js-oxValidate_notEmpty{% endif %} selectpicker" id="delCountrySelect" name="deladr[oxaddress__oxcountryid]"{% if oView.isFieldRequired("oxaddress__oxcountryid") %} required=""{% endif %}>
                     <option value="">-</option>
                     {% set blCountrySelected = false %}
                     {% set deladr = null %}
                     {% for country_id, country in oViewConf.getCountryList() %}
                         {% set sCountrySelect = "" %}
                         {% if not blCountrySelected %}
-                            {% if (isset(deladr.oxaddress__oxcountryid) and deladr.oxaddress__oxcountryid == country.oxcountry__oxid.value) or (not isset(deladr.oxaddress__oxcountryid) and (delivadr.oxaddress__oxcountry.value == country.oxcountry__oxtitle.value or                                  delivadr.oxaddress__oxcountry.value == country.oxcountry__oxid.value or                                  delivadr.oxaddress__oxcountryid.value == country.oxcountry__oxid.value)) %}
+                            {% if (isset(deladr.oxaddress__oxcountryid) and deladr.oxaddress__oxcountryid == country.oxcountry__oxid.value) or (not isset(deladr.oxaddress__oxcountryid) and (delivadr.oxaddress__oxcountry.value == country.oxcountry__oxtitle.value or delivadr.oxaddress__oxcountry.value == country.oxcountry__oxid.value or delivadr.oxaddress__oxcountryid.value == country.oxcountry__oxid.value)) %}
                                 {% set blCountrySelected = true %}
                                 {% set sCountrySelect = "selected" %}
                             {% endif %}
@@ -208,10 +205,17 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-lg-3"
-                   for="{{ countrySelectId }}">{{ translate({ ident: "DD_USER_SHIPPING_LABEL_STATE" }) }}</label>
+            <label class="control-label col-lg-3" for="{{ countrySelectId }}">{{ translate({ ident: "DD_USER_SHIPPING_LABEL_STATE" }) }}</label>
             <div class="col-lg-9">
-                {% include "form/fieldset/state.html.twig" with {countrySelectId: "delCountrySelect", stateSelectName: deladr[oxaddress__oxstateid], selectedStateIdPrim: deladr[oxaddress__oxstateid], selectedStateId: delivadr[oxaddress__oxstateid][value], class: "form-control selectpicker"} %}
+                {% include "form/fieldset/state.html.twig" with
+                    {
+                        countrySelectId: "delCountrySelect",
+                        stateSelectName: "deladr[oxaddress__oxstateid]",
+                        selectedStateIdPrim: deladr.oxaddress__oxstateid,
+                        selectedStateId: delivadr.oxaddress__oxstateid.value,
+                        class: "form-control selectpicker"
+                    }
+                %}
             </div>
         </div>
     {% endblock %}

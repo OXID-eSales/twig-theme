@@ -155,24 +155,28 @@
                     {% endblock %}
 
                     {% set blCanBuy = true %}
+                    {% if aVariantSelections and aVariantSelections.selections %}
+                        {% set blCanBuy = aVariantSelections.blPerfectFit %}
+                        {% if not blHasActiveSelections %}
+                            {% if not blCanBuy and not oDetailsProduct.isParentNotBuyable() %}
+                                {% set blCanBuy = true %}
+                            {% endif %}
+                        {% endif %}
+                        {% set blHasActiveSelections = false %}
+                        {% for iKey, oList in aVariantSelections.selections %}
+                            {% if oList.getActiveSelection() %}
+                                {% set blHasActiveSelections = true %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
                     {# variants | md variants #}
                     {% block details_productmain_variantselections %}
                         {% if aVariantSelections and aVariantSelections.selections %}
                             {{ script({ include: "js/widgets/oxajax.min.js", priority: 10, dynamic: __oxid_include_dynamic }) }}
                             {{ script({ include: "js/widgets/oxarticlevariant.min.js", priority: 10, dynamic: __oxid_include_dynamic }) }}
                             {{ script({ add: "$( '#variants' ).oxArticleVariant();", dynamic: __oxid_include_dynamic }) }}
-                            {% set blCanBuy = aVariantSelections.blPerfectFit %}
-                            {% if not blHasActiveSelections %}
-                                {% if not blCanBuy and not oDetailsProduct.isParentNotBuyable() %}
-                                    {% set blCanBuy = true %}
-                                {% endif %}
-                            {% endif %}
                             <div id="variants" class="selectorsBox js-fnSubmit clear">
-                                {% set blHasActiveSelections = false %}
                                 {% for iKey, oList in aVariantSelections.selections %}
-                                    {% if oList.getActiveSelection() %}
-                                        {% set blHasActiveSelections = true %}
-                                    {% endif %}
                                     {% include "widget/product/selectbox.html.twig" with {oSelectionList: oList, iKey: iKey, blInDetails: true} %}
                                     <div class="clearfix"></div>
                                 {% endfor %}

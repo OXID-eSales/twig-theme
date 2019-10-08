@@ -4,7 +4,7 @@
 
 {% include "email/html/header.html.twig" with {title: "DD_WISHLIST_HEADING"|translate} %}
 
-<p>{{ userInfo.send_message|oxescape }}</p>
+<p>{{ userInfo.send_message|escape }}</p>
 <br/>
 
 <p>{{ translate({ ident: "TO_MY_WISHLIST" }) }} <a href="{{ oViewConf.getBaseDir() }}index.php?cl=wishlist&wishid={{ userInfo.send_id }}"><b>{{ translate({ ident: "CLICK_HERE" }) }}</b></a></p>
@@ -12,7 +12,7 @@
 
 <p>{{ translate({ ident: "WITH_LOVE" }) }}</p>
 
-<p>{{ userInfo.send_name|oxescape }}</p>
+<p>{{ userInfo.send_name|escape }}</p>
 <br/>
 
 {% include "email/html/footer.html.twig" %}
