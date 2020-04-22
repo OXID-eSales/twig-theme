@@ -4,7 +4,7 @@ Theme based on the twig engine
 ## Branch Compatibility
 
 * master branch is compatible with OXID eShop compilation master
-* b-2.x branch is compatible with OXID eShop unreleased b-6.0 up to b-6.x
+* b-1.x branch is compatible with OXID eShop b-6.2.x
 
 ## Installation
 
