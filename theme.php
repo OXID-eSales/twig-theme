@@ -123,12 +123,6 @@ $aTheme = array(
         ),
         array(
             'group' => 'footer',
-            'name'  => 'blFooterShowNews',
-            'type'  => 'bool',
-            'value' => 1,
-        ),
-        array(
-            'group' => 'footer',
             'name'  => 'blFooterShowNewsletter',
             'type'  => 'bool',
             'value' => 1,

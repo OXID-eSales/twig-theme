@@ -66,7 +66,6 @@ INSERT INTO `oxconfig` (`OXID`, `OXSHOPID`, `OXMODULE`, `OXVARNAME`, `OXVARTYPE`
 (uuid(), 1, 'theme:twig', 'blFooterShowNewsletter', 'bool', 0x07, NOW()),
 (uuid(), 1, 'theme:twig', 'blFooterShowNewsletterForm', 'bool', 0x07, NOW()),
 (uuid(), 1, 'theme:twig', 'blEmailsShowProductPictures', 'bool', '', NOW()),
-(uuid(), 1, 'theme:twig', 'blFooterShowNews', 'bool', 0x07, NOW()),
 (uuid(), 1, 'theme:twig', 'sLogoFile', 'str', 0x942748b21d78ed91e41c4cb2b7, NOW()),
 (uuid(), 1, 'theme:twig', 'blFullwidthLayout', 'bool', '', NOW());
 
@@ -140,5 +139,4 @@ INSERT INTO `oxconfigdisplay` (`OXID`, `OXCFGMODULE`, `OXCFGVARNAME`, `OXGROUPIN
 (uuid(), 'theme:twig', 'blFooterShowLinks', 'footer', '', 2, NOW()),
 (uuid(), 'theme:twig', 'blFooterShowNewsletter', 'footer', '', 4, NOW()),
 (uuid(), 'theme:twig', 'blFooterShowNewsletterForm', 'footer', '', 5, NOW()),
-(uuid(), 'theme:twig', 'blEmailsShowProductPictures', 'emails', '', 1, NOW()),
-(uuid(), 'theme:twig', 'blFooterShowNews', 'footer', '', 6, NOW());
+(uuid(), 'theme:twig', 'blEmailsShowProductPictures', 'emails', '', 1, NOW());

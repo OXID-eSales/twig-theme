@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Removed
 - Remove Betanote
+- News feature
 
 ## [1.0.0] - 2019-11-21
 

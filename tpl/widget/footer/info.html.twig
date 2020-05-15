@@ -24,8 +24,5 @@
         {% if oViewConf.getViewThemeParam('blFooterShowNewsletter') %}
             <li><a href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=newsletter") }) }}">{{ translate({ ident: "NEWSLETTER" }) }}</a></li>
         {% endif %}
-        {% if oViewConf.getViewThemeParam('blFooterShowNews') %}
-            <li><a href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=news") }) }}">{{ translate({ ident: "NEWS" }) }}</a></li>
-        {% endif %}
     </ul>
 {% endblock %}
