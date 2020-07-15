@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Removed
 - Remove Betanote
 - News feature
+- `setup.sql` file support and file itself
 
 ### Fixed
 - Remove debug leftovers [PR-2](https://github.com/OXID-eSales/twig-theme/pull/2)
