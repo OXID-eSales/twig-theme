@@ -15,7 +15,7 @@
                             <input type="hidden" name="fname" value="">
                         </div>
 
-                        {% if oView.getClassName() == 'alist' %}
+                        {% if oView.getClassKey() == 'alist' %}
                             <strong>{{ translate({ ident: "DD_LISTLOCATOR_FILTER_ATTRIBUTES" }) }}</strong>
                         {% endif %}
                         {% set hasActiveValue = null %}

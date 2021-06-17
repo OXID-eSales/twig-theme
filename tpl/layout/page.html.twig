@@ -17,7 +17,7 @@
 
                 <div class="row">
 
-                    {% if oView.getClassName()=='start' and oView.getBanners() and not empty(oView.getBanners()) %}
+                    {% if oView.getClassKey()=='start' and oView.getBanners() and not empty(oView.getBanners()) %}
                         {% include "widget/promoslider.html.twig" %}
                     {% endif %}
 
@@ -25,7 +25,7 @@
 
                 <div class="content-box">
 
-                    {% if oView.getClassName() != "start" and not blHideBreadcrumb %}
+                    {% if oView.getClassKey() != "start" and not blHideBreadcrumb %}
                         {% block layout_breadcrumb %}
                             {% include "widget/breadcrumb.html.twig" %}
                         {% endblock %}
@@ -38,7 +38,7 @@
 
                     <div class="row">
                         {% if sidebar and sidebar != "Right" %}
-                            <div class="col-xs-12 col-md-3 {{ oView.getClassName() }}">
+                            <div class="col-xs-12 col-md-3 {{ oView.getClassKey() }}">
                                 <div id="sidebar">
                                     {% include "layout/sidebar.html.twig" %}
                                 </div>
@@ -60,7 +60,7 @@
                         </div>
 
                         {% if sidebar and sidebar == "Right" %}
-                            <div class="col-xs-12 col-md-3 {{ oView.getClassName() }}">
+                            <div class="col-xs-12 col-md-3 {{ oView.getClassKey() }}">
                                 <div id="sidebar">
                                     {% include "layout/sidebar.html.twig" %}
                                 </div>

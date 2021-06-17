@@ -4,7 +4,7 @@
 
 {% block sidebar %}
     {% block sidebar_categoriestree %}
-        {% if oView.getClassName() == 'alist'  %}
+        {% if oView.getClassKey() == 'alist'  %}
             <div class="box well well-sm categorytree">
                 <section>
                     <div class="page-header h3">
@@ -23,7 +23,7 @@
     {% endblock %}
 
     {% block sidebar_partners %}
-        {% if oView.getClassName() == "start" %}
+        {% if oView.getClassKey() == "start" %}
             {% include "widget/sidebar/partners.html.twig" %}
         {% endif %}
     {% endblock %}
@@ -34,7 +34,7 @@
         {% if oViewConf.getShowListmania() and oView.getSimilarRecommListIds() %}
             {{ include_widget({ nocookie: 1, cl: "oxwRecommendation", aArticleIds: oView.getSimilarRecommListIds(), searchrecomm: oView.getRecommSearch() }) }}
         {% elseif oViewConf.getShowListmania() and oView.getRecommSearch() %}
-            {{ include_widget({ nocookie: 1, cl: "oxwRecommendation", _parent: oView.getClassName(), searchrecomm: oView.getRecommSearch() }) }}
+            {{ include_widget({ nocookie: 1, cl: "oxwRecommendation", _parent: oView.getClassKey(), searchrecomm: oView.getRecommSearch() }) }}
         {% endif %}
     {% endblock %}
 
@@ -42,7 +42,7 @@
     {% endblock %}
 
     {% block sidebar_shopluperatings %}
-        {% if oView.getClassName() == "start" %}
+        {% if oView.getClassKey() == "start" %}
            {% include "widget/shoplupe/ratings.html.twig" %}
         {% endif %}
     {% endblock %}
