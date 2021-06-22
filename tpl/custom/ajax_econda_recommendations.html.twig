@@ -1,21 +1,6 @@
 {% set sAccountId = oViewConf.getViewThemeParam('sEcondaRecommendationsAID') %}
 
 {% if sAccountId %}
-    {# Definieren, welches econda-Widget geladen werden soll #}
-    {% if className == 'start' and oViewConf.getViewThemeParam('blEcondaRecommendationsStart') %}
-        {% set sListId = "recommendationsStart" %}
-        {% set sWidgetId = oViewConf.getViewThemeParam('sEcondaWidgetIdStart') %}
-    {% elseif className == 'alist' and oViewConf.getViewThemeParam('blEcondaRecommendationsList') %}
-        {% set sListId = "recommendationsList" %}
-        {% set sWidgetId = oViewConf.getViewThemeParam('sEcondaWidgetIdList') %}
-    {% elseif className == 'details' and oViewConf.getViewThemeParam('blEcondaRecommendationsDetails') %}
-        {% set sListId = "recommendationsDetails" %}
-        {% set sWidgetId = oViewConf.getViewThemeParam('sEcondaWidgetIdDetails') %}
-    {% elseif className == 'basket' and oViewConf.getViewThemeParam('blEcondaRecommendationsBasket') %}
-        {% set sListId = "recommendationsBasket" %}
-        {% set sWidgetId = oViewConf.getViewThemeParam('sEcondaWidgetIdBasket') %}
-    {% endif %}
-
     {% if sWidgetId %}
         {# econda-Recommendations abholen #}
         {% set sUrl = "http://widgets.crosssell.info/eps/crosssell/recommendations.do?aid=" ~ sAccountId ~ "&wid=" ~ sWidgetId ~ "&csize=20&start=0&type=cs&widgetdetails=true" %}
