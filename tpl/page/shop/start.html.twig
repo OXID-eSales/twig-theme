@@ -1,5 +1,4 @@
 {% capture append = "oxidBlock_content" %}
-    {% set oConfig = oViewConf.getConfig() %}
     {% set rsslinks = oView.getRssLinks() %}
     {% set blFullwidth = oViewConf.getViewThemeParam('blFullwidthLayout') %}
     {{ script({ include: "js/pages/start.min.js", dynamic: __oxid_include_dynamic }) }}

@@ -1,6 +1,5 @@
 {{ script({ include: "js/pages/details.min.js", priority: 10, dynamic: __oxid_include_dynamic }) }}
 
-{% set oConfig = oViewConf.getConfig() %}
 {% set oManufacturer = oView.getManufacturer() %}
 {% set aVariantSelections = oView.getVariantSelections() %}
 {% set blFullwidth = oViewConf.getViewThemeParam('blFullwidthLayout') %}
@@ -31,8 +30,8 @@
         <input type="hidden" name="cnid" value="{{ oView.getCategoryId() }}">
         <input type="hidden" name="anid" value="{% if not oDetailsProduct.oxarticles__oxparentid.value %}{{ oDetailsProduct.oxarticles__oxid.value }}{% else %}{{ oDetailsProduct.oxarticles__oxparentid.value }}{% endif %}">
         <input type="hidden" name="actcontrol" value="{{ oViewConf.getTopActiveClassName() }}">
-        {% if oConfig.getRequestParameter('preview') %}
-            <input type="hidden" name="preview" value="{{ oConfig.getRequestParameter('preview') }}">
+        {% if config.getRequestParameter('preview') %}
+            <input type="hidden" name="preview" value="{{ config.getRequestParameter('preview') }}">
         {% endif %}
     </form>
 {% endif %}
@@ -69,11 +68,11 @@
 
                 {% if oView.showZoomPics() %}
                     {# ToDo: This logical part should be ported into a core function. #}
-                    {% if oConfig.getConfigParam('sAltImageUrl') or oConfig.getConfigParam('sSSLAltImageUrl') %}
+                    {% if config.getConfigParam('sAltImageUrl') or config.getConfigParam('sSSLAltImageUrl') %}
                         {% set aPictureInfo = oPictureProduct.getMasterZoomPictureUrl(1)|getimagesize %}
                     {% else %}
                         {% set sPictureName = oPictureProduct.oxarticles__oxpic1.value %}
-                        {% set aPictureInfo = oConfig.getMasterPicturePath("product/1/" ~ sPictureName)|getimagesize %}
+                        {% set aPictureInfo = config.getMasterPicturePath("product/1/" ~ sPictureName)|getimagesize %}
                     {% endif %}
 
                     <div class="picture text-center">

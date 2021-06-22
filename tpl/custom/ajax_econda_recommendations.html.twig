@@ -1,19 +1,17 @@
-{% set oConfig = oViewConf.getConfig() %}
 {% set sAccountId = oViewConf.getViewThemeParam('sEcondaRecommendationsAID') %}
-{% set sClassName = oConfig.getRequestParameter('actcl') %}
 
 {% if sAccountId %}
     {# Definieren, welches econda-Widget geladen werden soll #}
-    {% if sClassName == 'start' and oViewConf.getViewThemeParam('blEcondaRecommendationsStart') %}
+    {% if className == 'start' and oViewConf.getViewThemeParam('blEcondaRecommendationsStart') %}
         {% set sListId = "recommendationsStart" %}
         {% set sWidgetId = oViewConf.getViewThemeParam('sEcondaWidgetIdStart') %}
-    {% elseif sClassName == 'alist' and oViewConf.getViewThemeParam('blEcondaRecommendationsList') %}
+    {% elseif className == 'alist' and oViewConf.getViewThemeParam('blEcondaRecommendationsList') %}
         {% set sListId = "recommendationsList" %}
         {% set sWidgetId = oViewConf.getViewThemeParam('sEcondaWidgetIdList') %}
-    {% elseif sClassName == 'details' and oViewConf.getViewThemeParam('blEcondaRecommendationsDetails') %}
+    {% elseif className == 'details' and oViewConf.getViewThemeParam('blEcondaRecommendationsDetails') %}
         {% set sListId = "recommendationsDetails" %}
         {% set sWidgetId = oViewConf.getViewThemeParam('sEcondaWidgetIdDetails') %}
-    {% elseif sClassName == 'basket' and oViewConf.getViewThemeParam('blEcondaRecommendationsBasket') %}
+    {% elseif className == 'basket' and oViewConf.getViewThemeParam('blEcondaRecommendationsBasket') %}
         {% set sListId = "recommendationsBasket" %}
         {% set sWidgetId = oViewConf.getViewThemeParam('sEcondaWidgetIdBasket') %}
     {% endif %}

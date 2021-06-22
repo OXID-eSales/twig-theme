@@ -1,5 +1,3 @@
-{% set oConfig = oViewConf.getConfig() %}
-
 {% if oView.morePics() %}
     {% set iMorePics = oView.getIcons()|length %}
     {% if iMorePics > 4 %}
@@ -12,7 +10,7 @@
             {{ script({ add: "var aMorePic=new Array();", dynamic: __oxid_include_dynamic }) }}
             {% for iPicNr, oArtIcon in oView.getIcons() %}
                 {% set sPictureName = oPictureProduct.getPictureFieldValue("oxpic", iPicNr) %}
-                {% set aPictureInfo = oConfig.getMasterPicturePath("product/" ~ iPicNr ~ "/" ~ sPictureName)|getimagesize %}
+                {% set aPictureInfo = config.getMasterPicturePath("product/" ~ iPicNr ~ "/" ~ sPictureName)|getimagesize %}
                 <li>
                     <a id="morePics_{{ loop.index }}"
                             {% if loop.first %} class="selected" {% endif %}

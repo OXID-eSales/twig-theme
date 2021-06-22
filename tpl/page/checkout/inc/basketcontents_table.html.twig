@@ -175,7 +175,7 @@
 
                                 {% if not basketitem.isBundle() or not basketitem.isDiscountArticle() %}
                                     <p>
-                                        <input id="am_{{ loop.index }}" type="number" class="textbox" name="aproducts[{{ basketindex }}][am]" value="{{ basketitem.getAmount() }}" size="3" min="0"{% if oConfig.getConfigParam('blAllowUnevenAmounts') %} step="any"{% endif %}>
+                                        <input id="am_{{ loop.index }}" type="number" class="textbox" name="aproducts[{{ basketindex }}][am]" value="{{ basketitem.getAmount() }}" size="3" min="0"{% if allowUnevenAmounts %} step="any"{% endif %}>
                                     </p>
                                 {% endif %}
                             {% else %}
