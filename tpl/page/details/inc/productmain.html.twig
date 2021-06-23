@@ -30,8 +30,8 @@
         <input type="hidden" name="cnid" value="{{ oView.getCategoryId() }}">
         <input type="hidden" name="anid" value="{% if not oDetailsProduct.oxarticles__oxparentid.value %}{{ oDetailsProduct.oxarticles__oxid.value }}{% else %}{{ oDetailsProduct.oxarticles__oxparentid.value }}{% endif %}">
         <input type="hidden" name="actcontrol" value="{{ oViewConf.getTopActiveClassName() }}">
-        {% if config.getRequestParameter('preview') %}
-            <input type="hidden" name="preview" value="{{ config.getRequestParameter('preview') }}">
+        {% if preview %}
+            <input type="hidden" name="preview" value="{{ preview }}">
         {% endif %}
     </form>
 {% endif %}
@@ -68,11 +68,11 @@
 
                 {% if oView.showZoomPics() %}
                     {# ToDo: This logical part should be ported into a core function. #}
-                    {% if config.getConfigParam('sAltImageUrl') or config.getConfigParam('sSSLAltImageUrl') %}
+                    {% if altImageUrl or SSLAltImageUrl %}
                         {% set aPictureInfo = oPictureProduct.getMasterZoomPictureUrl(1)|getimagesize %}
                     {% else %}
                         {% set sPictureName = oPictureProduct.oxarticles__oxpic1.value %}
-                        {% set aPictureInfo = config.getMasterPicturePath("product/1/" ~ sPictureName)|getimagesize %}
+                        {% set aPictureInfo = oPictureProduct.getMasterPicturePath("product/1/" ~ sPictureName)|getimagesize %}
                     {% endif %}
 
                     <div class="picture text-center">
