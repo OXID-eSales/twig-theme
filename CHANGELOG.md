@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Remove Betanote
 - News feature
 - `setup.sql` file support and file itself
+- Remove `ajax_econda_recommendations.html.twig` use econda module instead
 
 ### Fixed
 - Remove debug leftovers [PR-2](https://github.com/OXID-eSales/twig-theme/pull/2)
