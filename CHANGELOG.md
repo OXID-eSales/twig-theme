@@ -15,6 +15,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 - Remove debug leftovers [PR-2](https://github.com/OXID-eSales/twig-theme/pull/2)
 
+## [1.0.1] - Unreleased
+
+### Fixed
+- Removed debug call leftover
+- Improve jQuery security
+
 ## [1.0.0] - 2019-11-21
 
+[1.0.1]: https://github.com/OXID-eSales/twig-theme/compare/v1.0.0...b-1.x
 [1.0.0]: https://github.com/OXID-eSales/twig-theme/compare/v1.0.0...v1.0.0

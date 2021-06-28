@@ -5,7 +5,7 @@ module.exports = {
         yuicompress: true,
         optimization: 2,
         plugins: [
-            new (require('less-plugin-autoprefix'))({browsers: ["last 2 versions"]})
+            new(require('less-plugin-autoprefix'))({browsers: ["last 2 versions"]})
         ]
     },
 
