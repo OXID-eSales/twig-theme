@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 - Removed debug call leftover
+- Improve jQuery security
 
 ## [1.0.0] - 2019-11-21
 

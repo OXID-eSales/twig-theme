@@ -18,7 +18,7 @@ module.exports = {
 
     vendor: {
         files: {
-            "out/twig/src/js/libs/jquery.min.js":                "build/vendor/jquery/js/jquery.js",
+            "out/twig/src/js/libs/jquery.min.js":                ["build/vendor/jquery/js/jquery.js", "build/js/jquery/patch.js"],
             "out/twig/src/js/libs/jquery.cookie.min.js":         "build/vendor/jquery-cookie/js/jquery.cookie.js",
             "out/twig/src/js/libs/jquery.flexslider.min.js":     "build/vendor/jquery-flexslider2/js/jquery.flexslider.js",
             "out/twig/src/js/libs/jquery-ui.min.js":             "build/vendor/jquery-ui/js/jquery-ui.js",
