@@ -2,7 +2,7 @@
     {{ script({ include: "js/libs/jqBootstrapValidation.min.js", priority: 10, dynamic: __oxid_include_dynamic }) }}
 
     {% capture assign = "sValidationJS" %}
-        {% spaceless %}
+        {% apply spaceless %}
         $('input,select,textarea').not('[type=submit]').jqBootstrapValidation(
             {
                 filter: function()
@@ -18,7 +18,7 @@
                 }
             }
         );
-        {% endspaceless %}
+        {% endapply %}
     {% endcapture %}
 
     {{ script({ add: sValidationJS, dynamic: __oxid_include_dynamic }) }}
