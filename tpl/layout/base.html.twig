@@ -1,6 +1,6 @@
 {# Important ! render page head and body to collect scripts and styles #}
 {% capture append = "oxidBlock_pageHead" %}
-    {% spaceless %}
+    {% apply spaceless %}
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" id="Viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
         <meta http-equiv="Content-Type" content="text/html; charset={{ oView.getCharSet() }}">
@@ -153,7 +153,7 @@
                 {{ include(template_from_string(_block)) }}
             {% endfor %}
         {% endblock %}
-    {% endspaceless %}
+    {% endapply %}
 {% endcapture %}
 
 {% set blIsCheckout = oView.getIsOrderStep() %}

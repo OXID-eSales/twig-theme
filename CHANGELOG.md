@@ -4,13 +4,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [master] - Unreleased
+## [2.0.0] - Unreleased
+
+### Added
+- Support for PHP v8
+
+### Changed
+- Switched to Twig v3
 
 ### Removed
 - Remove Betanote
 - News feature
 - `setup.sql` file support and file itself
 - Remove `ajax_econda_recommendations.html.twig` use econda module instead
+- Support for PHP < v7.4
 
 ### Fixed
 - Remove debug leftovers [PR-2](https://github.com/OXID-eSales/twig-theme/pull/2)
