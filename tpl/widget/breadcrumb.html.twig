@@ -1,5 +1,5 @@
 {% block dd_widget_breadcrumb %}
-    {% spaceless %}
+    {% apply spaceless %}
         <div class="row">
             <div class="col-xs-12">
                 {% block dd_widget_breadcrumb_list_inner %}
@@ -19,5 +19,5 @@
                 {% endblock %}
             </div>
         </div>
-    {% endspaceless %}
+    {% endapply %}
 {% endblock %}

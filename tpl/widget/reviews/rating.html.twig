@@ -1,14 +1,14 @@
 <div>
     {% set iRatingValue = oView.getRatingValue() %}
 
-    {% if iRatingValue %}{% spaceless %}
+    {% if iRatingValue %}{% apply spaceless %}
     <div class="hidden" itemtype="http://schema.org/AggregateRating" itemscope="" itemprop="aggregateRating">
         <span itemprop="worstRating">1</span>
         <span itemprop="bestRating ">5</span>
         <span itemprop="ratingValue">{{ iRatingValue }}</span>
         <span itemprop="reviewCount">{{ oView.getRatingCount() }}</span>
     </div>
-    {% endspaceless %}{% endif %}
+    {% endapply %}{% endif %}
 
     {% if not oxcmp_user %}
         {% set _star_title = "MESSAGE_LOGIN_TO_RATE"|translate %}
