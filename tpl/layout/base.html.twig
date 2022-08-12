@@ -203,7 +203,7 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="cl-{{ oView.getClassName() }}{% if get_global_get('plain') == '1' %} popup{% endif %}{% if blIsCheckout %} is-checkout{% endif %}{% if oxcmp_user and oxcmp_user.oxuser__oxpassword.value %} is-logged-in{% endif %}"{% if sStyle %} style="{{ sStyle }}"{% endif %}>
+<body class="cl-{{ oView.getClassName() }}{% if get_global_get('plain') == '1' %} popup{% endif %}{% if blIsCheckout %} is-checkout{% endif %}{% if oxcmp_user and oxcmp_user.oxuser__oxpassword.value %} is-logged-in{% endif %}{% if not stickyHeader %} static-header{% endif %}"{% if sStyle %} style="{{ sStyle }}"{% endif %}>
 
 {# Theme SVG icons block #}
 {% block theme_svg_icons %}{% endblock %}

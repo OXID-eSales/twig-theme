@@ -67,7 +67,7 @@ $( function ()
                 var $this = $( this );
                 var $mainNav = $( '#mainnav' );
 
-                if ( !blIsCheckout && !( isMobileDevice() && $oSearchInput.is( ':focus' ) ) )
+                if ( !blIsCheckout && !( isMobileDevice() && $oSearchInput.is( ':focus' ) ) && !$oBody.hasClass( 'static-header' ))
                 {
                     if ( $this.scrollTop() > iHeaderWrapperHeight )
                     {
@@ -290,7 +290,7 @@ $( function ()
                 oMoreLinkElem.className = 'dropdown moreLinks';
 
                 oMoreLinkAElem.className = 'dropdown-toggle';
-                oMoreLinkAElem.innerHTML = 'Mehr <span class="caret"></span>';
+                oMoreLinkAElem.innerHTML = oFlow.i18n.DD_NAVIGATION_MORE + ' <span class="caret"></span>';
                 oMoreLinkAElem.setAttribute( 'data-toggle', 'dropdown' );
 
                 oMoreLinkUlElem.className = 'dropdown-menu';
@@ -425,6 +425,13 @@ $( function ()
             } else {
                 $('#private-sales-login button.submitButton').attr("disabled","disabled");
             }
+        });
+
+        /* *********************************
+         * Fix for form validation
+         * *********************************/
+        $('input.form-control, textarea.form-control, select.form-control').each(function() {
+            $(this).unbind(["keyup", "focus", "blur", "click"].join(".validation ") + ".validation");
         });
     }
 );

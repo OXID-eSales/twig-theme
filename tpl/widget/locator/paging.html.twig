@@ -3,7 +3,7 @@
         <ol class="pagination pagination-sm{% if place == "bottom" %} lineBox{% endif %}" id="itemsPager{{ place }}">
             <li class="prev{% if not pages.previousPage %} disabled{% endif %}">
                 {% if pages.previousPage %}
-                    <a href="{{ pages.previousPage }}">&larr; {{ translate({ ident: "PREVIOUS" }) }}</a>
+                    <a href="{{ pages.previousPage|raw }}">&larr; {{ translate({ ident: "PREVIOUS" }) }}</a>
                 {% else %}
                     <span>&larr; {{ translate({ ident: "PREVIOUS" }) }}</span>
                 {% endif %}
@@ -13,7 +13,7 @@
             {% for iPage, page in pages.changePage %}
                 {% if iPage == i %}
                     <li{% if iPage == pages.actPage %} class="active"{% endif %}>
-                        <a href="{{ page.url }}">{{ iPage }}</a>
+                        <a href="{{ page.url|raw }}">{{ iPage }}</a>
                     </li>
                    {% set i = i+1 %}
                 {% elseif iPage > i %}
@@ -21,12 +21,12 @@
                         <span>...</span>
                     </li>
                     <li{% if iPage == pages.actPage %} class="active"{% endif %}>
-                        <a href="{{ page.url }}">{{ iPage }}</a>
+                        <a href="{{ page.url|raw }}">{{ iPage }}</a>
                     </li>
                     {% set i = iPage+1 %}
                 {% elseif iPage < i %}
                     <li{% if iPage == pages.actPage %} class="active"{% endif %}>
-                        <a href="{{ page.url }}">{{ iPage }}</a>
+                        <a href="{{ page.url|raw }}">{{ iPage }}</a>
                     </li>
                     <li class="disabled">
                         <span>...</span>
@@ -37,7 +37,7 @@
 
             <li class="next{% if not pages.nextPage %} disabled{% endif %}">
                 {% if pages.nextPage %}
-                    <a href="{{ pages.nextPage }}">{{ translate({ ident: "NEXT" }) }} &rarr;</a>
+                    <a href="{{ pages.nextPage|raw }}">{{ translate({ ident: "NEXT" }) }} &rarr;</a>
                 {% else %}
                     <span>{{ translate({ ident: "NEXT" }) }} &rarr;</span>
                 {% endif %}
