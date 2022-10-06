@@ -36,9 +36,9 @@
 {% block email_html_order_owner_orderemail %}
     <p>
         {% if payment.oxuserpayments__oxpaymentsid.value == "oxempty" %}
-            {% include 'content::ident::oxadminordernpemail' %}
+            {% include_content 'oxadminordernpemail' %}
         {% else %}
-            {% include 'content::ident::oxadminorderemail' %}
+            {% include_content 'oxadminorderemail' %}
         {% endif %}
     </p>
 {% endblock %}

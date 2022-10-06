@@ -37,9 +37,9 @@
 {% block email_html_order_cust_orderemail %}
     <p>
         {% if payment.oxuserpayments__oxpaymentsid.value == "oxempty" %}
-            {% include 'content::ident::oxuserordernpemail' %}
+            {% include_content 'oxuserordernpemail' %}
         {% else %}
-            {% include 'content::ident::oxuserorderemail' %}
+            {% include_content 'oxuserorderemail' %}
         {% endif %}
     </p>
 {% endblock %}
@@ -579,7 +579,7 @@
 {% endblock %}
 
 {% block email_html_order_cust_orderemailend %}
-    <p>{% include 'content::ident::oxuserorderemailend' %}</p>
+    <p>{% include_content 'oxuserorderemailend' %}</p>
 {% endblock %}
 
 {% include "email/html/footer.html.twig" %}
