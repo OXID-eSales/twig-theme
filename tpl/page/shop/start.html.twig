@@ -1,5 +1,4 @@
 {% capture append = "oxidBlock_content" %}
-    {% set rsslinks = oView.getRssLinks() %}
     {% set blFullwidth = oViewConf.getViewThemeParam('blFullwidthLayout') %}
     {{ script({ include: "js/pages/start.min.js", dynamic: __oxid_include_dynamic }) }}
 
@@ -14,7 +13,7 @@
     {% block start_bargain_articles %}
         {% set oBargainArticles = oView.getBargainArticleList() %}
         {% if oBargainArticles and oBargainArticles.count() %}
-            {% include "widget/product/list.html.twig" with {type: oViewConf.getViewThemeParam('sStartPageListDisplayType'), head: "START_BARGAIN_HEADER"|translate, subhead: "START_BARGAIN_SUBHEADER"|translate, listId: "bargainItems", products: oBargainArticles, rsslink: rsslinks.bargainArticles, rssId: "rssBargainProducts", showMainLink: true, iProductsPerLine: 4} %}
+            {% include "widget/product/list.html.twig" with {type: oViewConf.getViewThemeParam('sStartPageListDisplayType'), head: "START_BARGAIN_HEADER"|translate, subhead: "START_BARGAIN_SUBHEADER"|translate, listId: "bargainItems", products: oBargainArticles, showMainLink: true, iProductsPerLine: 4} %}
         {% endif %}
     {% endblock %}
 
@@ -27,7 +26,7 @@
     {% block start_newest_articles %}
         {% set oNewestArticles = oView.getNewestArticles() %}
         {% if oNewestArticles and oNewestArticles.count() %}
-            {% include "widget/product/list.html.twig" with {type: oViewConf.getViewThemeParam('sStartPageListDisplayType'), head: "START_NEWEST_HEADER"|translate, subhead: "START_NEWEST_SUBHEADER"|translate, listId: "newItems", products: oNewestArticles, rsslink: rsslinks.newestArticles, rssId: "rssNewestProducts", showMainLink: true, iProductsPerLine: 4} %}
+            {% include "widget/product/list.html.twig" with {type: oViewConf.getViewThemeParam('sStartPageListDisplayType'), head: "START_NEWEST_HEADER"|translate, subhead: "START_NEWEST_SUBHEADER"|translate, listId: "newItems", products: oNewestArticles, showMainLink: true, iProductsPerLine: 4} %}
         {% endif %}
     {% endblock %}
 
@@ -43,7 +42,7 @@
 
     {% block start_top_articles %}
         {% if oTopArticles and oTopArticles.count() %}
-            {% include "widget/product/list.html.twig" with {type: "infogrid", head: "START_TOP_PRODUCTS_HEADER"|translate, subhead: "START_TOP_PRODUCTS_SUBHEADER"|translate(oTopArticles.count()), listId: "topBox", products: oTopArticles, rsslink: rsslinks.topArticles, rssId: "rssTopProducts", showMainLink: true, iProductsPerLine: 2} %}
+            {% include "widget/product/list.html.twig" with {type: "infogrid", head: "START_TOP_PRODUCTS_HEADER"|translate, subhead: "START_TOP_PRODUCTS_SUBHEADER"|translate(oTopArticles.count()), listId: "topBox", products: oTopArticles, showMainLink: true, iProductsPerLine: 2} %}
         {% endif %}
     {% endblock %}
 

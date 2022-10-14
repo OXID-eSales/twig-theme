@@ -1,15 +1,6 @@
 {% set currency = oView.getActCurrency() %}
 <div class="bargainitems list-container">
-    <h2 class="page-header">
-        {{ translate({ ident: "WEEK_SPECIAL" }) }}
-
-        {% set rsslinks = oView.getRssLinks() %}
-        {% if rsslinks.bargainArticles %}
-            <small>
-                <a class="rss js-external" id="rssBargainProducts" href="{{ rsslinks.bargainArticles.link }}" title="{{ rsslinks.bargainArticles.title }}"><img src="{{ oViewConf.getImageUrl('rss.png') }}" alt="{{ rsslinks.bargainArticles.title }}"><span class="FXgradOrange corners glowShadow">{{ rsslinks.bargainArticles.title }}</span></a>
-            </small>
-        {% endif %}
-    </h2>
+    <h2 class="page-header">{{ translate({ ident: "WEEK_SPECIAL" }) }}</h2>
 
     <div class="row">
         {% set iBargainArticlesCount = oView.getBargainArticleList()|length %}

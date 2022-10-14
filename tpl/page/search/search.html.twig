@@ -10,15 +10,6 @@
     <div class="page-header">
         {% block search_header %}
             <h1 class="pull-left">{{ search_head }}</h1>
-            {% set rsslinks = oView.getRssLinks() %}
-            {% if rsslinks.searchArticles %}
-                {% set imgUrl = oViewConf.getImageUrl('rss.png') %}
-                <small class="pull-right">
-                    <a class="rss" id="rssSearchProducts" target="_blank" href="{{ rsslinks.searchArticles.link }}" title="{{ rsslinks.searchArticles.title }}">
-                        <i class="fa fa-rss"></i> {{ rsslinks.searchArticles.title }}
-                    </a>
-                </small>
-            {% endif %}
             <div class="clearfix"></div>
         {% endblock %}
     </div>

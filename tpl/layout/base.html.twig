@@ -139,15 +139,6 @@
             <link href='https://fonts.googleapis.com/css?family=Raleway:200,400,700,600' rel='stylesheet' type='text/css'>
         {% endblock %}
 
-        {% set rsslinks = oView.getRssLinks() %}
-        {% block head_link_rss %}
-            {% if rsslinks %}
-                {% for rssentry in rsslinks %}
-                    <link rel="alternate" type="application/rss+xml" title="{{ rssentry.title|striptags }}" href="{{ rssentry.link }}">
-                {% endfor %}
-            {% endif %}
-        {% endblock %}
-
         {% block head_css %}
             {% for _block in oxidBlock_head %}
                 {{ include(template_from_string(_block)) }}

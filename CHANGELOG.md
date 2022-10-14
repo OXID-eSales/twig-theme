@@ -13,11 +13,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Switched to Twig v3
 
 ### Removed
-- Remove Betanote
+- Support for PHP < v8
+- RSS functionality
+- Betanote feature
 - News feature
-- `setup.sql` file support and file itself (reverted in v1.1.0 to run CC tests)
-- Remove `ajax_econda_recommendations.html.twig` use econda module instead
-- Support for PHP < v7.4
+- `setup.sql` file support
 
 ### Fixed
 - Remove debug leftovers [PR-2](https://github.com/OXID-eSales/twig-theme/pull/2)

@@ -3,20 +3,8 @@
     {% if oView.getActiveRecommList() %}
         {% set _actvrecommlist = oView.getActiveRecommList() %}
         {% set recommendation_head = "LIST_BY"|translate %}
-        {% set recommendation_head = _actvrecommlist.oxrecommlists__oxtitle.value|cat(") %}
-        {% set rsslinks = oView.getRssLinks() %}
-        <h1 class="page-header">{{ recommendation_head }}
-
-        {% set rsslinks = oView.getRssLinks() %}
-
-        {% if rsslinks.recommlistarts %}
-            <a class="rss js-external" id="rssRecommListProducts" href="{{ rsslinks.recommlistarts.link }}" title="{{ rsslinks.recommlistarts.title }}">
-                <img src="{{ oViewConf.getImageUrl('rss.png') }}" alt="{{ rsslinks.recommlistarts.title }}">
-                <span class="FXgradOrange corners glowShadow">{{ rsslinks.recommlistarts.title }}</span>
-            </a>
-        {% endif %}
-
-        </h1>
+        {% set recommendation_head = _actvrecommlist.oxrecommlists__oxtitle.value|cat(" <span>(")|cat(recommendation_head)|cat(" ")|cat(_actvrecommlist->oxrecommlists__oxauthor->value)|cat(")</span>") %}
+        <h1 class="page-header">{{ recommendation_head }}</h1>
         <div class="listRefine clear bottomRound">
             {% include "widget/locator/listlocator.html.twig" with {locator: oView.getPageNavigation()} %}
         </div>
@@ -47,7 +35,7 @@
     {% else %}
 
         {% set hitsfor = "HITS_FOR"|translate %}
-        {% set recommendation_head = oView.getArticleCount()|cat(" ")|cat(hitsfor)|cat(") %}
+        {% set recommendation_head = oView.getArticleCount()|cat(" ")|cat(hitsfor)|cat(" &quot;")|cat(oView->getSearchForHtml())|cat("&quot;") %}
 
         <h1 class="page-header">{{ recommendation_head }}</h1>
         {% include "page/recommendations/inc/list.html.twig" %}

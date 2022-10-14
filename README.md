@@ -1,9 +1,9 @@
 # Twig theme
-Theme based on the twig engine
+Theme based on the Twig engine
 
 ## Branch Compatibility
 
-* master branch is compatible with OXID eShop compilation master
+* b-7.0.x branch is compatible with OXID eShop compilation b-7.0.x
 * b-1.x branch is compatible with OXID eShop b-6.x
 
 ## Installation
@@ -17,7 +17,7 @@ composer require oxid-esales/twig-theme
 ## Activation
 
 Open OXID eShop administration panel and go to:`Extensions --> Themes`,
-select a twig theme and click activation button.
+select a Twig theme and click activation button.
 
 ## License
 
