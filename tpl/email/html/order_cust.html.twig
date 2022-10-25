@@ -296,7 +296,7 @@
                         <em>{{ oDiscount.sDiscount }}</em> :
                     </td>
                     <td align="right"
-                        class="odd text-right">{% if oDiscount.dDiscount < 0 %}{{ oDiscount.fDiscount|replace(" - ", "") }}{% else %}-{{ oDiscount.fDiscount }}{% endif %} {{ currency.sign }}</td>
+                        class="odd text-right">{% if oDiscount.dDiscount < 0 %}{{ oDiscount.fDiscount|replace({"-": ""}) }}{% else %}-{{ oDiscount.fDiscount }}{% endif %} {{ currency.sign }}</td>
                 </tr>
             {% endfor %}
         {% endblock %}
@@ -342,7 +342,7 @@
                 <td align="right" colspan="{{ iFooterColspan }}"
                     class="odd text-right">{{ translate({ ident: "COUPON" }) }}</td>
                 <td align="right"
-                    class="odd text-right">{% if basket.getFVoucherDiscountValue() > 0 %}-{% endif %}{{ basket.getFVoucherDiscountValue()|replace(" - ", "") }} {{ currency.sign }}</td>
+                    class="odd text-right">{% if basket.getFVoucherDiscountValue() > 0 %}-{% endif %}{{ basket.getFVoucherDiscountValue()|replace({"-": ""}) }} {{ currency.sign }}</td>
             </tr>
         {% endif %}
     {% endblock %}
