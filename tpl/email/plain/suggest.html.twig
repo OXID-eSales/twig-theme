@@ -2,7 +2,7 @@
 {% set oViewConf = oEmailView.getViewConfig() %}
 {% set user = oEmailView.getUser() %}
 
-{{ translate({ ident: "PRODUCT_POST_CARD_FROM" }) }} {{ shop.oxshops__oxname.getRawValue() }}
+{{ translate({ ident: "PRODUCT_POST_CARD_FROM" }) }} {{ shop.oxshops__oxname.value }}
 
 {{ translate({ ident: "FROM" }) }} {{ userinfo.send_name }}
 {{ translate({ ident: "EMAIL" }) }} {{ userinfo.send_email }}
@@ -16,8 +16,8 @@
 
 {{ translate({ ident: "RECOMMENDED_PRODUCTS" }) }}
 
-{{ product.oxarticles__oxtitle.getRawValue()|striptags }}
-{{ product.oxarticles__oxshortdesc.getRawValue() }}
+{{ product.oxarticles__oxtitle.value|striptags }}
+{{ product.oxarticles__oxshortdesc.value }}
 
 {{ translate({ ident: "CHECK" }) }} {{ sArticleUrl }}
 

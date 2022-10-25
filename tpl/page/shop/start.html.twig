@@ -4,7 +4,7 @@
 
     {% block start_welcome_text %}
         {% ifcontent ident "oxstartwelcome" set oCont %}
-            <div class="welcome-teaser">{{ oCont.oxcontents__oxcontent.value }}</div>
+            <div class="welcome-teaser">{{ oCont.oxcontents__oxcontent.value|raw }}</div>
         {% endifcontent %}
     {% endblock %}
 

@@ -1,6 +1,6 @@
 {% capture append = "oxidBlock_content" %}
 {% set product = oView.getProduct() %}
-{% set template_title = product.oxarticles__oxtitle.value|raw|cat(" ")|cat(product.oxarticles__oxvarselect.value|raw) %}
+{% set template_title = product.oxarticles__oxtitle.value|cat(" ")|cat(product.oxarticles__oxvarselect.value) %}
 
 <h1 class="page-header">{{ template_title }}</h1>
 

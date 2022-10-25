@@ -10,7 +10,7 @@
     {% set oDetailsProduct = oView.getProduct() %}
     {% set oPictureProduct = oView.getPicturesProduct() %}
     {% set currency = oView.getActCurrency() %}
-    {% set sPageHeadTitle = oDetailsProduct.oxarticles__oxtitle.value|raw|cat(' ')|cat(oDetailsProduct.oxarticles__oxvarselect.value|raw) %}
+    {% set sPageHeadTitle = oDetailsProduct.oxarticles__oxtitle.value|cat(' ')|cat(oDetailsProduct.oxarticles__oxvarselect.value) %}
     {% set blFullwidth = oViewConf.getViewThemeParam('blFullwidthLayout') %}
 
     {% if oView.getPriceAlarmStatus() == 1 %}

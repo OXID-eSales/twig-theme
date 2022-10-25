@@ -139,7 +139,7 @@
                         <div class="lineBlock"></div>
                         <h3 id="paymentHeader" class="blockHead">{{ translate({ ident: "PAYMENT_INFORMATION" }) }}</h3>
                         {% ifcontent ident "oxnopaymentmethod" set oCont %}
-                            {{ oCont.oxcontents__oxcontent.value }}
+                            {{ oCont.oxcontents__oxcontent.value|raw }}
                         {% endifcontent %}
                         <input type="hidden" name="paymentid" value="oxempty">
                         <div class="lineBox clear">

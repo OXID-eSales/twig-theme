@@ -62,8 +62,8 @@
             <div class="col-xs-12 col-sm-2">
                 <div class="picture">
                     {% block widget_product_listitem_line_picturebox %}
-                        <a id="img_{{ testid }}" href="{{ _productLink|raw() }}" title="{{ product.oxarticles__oxtitle.value|raw }} {{ product.oxarticles__oxvarselect.value|raw }}">
-                            <img src="{{ oViewConf.getImageUrl('spinner.gif') }}" data-src="{{ product.getThumbnailUrl() }}" alt="{{ product.oxarticles__oxtitle.value|raw }} {{ product.oxarticles__oxvarselect.value|raw }}" class="img-responsive">
+                        <a id="img_{{ testid }}" href="{{ _productLink|raw() }}" title="{{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}">
+                            <img src="{{ oViewConf.getImageUrl('spinner.gif') }}" data-src="{{ product.getThumbnailUrl() }}" alt="{{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}" class="img-responsive">
                         </a>
                     {% endblock %}
                 </div>
@@ -71,7 +71,7 @@
             <div class="col-xs-6 col-sm-4">
                 {% block widget_product_listitem_line_titlebox %}
                     <div class="title">
-                        <a id="{{ testid }}" href="{{ _productLink|raw() }}" title="{{ product.oxarticles__oxtitle.value|raw }} {{ product.oxarticles__oxvarselect.value|raw }}">{{ product.oxarticles__oxtitle.value|raw }} {{ product.oxarticles__oxvarselect.value|raw }}</a>
+                        <a id="{{ testid }}" href="{{ _productLink|raw() }}" title="{{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}">{{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}</a>
                     </div>
                 {% endblock %}
 

@@ -1,6 +1,6 @@
 {% capture append = "oxidBlock_content" %}
     <p>{% ifcontent ident "oxblocked" set oCont %}
-           {{ oCont.oxcontents__oxcontent.value }}
+           {{ oCont.oxcontents__oxcontent.value|raw }}
       {% endifcontent %}</p>
     {{ insert_tracker() }}
 {% endcapture %}

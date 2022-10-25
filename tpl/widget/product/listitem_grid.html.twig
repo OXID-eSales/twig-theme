@@ -52,8 +52,8 @@
 
         {% block widget_product_listitem_infogrid_gridpicture %}
         <div class="picture text-center">
-            <a href="{{ _productLink|raw() }}" title="{{ product.oxarticles__oxtitle.value|raw }} {{ product.oxarticles__oxvarselect.value|raw }}">
-                <img src="{{ oViewConf.getImageUrl('spinner.gif') }}" data-src="{{ product.getThumbnailUrl() }}" alt="{{ product.oxarticles__oxtitle.value|raw }} {{ product.oxarticles__oxvarselect.value|raw }}" class="img-responsive">
+            <a href="{{ _productLink|raw() }}" title="{{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}">
+                <img src="{{ oViewConf.getImageUrl('spinner.gif') }}" data-src="{{ product.getThumbnailUrl() }}" alt="{{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}" class="img-responsive">
             </a>
         </div>
         {% endblock %}
@@ -61,8 +61,8 @@
         <div class="listDetails text-center">
             {% block widget_product_listitem_infogrid_titlebox %}
                 <div class="title">
-                    <a id="{{ testid }}" href="{{ _productLink|raw() }}" class="title" title="{{ product.oxarticles__oxtitle.value|raw }} {{ product.oxarticles__oxvarselect.value|raw }}">
-                        <span>{{ product.oxarticles__oxtitle.value|raw }} {{ product.oxarticles__oxvarselect.value|raw }}</span>
+                    <a id="{{ testid }}" href="{{ _productLink|raw() }}" class="title" title="{{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}">
+                        <span>{{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}</span>
                     </a>
                 </div>
             {% endblock %}

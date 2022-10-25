@@ -9,13 +9,13 @@
     <div class="row picture">
         <div class="col-xs-12">
             <a href="{{ _productLink|raw() }}" {% if oView.noIndex() %}rel="nofollow"{% endif %}>
-                <img src="{% if size=='big' %}{{ product.getPictureUrl(1) }}{% elseif size=='thinest' %}{{ product.getIconUrl() }}{% else %}{{ product.getThumbnailUrl() }}{% endif %}" alt="{{ product.oxarticles__oxtitle.value|raw|striptags }} {{ product.oxarticles__oxvarselect.value|raw|default('') }}" class="img-responsive">
+                <img src="{% if size=='big' %}{{ product.getPictureUrl(1) }}{% elseif size=='thinest' %}{{ product.getIconUrl() }}{% else %}{{ product.getThumbnailUrl() }}{% endif %}" alt="{{ product.oxarticles__oxtitle.value|striptags }} {{ product.oxarticles__oxvarselect.value|default('') }}" class="img-responsive">
             </a>
         </div>
     </div>
 
     <strong class="title">
-        <a class="fn" href="{{ _productLink|raw() }}" {% if oView.noIndex() %}rel="nofollow"{% endif %}>{{ product.oxarticles__oxtitle.value|raw }} {{ product.oxarticles__oxvarselect.value|raw }}</a>
+        <a class="fn" href="{{ _productLink|raw() }}" {% if oView.noIndex() %}rel="nofollow"{% endif %}>{{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}</a>
     </strong><br/>
     <span class="identifier">
         {% if product.oxarticles__oxweight.value %}

@@ -9,7 +9,7 @@
                 {% for _mnf in manufacturers %}
                     {% if loop.index0 < iManufacturerLimit %}
                         <li><a href="{{ _mnf.getLink() }}"
-                               {% if _mnf.expanded %}class="exp"{% endif %}>{{ _mnf.oxmanufacturers__oxtitle.value|raw }}</a>
+                               {% if _mnf.expanded %}class="exp"{% endif %}>{{ _mnf.oxmanufacturers__oxtitle.value }}</a>
                         </li>
                     {% elseif loop.index0 == iManufacturerLimit %}
                         <li><a href="{{ rootManufacturer.getLink() }}">{{ translate({ ident: "MORE" }) }}</a></li>

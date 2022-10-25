@@ -86,7 +86,7 @@
                 <div class="panel panel-default" id="reviewName_{{ loop.index }}" itemprop="review" itemscope itemtype="http://schema.org/Review">
                     {# Bloofusion Google-Produkt-Markup für Google #}
                     <div class="hidden">
-                        <span itemprop="itemreviewed">{{ oDetailsProduct.oxarticles__oxtitle.value|raw }} {{ oDetailsProduct.oxarticles__oxvarselect.value|raw }}</span>
+                        <span itemprop="itemreviewed">{{ oDetailsProduct.oxarticles__oxtitle.value }} {{ oDetailsProduct.oxarticles__oxvarselect.value }}</span>
                         <span itemprop="name">{{ review.oxreviews__oxtext.value|truncate(100) }}</span>
                     </div>
                     {% block widget_reviews_record %}

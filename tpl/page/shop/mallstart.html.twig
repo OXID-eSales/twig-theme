@@ -7,7 +7,7 @@
     </div>
     <div>
         {% ifcontent ident "oxstartwelcome" set oCont %}
-            {{ oCont.oxcontents__oxcontent.value }}
+            {{ oCont.oxcontents__oxcontent.value|raw }}
         {% endifcontent %}
         <div>
             {{ translate({ ident: "PLEASE_CHOOSE" }) }}
@@ -35,7 +35,7 @@
         </div>
         <div class="text">
             {% ifcontent ident "oxstdfooter" set oCont %}
-            {{ oCont.oxcontents__oxcontent.value }}
+            {{ oCont.oxcontents__oxcontent.value|raw }}
             {% endifcontent %}
         </div>
     </div>

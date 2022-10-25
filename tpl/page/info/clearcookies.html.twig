@@ -4,7 +4,7 @@
     <div class="cmsContent">
         <p>
             {% ifcontent ident "oxcookiesexplanation" set oCont %}
-                {{ oCont.oxcontents__oxcontent.value }}
+                {{ oCont.oxcontents__oxcontent.value|raw }}
             {% endifcontent %}
         </p>
     </div>
