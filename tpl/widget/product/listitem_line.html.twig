@@ -81,7 +81,7 @@
                             <p>{{ product.text }}</p>
                         {% else %}
                             {% hasrights { "ident": "SHOWSHORTDESCRIPTION",} %}
-                                {{ product.oxarticles__oxshortdesc.rawValue }}
+                                {{ product.oxarticles__oxshortdesc.value|raw() }}
                             {% endhasrights %}
                         {% endif %}
                     </div>

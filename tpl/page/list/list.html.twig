@@ -30,13 +30,13 @@
         {% endif %}
 
         <div class="page-header">
-            <h1>{{ oView.getTitle()|raw }}</h1>
+            <h1>{{ oView.getTitle() }}</h1>
         </div>
 
         {% set oPageNavigation = oView.getPageNavigation() %}
         {% if actCategory and actCategory.getShortDescription() and oPageNavigation.actPage == 1 %}
             <p id="catDescLocator" class="categoryDescription">
-                <em>{{ actCategory.oxcategories__oxdesc.rawValue }}</em>
+                <em>{{ actCategory.oxcategories__oxdesc.value|raw() }}</em>
             </p>
         {% endif %}
 

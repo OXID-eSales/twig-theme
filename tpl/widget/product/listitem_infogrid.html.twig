@@ -77,7 +77,7 @@
 
                     {% block widget_product_listitem_infogrid_shortdesc %}
                         <div class="shortdesc">
-                            {{ product.oxarticles__oxshortdesc.rawValue }}
+                            {{ product.oxarticles__oxshortdesc.value|raw() }}
                         </div>
                     {% endblock %}
 

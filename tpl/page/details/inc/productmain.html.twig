@@ -116,8 +116,8 @@
             {# short description #}
             {% block details_productmain_shortdesc %}
                 {% hasrights { "ident": "SHOWSHORTDESCRIPTION",} %}
-                    {% if oDetailsProduct.oxarticles__oxshortdesc.rawValue %}
-                        <p class="shortdesc" id="productShortdesc" itemprop="description">{{ oDetailsProduct.oxarticles__oxshortdesc.rawValue }}</p>
+                    {% if oDetailsProduct.oxarticles__oxshortdesc.value %}
+                        <p class="shortdesc" id="productShortdesc" itemprop="description">{{ oDetailsProduct.oxarticles__oxshortdesc.value|raw() }}</p>
                     {% endif %}
                 {% endhasrights %}
             {% endblock %}
