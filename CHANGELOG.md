@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [2.0.0] - Unreleased
+## [2.0.0] - 2022-10-28
 
 ### Added
 - Support for PHP v8
@@ -13,14 +13,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Switched to Twig v3
 
 ### Removed
-- Support for PHP < v8
+- Support for PHP v7
 - RSS functionality
 - Betanote feature
 - News feature
 - `setup.sql` file support
-
-### Fixed
-- Remove debug leftovers [PR-2](https://github.com/OXID-eSales/twig-theme/pull/2)
+- Debug leftovers [PR-2](https://github.com/OXID-eSales/twig-theme/pull/2)
 
 ## [1.1.0] - 2022-09-08
 
@@ -35,7 +33,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.0.0] - 2019-11-21
 
-[2.0.0]: https://github.com/OXID-eSales/twig-theme/compare/v1.1.0...b-7.0.x
+[2.0.0]: https://github.com/OXID-eSales/twig-theme/compare/v1.1.0...v2.0.0
 [1.1.0]: https://github.com/OXID-eSales/twig-theme/compare/v1.0.1...v1.1.0
 [1.0.1]: https://github.com/OXID-eSales/twig-theme/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/OXID-eSales/twig-theme/releases/tag/v1.0.0
