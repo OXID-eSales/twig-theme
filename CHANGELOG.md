@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.1.0] - Unreleased
+
+### Added
+- Template blocks on login form:
+    - `checkout_options_login_passwordfield` in `form/login.html.twig`
+    - `checkout_options_loginaccount_passwordfield` in `form/login_account.html.twig`
+    - `checkout_options_loginaccount_submitbutton` in `form/login_account.html.twig`
+
 ## [2.0.0] - 2022-10-28
 
 ### Added
@@ -33,6 +41,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.0.0] - 2019-11-21
 
+[2.1.0]: https://github.com/OXID-eSales/twig-theme/compare/v2.0.0...b-7.0.x
 [2.0.0]: https://github.com/OXID-eSales/twig-theme/compare/v1.1.0...v2.0.0
 [1.1.0]: https://github.com/OXID-eSales/twig-theme/compare/v1.0.1...v1.1.0
 [1.0.1]: https://github.com/OXID-eSales/twig-theme/compare/v1.0.0...v1.0.1

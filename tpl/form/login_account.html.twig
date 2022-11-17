@@ -36,12 +36,16 @@
                             <input id="loginUser" class="js-oxValidate js-oxValidate_notEmpty form-control" type="text" name="lgn_usr" role="loginUser" required="required">
                             <div class="help-block"></div></div>
                     </div>
-                    <div class="form-group{% if aErrors %} oxInValid{% endif %}">
-                        <label class="req control-label col-lg-2">{{ translate({ ident: "PASSWORD" }) }}</label>
-                        <div class="col-lg-10">
-                            <input id="loginPwd" class="js-oxValidate js-oxValidate_notEmpty  form-control" type="password" name="lgn_pwd" role="loginPwd" required="required">
-                            <div class="help-block"></div></div>
-                    </div>
+
+                    {% block checkout_options_loginaccount_passwordfield %}
+                        <div class="form-group{% if aErrors %} oxInValid{% endif %}">
+                            <label class="req control-label col-lg-2">{{ translate({ ident: "PASSWORD" }) }}</label>
+                            <div class="col-lg-10">
+                                <input id="loginPwd" class="js-oxValidate js-oxValidate_notEmpty  form-control" type="password" name="lgn_pwd" role="loginPwd" required="required">
+                                <div class="help-block"></div></div>
+                        </div>
+                    {% endblock %}
+
                     {% if oView.showRememberMe() %}
                         <div class="form-group">
                             <div class="col-lg-offset-2 col-lg-10">
@@ -54,11 +58,13 @@
                         </div>
                     {% endif %}
 
-                    <div class="form-group">
-                        <div class="col-lg-offset-2 col-lg-10">
-                            <button id="loginButton" type="submit" class="btn btn-primary btn-block" role="loginButton">{{ translate({ ident: "LOGIN" }) }}</button>
+                    {% block checkout_options_loginaccount_submitbutton %}
+                        <div class="form-group">
+                            <div class="col-lg-offset-2 col-lg-10">
+                                <button id="loginButton" type="submit" class="btn btn-primary btn-block" role="loginButton">{{ translate({ ident: "LOGIN" }) }}</button>
+                            </div>
                         </div>
-                    </div>
+                    {% endblock %}
 
                     <div class="form-group">
                         <div class="col-lg-offset-2 col-lg-10">
