@@ -36,7 +36,7 @@
         {% set oPageNavigation = oView.getPageNavigation() %}
         {% if actCategory and actCategory.getShortDescription() and oPageNavigation.actPage == 1 %}
             <p id="catDescLocator" class="categoryDescription">
-                <em>{{ actCategory.oxcategories__oxdesc.value|raw() }}</em>
+                <em>{{ actCategory.getShortDescription()|raw() }}</em>
             </p>
         {% endif %}
 
