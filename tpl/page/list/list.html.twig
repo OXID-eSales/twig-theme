@@ -61,7 +61,7 @@
                                 </div>
                             {% endfor %}
                         {% endif %}
-                        {% if iSubCategoriesCount % 4 == 0 %}
+                        {% if iSubCategoriesCount % 4 == 0 and iSubCategoriesCount != 0 %}
                             </div><div class="row">
                         {% endif %}
                         {% if category.getIsVisible() %}
