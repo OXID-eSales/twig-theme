@@ -52,7 +52,7 @@
                                     {% include "message/errors.html.twig" %}
 
                                     {% for _block in oxidBlock_content %}
-                                        {{ include(template_from_string(_block)) }}
+                                        {{ _block|raw }}
                                     {% endfor %}
                                 {% endblock %}
                             </div>
