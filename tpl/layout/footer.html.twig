@@ -35,6 +35,7 @@
                             {% endblock %}
                             {% if blShowFullFooter %}
                                 {% block dd_footer_manufacturerlist %}
+                                    {% if oView.getManufacturerlist() %}
                                     <section class="col-xs-12 col-sm-3 footer-box footer-box-manufacturers">
                                         <div class="h4 footer-box-title">{{ translate({ ident: "OUR_BRANDS" }) }}</div>
                                         <div class="footer-box-content">
@@ -43,6 +44,7 @@
                                             {% endblock %}
                                         </div>
                                     </section>
+                                    {% endif %}
                                 {% endblock %}
                                 {% block dd_footer_categorytree %}
                                     <section class="col-xs-12 col-sm-3 footer-box footer-box-categories">
