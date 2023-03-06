@@ -141,7 +141,7 @@
 
         {% block head_css %}
             {% for _block in oxidBlock_head %}
-                {{ include(template_from_string(_block)) }}
+                {{ _block|raw }}
             {% endfor %}
         {% endblock %}
     {% endapply %}
@@ -183,7 +183,7 @@
 <html lang="{{ oView.getActiveLangAbbr() }}" {% block head_html_namespace %}{% endblock %}>
 <head>
     {% for _block in oxidBlock_pageHead %}
-        {{ include(template_from_string(_block)) }}
+        {{ _block|raw }}
     {% endfor %}
     {{ style() }}
 
@@ -201,13 +201,13 @@
 <div class="{% if blFullwidth %}fullwidth-container{% else %}container{% endif %}">
     <div class="main-row">
         {% for _block in oxidBlock_pageBody %}
-            {{ include(template_from_string(_block)) }}
+            {{ _block|raw }}
         {% endfor %}
     </div>
 </div>
 
 {% for _block in oxidBlock_pagePopup %}
-    {{ include(template_from_string(_block)) }}
+    {{ _block|raw }}
 {% endfor %}
 
 {% if oViewConf.getTopActiveClassName() == 'details' and oView.showZoomPics() %}
@@ -235,7 +235,7 @@
 {% endif %}
 
 {% for _block in oxidBlock_pageScript %}
-    {{ include(template_from_string(_block)) }}
+    {{ _block|raw }}
 {% endfor %}
 
 </body>
