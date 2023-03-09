@@ -25,7 +25,7 @@
 
     {% set aErrors = oView.getFieldValidationErrors() %}
 
-    <form class="form-horizontal js-oxValidate" action="{{ oViewConf.getSslSelfLink()|raw() }}" name="order" method="post" role="form" novalidate="novalidate">
+    <form class="form-horizontal js-oxValidate" action="{{ oViewConf.getSslSelfLink()|raw }}" name="order" method="post" role="form" novalidate="novalidate">
         {% block user_checkout_registration_form %}
             <div class="hidden">
                 {{ oViewConf.getHiddenSid()|raw() }}

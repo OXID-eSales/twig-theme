@@ -49,7 +49,7 @@
                     </div>
                     <div class="col-xs-3 text-left pager-prev">
                         {% if actCategory.prevProductLink %}
-                            <i class="fa fa-angle-left"></i> <a id="linkPrevArticle" class="" href="{{ actCategory.prevProductLink }}">{{ translate({ ident: "PREVIOUS_PRODUCT" }) }}</a>
+                            <i class="fa fa-angle-left"></i> <a id="linkPrevArticle" class="" href="{{ actCategory.prevProductLink|raw }}">{{ translate({ ident: "PREVIOUS_PRODUCT" }) }}</a>
                         {% endif %}
                     </div>
                     <div class="col-xs-3 text-center pager-current-page">
@@ -59,7 +59,7 @@
                     </div>
                     <div class="col-xs-3 text-right pager-next">
                         {% if actCategory.nextProductLink %}
-                            <a id="linkNextArticle" href="{{ actCategory.nextProductLink }}">{{ translate({ ident: "NEXT_PRODUCT" }) }}</a> <i class="fa fa-angle-right"></i>
+                            <a id="linkNextArticle" href="{{ actCategory.nextProductLink|raw }}">{{ translate({ ident: "NEXT_PRODUCT" }) }}</a> <i class="fa fa-angle-right"></i>
                         {% endif %}
                     </div>
                 </div>

@@ -14,10 +14,10 @@
                 <li>
                     <a id="morePics_{{ loop.index }}"
                             {% if loop.first %} class="selected" {% endif %}
-                       href="{{ oPictureProduct.getPictureUrl(iPicNr) }}" data-num="{{ loop.index }}"
+                       href="{{ oPictureProduct.getPictureUrl(iPicNr)|raw }}" data-num="{{ loop.index }}"
                             {% if aPictureInfo %} data-width="{{ aPictureInfo.0 }}" data-height="{{ aPictureInfo.1 }}"{% endif %}
-                       data-zoom-url="{{ oPictureProduct.getMasterZoomPictureUrl(iPicNr) }}">
-                        <img src="{{ oPictureProduct.getIconUrl(iPicNr) }}" alt="morepic-{{ loop.index }}">
+                       data-zoom-url="{{ oPictureProduct.getMasterZoomPictureUrl(iPicNr)|raw }}">
+                        <img src="{{ oPictureProduct.getIconUrl(iPicNr)|raw }}" alt="morepic-{{ loop.index }}">
                     </a>
                 </li>
             {% endfor %}

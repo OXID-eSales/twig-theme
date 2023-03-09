@@ -13,8 +13,8 @@
                 {% for oManufacturer in oView.getManufacturerForSlider() %}
                     {% if oManufacturer.oxmanufacturers__oxicon.value %}
                         <li>
-                            <a href="{{ oManufacturer.getLink() }}" title="{{ translate({ ident: "VIEW_ALL_PRODUCTS" }) }}">
-                                <img src="{{ oViewConf.getImageUrl('spinner.gif') }}" data-src="{{ oManufacturer.getIconUrl() }}" alt="{{ oManufacturer.oxmanufacturers__oxtitle.value }}">
+                            <a href="{{ oManufacturer.getLink()|raw }}" title="{{ translate({ ident: "VIEW_ALL_PRODUCTS" }) }}">
+                                <img src="{{ oViewConf.getImageUrl('spinner.gif')|raw }}" data-src="{{ oManufacturer.getIconUrl()|raw }}" alt="{{ oManufacturer.oxmanufacturers__oxtitle.value }}">
                             </a>
                         </li>
                     {% endif %}

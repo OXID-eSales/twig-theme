@@ -9,7 +9,7 @@
 
                             {% for sCrum in oView.getBreadCrumb() %}
                                 <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"{% if loop.last %} class="active"{% endif %}>
-                                    <a href="{% if sCrum.link %}{{ sCrum.link }}{% else %}#{% endif %}" title="{{ sCrum.title }}" itemprop="url">
+                                    <a href="{% if sCrum.link %}{{ sCrum.link|raw }}{% else %}#{% endif %}" title="{{ sCrum.title }}" itemprop="url">
                                         <span itemprop="title">{{ sCrum.title }}</span>
                                     </a>
                                 </li>

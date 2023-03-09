@@ -3,7 +3,7 @@
 <div class="introtext">
 {{ translate({ ident: "MESSAGE_BASKET_EXCLUDE_INFO" }) }}<br><br>
 </div>
-<form action="{{ oViewConf.getCurrentHomeDir() }}index.php" method="post">
+<form action="{{ oViewConf.getCurrentHomeDir()|raw }}index.php" method="post">
     <div>
         {{ oViewConf.getHiddenSid()|raw() }}
         {{ oViewConf.getNavFormParams()|raw() }}

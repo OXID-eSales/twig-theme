@@ -17,7 +17,7 @@
                 <div id="review_form" class="panel-collapse collapse">
                     <div class="panel-body">
                         {% block widget_reviews_form %}
-                            <form action="{{ oViewConf.getSelfActionLink()|raw() }}" method="post" id="rating" class="form-horizontal" novalidate="novalidate">
+                            <form action="{{ oViewConf.getSelfActionLink()|raw }}" method="post" id="rating" class="form-horizontal" novalidate="novalidate">
                                 <div id="writeReview">
                                     <div class="hidden">
                                         {% if oView.canRate() %}

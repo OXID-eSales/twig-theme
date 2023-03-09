@@ -17,7 +17,7 @@
             {% block checkout_basket_emptyshippingcart %}
                 <div class="spacer"></div>
                 <div class="alert alert-danger" id="empty-basket-warning">
-                    <a href="{{ oViewConf.getHomeLink() }}" title="{{ oxcmp_shop.oxshops__oxtitleprefix.value }}" class="btn btn-default"><i class="fa fa-caret-left"></i> {{ translate({ ident: "DD_BASKET_BACK_TO_SHOP" }) }}</a>
+                    <a href="{{ oViewConf.getHomeLink()|raw }}" title="{{ oxcmp_shop.oxshops__oxtitleprefix.value }}" class="btn btn-default"><i class="fa fa-caret-left"></i> {{ translate({ ident: "DD_BASKET_BACK_TO_SHOP" }) }}</a>
                     {{ translate({ ident: "BASKET_EMPTY" }) }}
                 </div>
             {% endblock %}
@@ -26,7 +26,7 @@
                 <div class="well well-sm cart-buttons">
                     {% block checkout_basket_backtoshop_top %}
                         {% if oView.showBackToShop() %}
-                            <form action="{{ oViewConf.getSslSelfLink()|raw() }}" method="post" class="pull-left">
+                            <form action="{{ oViewConf.getSslSelfLink()|raw }}" method="post" class="pull-left">
                                 <div class="hidden">
                                     {{ oViewConf.getHiddenSid()|raw() }}
                                     <input type="hidden" name="cl" value="basket">
@@ -37,7 +37,7 @@
                                 </button>
                             </form>
                         {% else %}
-                            <a href="{{ oViewConf.getHomeLink() }}" class="btn btn-default submitButton largeButton pull-left">
+                            <a href="{{ oViewConf.getHomeLink()|raw }}" class="btn btn-default submitButton largeButton pull-left">
                                 <i class="fa fa-caret-left"></i> {{ translate({ ident: "CONTINUE_SHOPPING" }) }}
                             </a>
                         {% endif %}
@@ -45,7 +45,7 @@
 
                     {% if not oView.isLowOrderPrice() %}
                         {% block basket_btn_next_top %}
-                            <form action="{{ oViewConf.getSslSelfLink()|raw() }}" method="post" class="pull-right">
+                            <form action="{{ oViewConf.getSslSelfLink()|raw }}" method="post" class="pull-right">
                                 <div class="hidden">
                                     {{ oViewConf.getHiddenSid()|raw() }}
                                     <input type="hidden" name="cl" value="user">
@@ -70,7 +70,7 @@
 
                     {% block checkout_basket_backtoshop_bottom %}
                         {% if oView.showBackToShop() %}
-                            <form action="{{ oViewConf.getSslSelfLink()|raw() }}" method="post" class="pull-left">
+                            <form action="{{ oViewConf.getSslSelfLink()|raw }}" method="post" class="pull-left">
                                 <div class="backtoshop">
                                     {{ oViewConf.getHiddenSid()|raw() }}
                                     <input type="hidden" name="cl" value="basket">
@@ -81,7 +81,7 @@
                                 </div>
                             </form>
                         {% else %}
-                            <a href="{{ oViewConf.getHomeLink() }}" class="btn btn-default submitButton largeButton pull-left">
+                            <a href="{{ oViewConf.getHomeLink()|raw }}" class="btn btn-default submitButton largeButton pull-left">
                                 <i class="fa fa-caret-left"></i> {{ translate({ ident: "CONTINUE_SHOPPING" }) }}
                             </a>
                         {% endif %}
@@ -89,7 +89,7 @@
 
                     {% if not oView.isLowOrderPrice() %}
                         {% block basket_btn_next_bottom %}
-                            <form action="{{ oViewConf.getSslSelfLink()|raw() }}" method="post">
+                            <form action="{{ oViewConf.getSslSelfLink()|raw }}" method="post">
                                 <div class="hidden">
                                     {{ oViewConf.getHiddenSid()|raw() }}
                                     <input type="hidden" name="cl" value="user">

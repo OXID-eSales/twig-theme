@@ -60,7 +60,7 @@
                 {% block widget_product_listitem_infogrid_gridpicture %}
                     <div class="picture text-center">
                         <a href="{{ _productLink|raw() }}" title="{{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}">
-                            <img src="{{ oViewConf.getImageUrl('spinner.gif') }}" data-src="{{ product.getThumbnailUrl() }}" alt="{{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}" class="img-responsive">
+                            <img src="{{ oViewConf.getImageUrl('spinner.gif')|raw }}" data-src="{{ product.getThumbnailUrl()|raw }}" alt="{{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}" class="img-responsive">
                         </a>
                     </div>
                 {% endblock %}

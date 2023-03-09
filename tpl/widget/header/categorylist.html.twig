@@ -25,19 +25,19 @@
                         <ul id="navigation" class="nav navbar-nav">
                             {% block dd_widget_header_categorylist_navbar_list %}
                                 <li {% if homeSelected == 'true' %}class="active"{% endif %}>
-                                    <a href="{{ oViewConf.getHomeLink() }}">{{ translate({ ident: "HOME" }) }}</a>
+                                    <a href="{{ oViewConf.getHomeLink()|raw }}">{{ translate({ ident: "HOME" }) }}</a>
                                 </li>
 
                                 {% for catkey, ocat in oxcmp_categories %}
                                     {% if ocat.getIsVisible() %}
                                         {% for oTopCont in ocat.getContentCats() %}
                                             <li{% if oContent.oxcontents__oxloadid.value is same as(oTopCont.oxcontents__oxloadid.value) %} class="active"{% endif %}>
-                                                <a href="{{ oTopCont.getLink() }}">{{ oTopCont.oxcontents__oxtitle.value }}</a>
+                                                <a href="{{ oTopCont.getLink()|raw }}">{{ oTopCont.oxcontents__oxtitle.value }}</a>
                                             </li>
                                         {% endfor %}
 
                                         <li class="{% if homeSelected == 'false' and ocat.expanded %}active{% endif %}{% if ocat.getSubCats() %} dropdown{% endif %}">
-                                            <a href="{{ ocat.getLink() }}"{% if ocat.getSubCats() %} class="dropdown-toggle" data-toggle="dropdown"{% endif %}>
+                                            <a href="{{ ocat.getLink()|raw }}"{% if ocat.getSubCats() %} class="dropdown-toggle" data-toggle="dropdown"{% endif %}>
                                                 {{ ocat.oxcategories__oxtitle.value }}{% if ocat.getSubCats() %} <i class="fa fa-angle-down"></i>{% endif %}
                                             </a>
 
@@ -47,13 +47,13 @@
                                                         {% if osubcat.getIsVisible() %}
                                                             {% for ocont in osubcat.getContentCats() %}
                                                                 <li{% if oViewConf.getContentId() == ocont.getId() %} class="active"{% endif %}>
-                                                                    <a {% if oViewConf.getContentId() == ocont.getId() %}class="current" {% endif %}href="{{ ocont.getLink() }}">{{ ocont.oxcontents__oxtitle.value }}</a>
+                                                                    <a {% if oViewConf.getContentId() == ocont.getId() %}class="current" {% endif %}href="{{ ocont.getLink()|raw }}">{{ ocont.oxcontents__oxtitle.value }}</a>
                                                                 </li>
                                                             {% endfor %}
 
                                                             {% if osubcat.getIsVisible() %}
                                                                 <li {% if homeSelected == 'false' and osubcat.expanded %}class="active"{% endif %}>
-                                                                    <a {% if homeSelected == 'false' and osubcat.expanded %}class="current"{% endif %} href="{{ osubcat.getLink() }}">{{ osubcat.oxcategories__oxtitle.value }}</a>
+                                                                    <a {% if homeSelected == 'false' and osubcat.expanded %}class="current"{% endif %} href="{{ osubcat.getLink()|raw }}">{{ osubcat.oxcategories__oxtitle.value }}</a>
                                                                 </li>
                                                             {% endif %}
                                                         {% endif %}
@@ -82,7 +82,7 @@
 
                         {% if oView.isDemoShop() %}
 
-                            <a href="{{ oViewConf.getBaseDir() }}admin/" class="btn btn-sm btn-danger navbar-btn navbar-right visible-lg">
+                            <a href="{{ oViewConf.getBaseDir()|raw }}admin/" class="btn btn-sm btn-danger navbar-btn navbar-right visible-lg">
                                 {{ translate({ ident: "DD_DEMO_ADMIN_TOOL" }) }}
                                 <i class="fa fa-external-link" style="font-size: 80%;"></i>
                             </a>

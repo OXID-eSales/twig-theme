@@ -7,7 +7,7 @@
     </ol>
 
     {% ifcontent ident "oxsecurityinfo" set oCont %}
-        <p>{{ translate({ ident: "MESSAGE_READ_DETAILS" }) }} <a href="{{ oCont.getLink() }}">{{ oCont.oxcontents__oxtitle.value }}</a></p>
+        <p>{{ translate({ ident: "MESSAGE_READ_DETAILS" }) }} <a href="{{ oCont.getLink()|raw }}">{{ oCont.oxcontents__oxtitle.value }}</a></p>
     {% endifcontent %}
 
     {% include "form/suggest.html.twig" %}

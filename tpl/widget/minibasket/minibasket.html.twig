@@ -39,7 +39,7 @@
                                                                 {% set minibasketItemTitle = _product.getTitle() %}
                                                                 <tr>
                                                                     <td>
-                                                                        <a href="{{ _product.getLink() }}" title="{{ minibasketItemTitle|striptags }}">
+                                                                        <a href="{{ _product.getLink()|raw }}" title="{{ minibasketItemTitle|striptags }}">
                                                                             <span class="item">
                                                                                 {% if _product.getAmount() > 1 %}
                                                                                     {{ _product.getAmount() }} &times;
@@ -107,12 +107,12 @@
                                     <tr>
                                         <td class="picture text-center">
                                             <span class="badge">{{ _product.getAmount() }}</span>
-                                            <a href="{{ _product.getLink() }}" title="{{ minibasketItemTitle|striptags }}">
-                                                <img src="{{ _product.getIconUrl() }}" alt="{{ minibasketItemTitle|striptags }}"/>
+                                            <a href="{{ _product.getLink()|raw }}" title="{{ minibasketItemTitle|striptags }}">
+                                                <img src="{{ _product.getIconUrl()|raw }}" alt="{{ minibasketItemTitle|striptags }}"/>
                                             </a>
                                         </td>
                                         <td class="title">
-                                            <a href="{{ _product.getLink() }}" title="{{ minibasketItemTitle|striptags }}">{{ minibasketItemTitle|striptags }}</a>
+                                            <a href="{{ _product.getLink()|raw }}" title="{{ minibasketItemTitle|striptags }}">{{ minibasketItemTitle|striptags }}</a>
                                         </td>
                                         <td class="price text-right">{{ format_price(_product.getPrice(), { currency: currency }) }}</td>
                                     </tr>

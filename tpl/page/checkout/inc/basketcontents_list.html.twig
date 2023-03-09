@@ -13,15 +13,15 @@
                     <div class="col-md-3 col-xs-4">
                         {% block checkout_basketcontents_basketitem_image %}
                             {# product image #}
-                            {% if editable %}<a href="{{ basketitem.getLink() }}">{% endif %}
-                            <img src="{{ oViewConf.getImageUrl('spinner.gif') }}" data-src="{{ basketitem.getIconUrl() }}" alt="{{ basketitem.getTitle()|striptags }}">
+                            {% if editable %}<a href="{{ basketitem.getLink()|raw }}">{% endif %}
+                            <img src="{{ oViewConf.getImageUrl('spinner.gif')|raw }}" data-src="{{ basketitem.getIconUrl()|raw }}" alt="{{ basketitem.getTitle()|striptags }}">
                             {% if editable %}</a>{% endif %}
                         {% endblock %}
                     </div>
                     <div class="col-md-6 col-xs-8">
                         {% block checkout_basketcontents_basketitem_titlenumber %}
                             {% block checkout_basketcontents_basketitem_title %}
-                                {% if editable %}<a rel="nofllow" href="{{ basketitem.getLink() }}">{% endif %}
+                                {% if editable %}<a rel="nofllow" href="{{ basketitem.getLink()|raw }}">{% endif %}
                                 <b>{{ basketitem.getTitle() }}</b>
                                 {% if editable %}</a>{% endif %}
                                 {% if basketitem.isSkipDiscount() %} <sup><a href="#SkipDiscounts_link" >**</a></sup>{% endif %}

@@ -20,7 +20,7 @@
     {% endfor %}
     {{ script({ add: "oxVariantSelections  = [" ~ _sSelectionHashCollection ~ "];", dynamic: __oxid_include_dynamic }) }}
 
-    <form class="js-oxWidgetReload" action="{{ oView.getWidgetLink() }}" method="get">
+    <form class="js-oxWidgetReload" action="{{ oView.getWidgetLink()|raw }}" method="get">
         {{ oViewConf.getHiddenSid()|raw() }}
         {{ oViewConf.getNavFormParams()|raw() }}
         <input type="hidden" name="cl" value="{{ oView.getClassKey() }}">
@@ -37,7 +37,7 @@
 {% endif %}
 
 {% hasrights { "ident": "TOBASKET",} %}
-    <form class="js-oxProductForm" action="{{ oViewConf.getSelfActionLink()|raw() }}" method="post">
+    <form class="js-oxProductForm" action="{{ oViewConf.getSelfActionLink()|raw }}" method="post">
         <div class="hidden">
             {{ oViewConf.getHiddenSid()|raw() }}
             {{ oViewConf.getNavFormParams()|raw() }}
@@ -76,8 +76,8 @@
                     {% endif %}
 
                     <div class="picture text-center">
-                        <a href="{{ oPictureProduct.getMasterZoomPictureUrl(1) }}" id="zoom1"{% if aPictureInfo %} data-width="{{ aPictureInfo.0 }}" data-height="{{ aPictureInfo.1 }}"{% endif %}>
-                            <img src="{{ oView.getActPicture() }}" alt="{{ oPictureProduct.oxarticles__oxtitle.value|striptags }} {{ oPictureProduct.oxarticles__oxvarselect.value|striptags }}" itemprop="image" class="img-responsive">
+                        <a href="{{ oPictureProduct.getMasterZoomPictureUrl(1)|raw }}" id="zoom1"{% if aPictureInfo %} data-width="{{ aPictureInfo.0 }}" data-height="{{ aPictureInfo.1 }}"{% endif %}>
+                            <img src="{{ oView.getActPicture()|raw }}" alt="{{ oPictureProduct.oxarticles__oxtitle.value|striptags }} {{ oPictureProduct.oxarticles__oxvarselect.value|striptags }}" itemprop="image" class="img-responsive">
                         </a>
                     </div>
                 {% else %}
@@ -322,9 +322,9 @@
             {% if oManufacturer %}
                 <div class="brandLogo">
                     {% block details_productmain_manufacturersicon %}
-                        <a href="{{ oManufacturer.getLink() }}" title="{{ oManufacturer.oxmanufacturers__oxtitle.value }}">
+                        <a href="{{ oManufacturer.getLink()|raw }}" title="{{ oManufacturer.oxmanufacturers__oxtitle.value }}">
                             {% if oManufacturer.oxmanufacturers__oxicon.value %}
-                                <img src="{{ oManufacturer.getIconUrl() }}" alt="{{ oManufacturer.oxmanufacturers__oxtitle.value }}">
+                                <img src="{{ oManufacturer.getIconUrl()|raw }}" alt="{{ oManufacturer.oxmanufacturers__oxtitle.value }}">
                             {% endif %}
                         </a>
                         <span itemprop="brand" class="hidden">{{ oManufacturer.oxmanufacturers__oxtitle.value }}</span>

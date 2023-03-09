@@ -25,7 +25,7 @@
 
     {{ script({ add: sValidationJS, dynamic: __oxid_include_dynamic }) }}
 
-    <form class="form-horizontal js-oxValidate" action="{{ oViewConf.getSslSelfLink()|raw() }}" name="order" method="post" role="form" novalidate="novalidate">
+    <form class="form-horizontal js-oxValidate" action="{{ oViewConf.getSslSelfLink()|raw }}" name="order" method="post" role="form" novalidate="novalidate">
         {% block user_checkout_noregistration_form %}
             <div class="hidden">
                 {{ oViewConf.getHiddenSid()|raw() }}

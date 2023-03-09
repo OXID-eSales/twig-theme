@@ -42,7 +42,7 @@
                     {% endif %}
                     {% for oSelection in oSelections %}
                         <li class="{% if oSelection.isDisabled() %}disabled js-disabled{% endif %}">
-                            <a href="{{ oSelection.getLink() }}" data-selection-id="{{ oSelection.getValue() }}"
+                            <a href="{{ oSelection.getLink()|raw }}" data-selection-id="{{ oSelection.getValue() }}"
                                class="{% if oSelection.isActive() %}active{% endif %}">{{ oSelection.getName() }}</a>
                         </li>
                     {% endfor %}

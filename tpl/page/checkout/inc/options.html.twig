@@ -12,7 +12,7 @@
 			{% block checkout_options_noreg %}
 				{% if oView.getShowNoRegOption() %}
 					<div class="col-md-12 {{ sColClass }}">
-						<form action="{{ oViewConf.getSslSelfLink()|raw() }}" method="post">
+						<form action="{{ oViewConf.getSslSelfLink()|raw }}" method="post">
 							<div class="hidden">
 								{{ oViewConf.getHiddenSid() }}
 								{{ oViewConf.getNavFormParams()|raw() }}
@@ -44,7 +44,7 @@
 
 			{% block checkout_options_reg %}
 				<div class="col-md-12 {{ sColClass }}">
-					<form action="{{ oViewConf.getSslSelfLink()|raw() }}" method="post">
+					<form action="{{ oViewConf.getSslSelfLink()|raw }}" method="post">
 						<div class="hidden">
 							{{ oViewConf.getHiddenSid() }}
 							{{ oViewConf.getNavFormParams()|raw() }}

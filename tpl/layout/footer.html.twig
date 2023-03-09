@@ -98,35 +98,35 @@
                                             {% block dd_footer_social_links_list %}
                                                 {% if oViewConf.getViewThemeParam('sFacebookUrl') %}
                                                     <li>
-                                                        <a target="_blank" href="{{ oViewConf.getViewThemeParam('sFacebookUrl') }}">
+                                                        <a target="_blank" href="{{ oViewConf.getViewThemeParam('sFacebookUrl')|raw }}">
                                                             <i class="fa fa-facebook"></i> <span>Facebook</span>
                                                         </a>
                                                     </li>
                                                 {% endif %}
                                                 {% if oViewConf.getViewThemeParam('sGooglePlusUrl') %}
                                                     <li>
-                                                        <a target="_blank" href="{{ oViewConf.getViewThemeParam('sGooglePlusUrl') }}">
+                                                        <a target="_blank" href="{{ oViewConf.getViewThemeParam('sGooglePlusUrl')|raw }}">
                                                             <i class="fa fa-google-plus-square"></i> <span>Google+</span>
                                                         </a>
                                                     </li>
                                                 {% endif %}
                                                 {% if oViewConf.getViewThemeParam('sTwitterUrl') %}
                                                     <li>
-                                                        <a target="_blank" href="{{ oViewConf.getViewThemeParam('sTwitterUrl') }}">
+                                                        <a target="_blank" href="{{ oViewConf.getViewThemeParam('sTwitterUrl')|raw }}">
                                                             <i class="fa fa-twitter"></i> <span>Twitter</span>
                                                         </a>
                                                     </li>
                                                 {% endif %}
                                                 {% if oViewConf.getViewThemeParam('sYouTubeUrl') %}
                                                     <li>
-                                                        <a target="_blank" href="{{ oViewConf.getViewThemeParam('sYouTubeUrl') }}">
+                                                        <a target="_blank" href="{{ oViewConf.getViewThemeParam('sYouTubeUrl')|raw }}">
                                                             <i class="fa fa-youtube-square"></i> <span>YouTube</span>
                                                         </a>
                                                     </li>
                                                 {% endif %}
                                                 {% if oViewConf.getViewThemeParam('sBlogUrl') %}
                                                     <li>
-                                                        <a target="_blank" href="{{ oViewConf.getViewThemeParam('sBlogUrl') }}">
+                                                        <a target="_blank" href="{{ oViewConf.getViewThemeParam('sBlogUrl')|raw }}">
                                                             <i class="fa fa-wordpress"></i> <span>Blog</span>
                                                         </a>
                                                     </li>
@@ -149,9 +149,9 @@
         {% ifcontent ident "oxdeliveryinfo" set oCont %}
         <div id="incVatInfo">
             {% if oView.isVatIncluded() %}
-            * <span class="deliveryInfo">{{ translate({ ident: "PLUS_SHIPPING" }) }}<a href="{{ oCont.getLink() }}">{{ translate({ ident: "PLUS_SHIPPING2" }) }}</a></span>
+            * <span class="deliveryInfo">{{ translate({ ident: "PLUS_SHIPPING" }) }}<a href="{{ oCont.getLink()|raw }}">{{ translate({ ident: "PLUS_SHIPPING2" }) }}</a></span>
             {% else %}
-            * <span class="deliveryInfo">{{ translate({ ident: "PLUS" }) }}<a href="{{ oCont.getLink() }}">{{ translate({ ident: "PLUS_SHIPPING2" }) }}</a></span>
+            * <span class="deliveryInfo">{{ translate({ ident: "PLUS" }) }}<a href="{{ oCont.getLink()|raw }}">{{ translate({ ident: "PLUS_SHIPPING2" }) }}</a></span>
             {% endif %}
         </div>
         {% endifcontent %}

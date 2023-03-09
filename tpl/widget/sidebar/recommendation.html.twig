@@ -14,8 +14,8 @@
                         {% set _oBoxTopProduct = _oFirstRecommendationList.getFirstArticle() %}
                         {% set _sTitle = _oBoxTopProduct.oxarticles__oxtitle.value ~ " " ~ _oBoxTopProduct.oxarticles__oxvarselect.value|striptags %}
                         <div class="text-center">
-                            <a href="{{ _oBoxTopProduct.getMainLink() }}" class="featured img-thumbnail" title="{{ _sTitle }}">
-                                <img src="{{ _oBoxTopProduct.getIconUrl() }}" alt="{{ _sTitle }}">
+                            <a href="{{ _oBoxTopProduct.getMainLink()|raw }}" class="featured img-thumbnail" title="{{ _sTitle }}">
+                                <img src="{{ _oBoxTopProduct.getIconUrl()|raw }}" alt="{{ _sTitle }}">
                             </a>
                         </div>
                     {% endif %}
@@ -24,14 +24,14 @@
                     {% if _oRecommendationList %}
                         {% for _oListItem in _oRecommendationList %}
                             <li>
-                                <a href="{{ _oListItem.getLink() }}"><b>{{ _oListItem.oxrecommlists__oxtitle.value|striptags }}</b></a>
+                                <a href="{{ _oListItem.getLink()|raw }}"><b>{{ _oListItem.oxrecommlists__oxtitle.value|striptags }}</b></a>
                                 <div class="desc">{{ translate({ ident: "LIST_BY" }) }}: {{ _oListItem.oxrecommlists__oxauthor.value|striptags }}</div>
                             </li>
                         {% endfor %}
                     {% endif %}
                     {% if _oRecommendationList or oRecommList.getRecommSearch() %}
                     <li>
-                        <form name="basket" class="recommendationsSearchForm" action="{{ oViewConf.getSelfActionLink()|raw() }}" method="post">
+                        <form name="basket" class="recommendationsSearchForm" action="{{ oViewConf.getSelfActionLink()|raw }}" method="post">
                             <div>
                                 <input type="hidden" name="cl" value="recommlist">
                                 {{ oViewConf.getHiddenSid()|raw() }}

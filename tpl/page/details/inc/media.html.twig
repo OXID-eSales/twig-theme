@@ -1,5 +1,5 @@
 {% if oDetailsProduct.oxarticles__oxfile.value %}
-    <a id="productFile" href="{{ oViewConf.getMediaPictureUrl() }}{{ oDetailsProduct.oxarticles__oxfile.value }}">{{ oDetailsProduct.oxarticles__oxfile.value }}</a>
+    <a id="productFile" href="{{ oViewConf.getMediaPictureUrl()|raw }}{{ oDetailsProduct.oxarticles__oxfile.value|raw }}">{{ oDetailsProduct.oxarticles__oxfile.value }}</a>
 {% endif %}
 
 {% if oView.getMediaFiles() %}
@@ -14,7 +14,7 @@
             <hr/>
         {% endif %}
         <div class="{% if blIsYouTubeMedia %}embed-responsive embed-responsive-4by3{% endif %}">
-            {{ oMediaUrl.getHtml() }}
+            {{ oMediaUrl.getHtml()|raw }}
         </div>
     {% endfor %}
 {% endif %}

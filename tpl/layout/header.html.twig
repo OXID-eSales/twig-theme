@@ -16,8 +16,8 @@
                             {% set slogoImg = oViewConf.getViewThemeParam('sLogoFile') %}
                             {% set sLogoWidth = oViewConf.getViewThemeParam('sLogoWidth') %}
                             {% set sLogoHeight = oViewConf.getViewThemeParam('sLogoHeight') %}
-                            <a href="{{ oViewConf.getHomeLink() }}" title="{{ oxcmp_shop.oxshops__oxtitleprefix.value }}">
-                                <img src="{{ oViewConf.getImageUrl(slogoImg) }}" alt="{{ oxcmp_shop.oxshops__oxtitleprefix.value }}" style="{% if sLogoWidth %}width:auto;max-width:{{ sLogoWidth }}px;{% endif %}{% if sLogoHeight %}height:auto;max-height:{{ sLogoHeight }}px;{% endif %}">
+                            <a href="{{ oViewConf.getHomeLink()|raw }}" title="{{ oxcmp_shop.oxshops__oxtitleprefix.value }}">
+                                <img src="{{ oViewConf.getImageUrl(slogoImg)|raw }}" alt="{{ oxcmp_shop.oxshops__oxtitleprefix.value }}" style="{% if sLogoWidth %}width:auto;max-width:{{ sLogoWidth }}px;{% endif %}{% if sLogoHeight %}height:auto;max-height:{{ sLogoHeight }}px;{% endif %}">
                             </a>
                         {% endblock %}
                     </div>

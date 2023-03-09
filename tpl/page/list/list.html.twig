@@ -16,7 +16,7 @@
                 {% endif %}
             </h3>
             <div class="featured icon">
-                <img src="{{ oViewConf.getImageUrl('spinner.gif') }}" data-src="{{ actCategory.getIconUrl() }}" alt="{{ actCategory.getTitle() }}">
+                <img src="{{ oViewConf.getImageUrl('spinner.gif')|raw }}" data-src="{{ actCategory.getIconUrl()|raw }}" alt="{{ actCategory.getTitle() }}">
             </div>
         </div>
         {% endif %}
@@ -26,7 +26,7 @@
 {% capture append = "oxidBlock_content" %}
     {% block page_list_listhead %}
         {% if actCategory.oxcategories__oxthumb.value and actCategory.getThumbUrl() %}
-            <img src="{{ oViewConf.getImageUrl('spinner.gif') }}" data-src="{{ actCategory.getThumbUrl() }}" alt="{{ actCategory.oxcategories__oxtitle.value }}" class="categoryPicture img-responsive img-thumbnail">
+            <img src="{{ oViewConf.getImageUrl('spinner.gif')|raw }}" data-src="{{ actCategory.getThumbUrl()|raw }}" alt="{{ actCategory.oxcategories__oxtitle.value }}" class="categoryPicture img-responsive img-thumbnail">
         {% endif %}
 
         <div class="page-header">
@@ -55,7 +55,7 @@
                                 {% set iSubCategoriesCount = iSubCategoriesCount+1 %}
                                 <div class="box">
                                     <h3>
-                                        <a id="moreSubCms_{{ loop.index }}" href="{{ ocont.getLink() }}">{{ ocont.oxcontents__oxtitle.value }}</a>
+                                        <a id="moreSubCms_{{ loop.index }}" href="{{ ocont.getLink()|raw }}">{{ ocont.oxcontents__oxtitle.value }}</a>
                                     </h3>
                                     <ul class="content"></ul>
                                 </div>
@@ -70,15 +70,15 @@
                             <div class="col-xs-12 col-sm-3">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <a id="moreSubCat_{{ loop.index }}" href="{{ category.getLink() }}">{{ category.oxcategories__oxtitle.value }}</a>{% if oView.showCategoryArticlesCount() and (category.getNrOfArticles() > 0) %} ({{ category.getNrOfArticles() }}){% endif %}
+                                        <a id="moreSubCat_{{ loop.index }}" href="{{ category.getLink()|raw }}">{{ category.oxcategories__oxtitle.value }}</a>{% if oView.showCategoryArticlesCount() and (category.getNrOfArticles() > 0) %} ({{ category.getNrOfArticles() }}){% endif %}
                                     </div>
                                     <div class="panel-body">
                                         {% if iconUrl %}
-                                            <a href="{{ category.getLink() }}">
-                                                <img src="{{ oViewConf.getImageUrl('spinner.gif') }}" data-src="{{ category.getIconUrl() }}" alt="{{ category.oxcategories__oxtitle.value }}" class="img-responsive subcat-icon">
+                                            <a href="{{ category.getLink()|raw }}">
+                                                <img src="{{ oViewConf.getImageUrl('spinner.gif')|raw }}" data-src="{{ category.getIconUrl()|raw }}" alt="{{ category.oxcategories__oxtitle.value }}" class="img-responsive subcat-icon">
                                             </a>
                                         {% else %}
-                                            <a href="{{ category.getLink() }}" class="btn btn-block btn-info">{{ translate({ ident: "DD_LIST_SHOW_MORE" }) }}</a>
+                                            <a href="{{ category.getLink()|raw }}" class="btn btn-block btn-info">{{ translate({ ident: "DD_LIST_SHOW_MORE" }) }}</a>
                                         {% endif %}
 
                                         {% if category.getHasVisibleSubCats() %}
@@ -88,11 +88,11 @@
                                                     {% if subcategory.getIsVisible() %}
                                                         {% for ocont in subcategory.getContentCats() %}
                                                             <li>
-                                                                <a href="{{ ocont.getLink() }}"><strong>{{ ocont.oxcontents__oxtitle.value }}</strong></a>
+                                                                <a href="{{ ocont.getLink()|raw }}"><strong>{{ ocont.oxcontents__oxtitle.value }}</strong></a>
                                                             </li>
                                                         {% endfor %}
                                                         <li>
-                                                            <a href="{{ subcategory.getLink() }}">{{ subcategory.oxcategories__oxtitle.value }}</a>{% if oView.showCategoryArticlesCount() and (subcategory.getNrOfArticles() > 0) %}&nbsp;({{ subcategory.getNrOfArticles() }}){% endif %}
+                                                            <a href="{{ subcategory.getLink()|raw }}">{{ subcategory.oxcategories__oxtitle.value }}</a>{% if oView.showCategoryArticlesCount() and (subcategory.getNrOfArticles() > 0) %}&nbsp;({{ subcategory.getNrOfArticles() }}){% endif %}
                                                         </li>
                                                     {% endif %}
                                                 {% endfor %}
