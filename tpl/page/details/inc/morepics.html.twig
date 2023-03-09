@@ -8,9 +8,9 @@
     <div class="otherPictures{% if iMorePics > 4 %} flexslider{% endif %}" id="morePicsContainer">
         <ul class="{% if iMorePics > 4 %}slides{% else %}list-inline{% endif %}">
             {{ script({ add: "var aMorePic=new Array();", dynamic: __oxid_include_dynamic }) }}
+            {% set aPictureInfo = oViewConf.getViewThemeParam("sZoomImageSize")|split("*") %}
             {% for iPicNr, oArtIcon in oView.getIcons() %}
                 {% set sPictureName = oPictureProduct.getPictureFieldValue("oxpic", iPicNr) %}
-                {% set aPictureInfo = oPictureProduct.getMasterPicturePath("product/" ~ iPicNr ~ "/" ~ sPictureName)|getimagesize %}
                 <li>
                     <a id="morePics_{{ loop.index }}"
                             {% if loop.first %} class="selected" {% endif %}
