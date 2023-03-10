@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 - In case of sAltImageUrl set, calculation of zoom image size is wrong [Wave-PR-123](https://github.com/OXID-eSales/wave-theme/pull/123)
+- Fix setup error message and and general error message rendering [PR-3](https://github.com/OXID-eSales/twig-theme/pull/3)
 
 ## [2.1.0] - 2022-11-23
 
