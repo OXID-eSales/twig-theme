@@ -392,6 +392,24 @@ $aTheme = [
             'value' => '100*100',
         ],
         [
+            'group' => 'images',
+            'name' => 'sManufacturerPicturesize',
+            'type' => 'str',
+            'value' => '1140*1140',
+        ],
+        [
+            'group' => 'images',
+            'name' => 'sManufacturerThumbnailsize',
+            'type' => 'str',
+            'value' => '370*370',
+        ],
+        [
+            'group' => 'images',
+            'name' => 'sManufacturerPromotionsize',
+            'type' => 'str',
+            'value' => '540*540',
+        ],
+        [
             'group' => 'googlets',
             'name' => 'sPageLanguage',
             'type' => 'str',
