@@ -62,136 +62,168 @@
 
                 {% block checkout_order_address %}
                     <div id="orderAddress" class="row">
-                        <div class="col-xs-12 col-md-6">
-                            <form action="{{ oViewConf.getSslSelfLink()|raw }}" method="post">
-                                <div class="hidden">
-                                    {{ oViewConf.getHiddenSid()|raw() }}
-                                    <input type="hidden" name="cl" value="user">
-                                    <input type="hidden" name="fnc" value="">
-                                </div>
-
+                        {% block checkout_order_billing_address %}
+                            <div class="col-xs-12 col-md-6">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h3 class="panel-title">
                                             {{ translate({ ident: "BILLING_ADDRESS" }) }}
-                                            <button type="submit" class="btn btn-xs btn-warning pull-right submitButton largeButton" title="{{ translate({ ident: "EDIT" }) }}">
-                                                <i class="fa fa-pencil"></i>
-                                            </button>
+                                            {% block checkout_order_billing_address_form %}
+                                                <form action="{{ oViewConf.getSslSelfLink()|raw }}" method="post" class="pull-right">
+                                                    <div class="hidden">
+                                                        {{ oViewConf.getHiddenSid()|raw() }}
+                                                        <input type="hidden" name="cl" value="user">
+                                                        <input type="hidden" name="fnc" value="">
+                                                    </div>
+                                                    {% block checkout_order_billing_address_button %}
+                                                        <button type="submit" class="btn btn-xs btn-warning submitButton largeButton" title="{{ translate({ ident: "EDIT" }) }}">
+                                                            <i class="fa fa-pencil"></i>
+                                                        </button>
+                                                    {% endblock %}
+                                                </form>
+                                            {% endblock %}
                                         </h3>
                                     </div>
                                     <div class="panel-body">
-                                        {% include "widget/address/billing_address.html.twig" %}
+                                        {% block checkout_order_billing_address_desc %}
+                                            {% include "widget/address/billing_address.html.twig" %}
+                                        {% endblock %}
                                     </div>
                                 </div>
-                            </form>
-                        </div>
-                        <div class="col-xs-12 col-md-6">
-                            <form action="{{ oViewConf.getSslSelfLink()|raw }}" method="post">
-                                <div class="hidden">
-                                    {{ oViewConf.getHiddenSid()|raw() }}
-                                    <input type="hidden" name="cl" value="user">
-                                    <input type="hidden" name="fnc" value="">
-                                </div>
-
+                            </div>
+                        {% endblock %}
+                        {% block checkout_order_shipping_address %}
+                            <div class="col-xs-12 col-md-6">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h3 class="panel-title">
                                             {{ translate({ ident: "SHIPPING_ADDRESS" }) }}
-                                            <button type="submit" class="btn btn-xs btn-warning pull-right submitButton largeButton" title="{{ translate({ ident: "EDIT" }) }}">
-                                                <i class="fa fa-pencil"></i>
-                                            </button>
+                                            {% block checkout_order_shipping_address_form %}
+                                                <form action="{{ oViewConf.getSslSelfLink()|raw }}" method="post" class="pull-right">
+                                                    <div class="hidden">
+                                                        {{ oViewConf.getHiddenSid()|raw() }}
+                                                        <input type="hidden" name="cl" value="user">
+                                                        <input type="hidden" name="fnc" value="">
+                                                    </div>
+                                                    {% block checkout_order_shipping_address_button %}
+                                                        <button type="submit" class="btn btn-xs btn-warning submitButton largeButton" title="{{ translate({ ident: "EDIT" }) }}">
+                                                            <i class="fa fa-pencil"></i>
+                                                        </button>
+                                                    {% endblock %}
+                                                </form>
+                                            {% endblock %}
                                         </h3>
                                     </div>
                                     <div class="panel-body">
-                                        {% set oDelAdress = oView.getDelAddress() %}
-                                        {% if oDelAdress %}
-                                            {% include "widget/address/shipping_address.html.twig" with {delivadr: oDelAdress} %}
-                                        {% else %}
-                                            {% include "widget/address/billing_address.html.twig" %}
-                                        {% endif %}
+                                        {% block checkout_order_shipping_address_desc %}
+                                            {% set oDelAdress = oView.getDelAddress() %}
+                                            {% if oDelAdress %}
+                                                {% include "widget/address/shipping_address.html.twig" with {delivadr: oDelAdress} %}
+                                            {% else %}
+                                                {% include "widget/address/billing_address.html.twig" %}
+                                            {% endif %}
+                                        {% endblock %}
                                     </div>
                                 </div>
-                            </form>
-                        </div>
+                            </div>
+                        {% endblock %}
                     </div>
                 {% endblock %}
 
                 {% block shippingAndPayment %}
                     <div class="row">
-                        <div class="col-xs-12 col-md-6" id="orderShipping">
-                            <form action="{{ oViewConf.getSslSelfLink()|raw }}" method="post">
-                                <div class="hidden">
-                                    {{ oViewConf.getHiddenSid()|raw() }}
-                                    <input type="hidden" name="cl" value="payment">
-                                    <input type="hidden" name="fnc" value="">
-                                </div>
-
+                        {% block checkout_order_shipping_carrier %}
+                            <div class="col-xs-12 col-md-6" id="orderShipping">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h3 class="panel-title">
                                             {{ translate({ ident: "SHIPPING_CARRIER" }) }}
-                                            <button type="submit" class="btn btn-xs btn-warning pull-right submitButton largeButton" title="{{ translate({ ident: "EDIT" }) }}">
-                                                <i class="fa fa-pencil"></i>
-                                            </button>
+                                            {% block checkout_order_shipping_carrier_form %}
+                                                <form action="{{ oViewConf.getSslSelfLink()|raw }}" method="post" class="pull-right">
+                                                    <div class="hidden">
+                                                        {{ oViewConf.getHiddenSid()|raw() }}
+                                                        <input type="hidden" name="cl" value="payment">
+                                                        <input type="hidden" name="fnc" value="">
+                                                    </div>
+                                                    {% block checkout_order_shipping_carrier_button %}
+                                                        <button type="submit" class="btn btn-xs btn-warning submitButton largeButton" title="{{ translate({ ident: "EDIT" }) }}">
+                                                            <i class="fa fa-pencil"></i>
+                                                        </button>
+                                                    {% endblock %}
+                                                </form>
+                                            {% endblock %}
                                         </h3>
                                     </div>
                                     <div class="panel-body">
-                                        {% set oShipSet = oView.getShipSet() %}
-                                        {{ oShipSet.oxdeliveryset__oxtitle.value }}
+                                        {% block checkout_order_shipping_carrier_desc %}
+                                            {% set oShipSet = oView.getShipSet() %}
+                                            {{ oShipSet.oxdeliveryset__oxtitle.value }}
+                                        {% endblock %}
                                     </div>
                                 </div>
-                            </form>
-                        </div>
-                        <div class="col-xs-12 col-md-6" id="orderPayment">
-                            <form action="{{ oViewConf.getSslSelfLink()|raw }}" method="post">
-                                <div class="hidden">
-                                    {{ oViewConf.getHiddenSid()|raw() }}
-                                    <input type="hidden" name="cl" value="payment">
-                                    <input type="hidden" name="fnc" value="">
-                                </div>
-
+                            </div>
+                        {% endblock %}
+                        {% block checkout_order_payment_method %}
+                            <div class="col-xs-12 col-md-6" id="orderPayment">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h3 class="panel-title">
                                             {{ translate({ ident: "PAYMENT_METHOD" }) }}
-                                            <button type="submit" class="btn btn-xs btn-warning pull-right submitButton largeButton" title="{{ translate({ ident: "EDIT" }) }}">
-                                                <i class="fa fa-pencil"></i>
-                                            </button>
+                                            {% block checkout_order_payment_method_form %}
+                                                <form action="{{ oViewConf.getSslSelfLink()|raw }}" method="post" class="pull-right">
+                                                    <div class="hidden">
+                                                        {{ oViewConf.getHiddenSid()|raw() }}
+                                                        <input type="hidden" name="cl" value="payment">
+                                                        <input type="hidden" name="fnc" value="">
+                                                    </div>
+                                                    {% block checkout_order_payment_method_button %}
+                                                        <button type="submit" class="btn btn-xs btn-warning submitButton largeButton" title="{{ translate({ ident: "EDIT" }) }}">
+                                                            <i class="fa fa-pencil"></i>
+                                                        </button>
+                                                    {% endblock %}
+                                                </form>
+                                            {% endblock %}
                                         </h3>
                                     </div>
                                     <div class="panel-body">
-                                        {% set payment = oView.getPayment() %}
-                                        {{ payment.oxpayments__oxdesc.value }}
+                                        {% block checkout_order_payment_method_desc %}
+                                            {% set payment = oView.getPayment() %}
+                                            {{ payment.oxpayments__oxdesc.value }}
+                                        {% endblock %}
                                     </div>
                                 </div>
-                            </form>
-                        </div>
+                            </div>
+                        {% endblock %}
                     </div>
                 {% endblock %}
-
                 {% block checkout_order_remark %}
                     {% if oView.getOrderRemark() %}
-                        <form action="{{ oViewConf.getSslSelfLink()|raw }}" method="post">
-                            <div class="hidden">
-                                {{ oViewConf.getHiddenSid()|raw() }}
-                                <input type="hidden" name="cl" value="user">
-                                <input type="hidden" name="fnc" value="">
+                        <div class="panel panel-default orderRemarks">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    {{ translate({ ident: "WHAT_I_WANTED_TO_SAY" }) }}
+                                    {% block checkout_order_remark_form %}
+                                        <form action="{{ oViewConf.getSslSelfLink()|raw }}" method="post" class="pull-right">
+                                            <div class="hidden">
+                                                {{ oViewConf.getHiddenSid()|raw() }}
+                                                <input type="hidden" name="cl" value="user">
+                                                <input type="hidden" name="fnc" value="">
+                                            </div>
+                                            {% block checkout_order_remark_button %}
+                                                <button type="submit" class="btn btn-xs btn-warning submitButton largeButton" title="{{ translate({ ident: "EDIT" }) }}">
+                                                    <i class="fa fa-pencil"></i>
+                                                </button>
+                                            {% endblock %}
+                                        </form>
+                                    {% endblock %}
+                                </h3>
                             </div>
-
-                            <div class="panel panel-default orderRemarks">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">
-                                        {{ translate({ ident: "WHAT_I_WANTED_TO_SAY" }) }}
-                                        <button type="submit" class="btn btn-xs btn-warning pull-right submitButton largeButton" title="{{ translate({ ident: "EDIT" }) }}">
-                                            <i class="fa fa-pencil"></i>
-                                        </button>
-                                    </h3>
-                                </div>
-                                <div class="panel-body">
+                            <div class="panel-body">
+                                {% block checkout_order_remark_desc %}
                                     {{ oView.getOrderRemark()|nl2br }}
-                                </div>
+                                {% endblock %}
                             </div>
-                        </form>
+                        </div>
                     {% endif %}
                 {% endblock %}
 
