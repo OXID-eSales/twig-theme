@@ -1,6 +1,8 @@
 # Twig theme
 Theme based on the Twig engine
 
+Warning! Twig theme is depreciated and not supported. See the [Apex Theme](https://github.com/OXID-eSales/apex-theme) and [GraphQL Api](https://github.com/OXID-eSales/graphql-storefront-module) for alternatives.
+
 ## Branch Compatibility
 
 * b-7.0.x branch is compatible with OXID eShop compilation b-7.0.x
