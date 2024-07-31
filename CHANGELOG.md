@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 - License update
+- Move translations to ``translations/`` directory
 
 ### Fixed
 - In case of sAltImageUrl set, calculation of zoom image size is wrong [Wave-PR-123](https://github.com/OXID-eSales/wave-theme/pull/123)
