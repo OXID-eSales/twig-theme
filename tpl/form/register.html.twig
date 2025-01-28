@@ -51,7 +51,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <span class="h4 modal-title" id="popup1Label">{{ oContent.oxcontents__oxtitle.value }}</span>
                     </div>
-                    <div class="modal-body">{{ oContent.oxcontents__oxcontent.value|raw() }}</div>
+                    <div class="modal-body">{{ include(template_from_string(oContent.oxcontents__oxcontent.value)) }}</div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">{{ translate({ ident: "DD_CLOSE_MODAL" }) }}</button>
                     </div>
@@ -68,7 +68,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <span class="h4 modal-title" id="popup2Label">{{ oContent.oxcontents__oxtitle.value }}</span>
                     </div>
-                    <div class="modal-body">{{ oContent.oxcontents__oxcontent.value|raw() }}</div>
+                    <div class="modal-body">{{ include(template_from_string(oContent.oxcontents__oxcontent.value)) }}</div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">{{ translate({ ident: "DD_CLOSE_MODAL" }) }}</button>
                     </div>
