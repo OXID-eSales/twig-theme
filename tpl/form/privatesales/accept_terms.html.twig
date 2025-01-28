@@ -21,7 +21,7 @@
         <div class="checkbox">
             <label>
                 <input type="checkbox" name="ord_agb" value="1" class="agb-check"> {% ifcontent ident "oxrighttocancellegend" set oContent %}
-                {{ oContent.oxcontents__oxcontent.value|raw() }}
+                {{ include(template_from_string(oContent.oxcontents__oxcontent.value)) }}
                 {% endifcontent %}
             </label>
         </div>
