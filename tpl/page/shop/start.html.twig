@@ -3,9 +3,7 @@
     {{ script({ include: "js/pages/start.min.js", dynamic: __oxid_include_dynamic }) }}
 
     {% block start_welcome_text %}
-        {% ifcontent ident "oxstartwelcome" set oCont %}
-            <div class="welcome-teaser">{{ oCont.oxcontents__oxcontent.value|raw }}</div>
-        {% endifcontent %}
+        {% include_content 'oxstartwelcome' ignore missing %}
     {% endblock %}
 
     {% set oTopArticles = oView.getTop5ArticleList() %}

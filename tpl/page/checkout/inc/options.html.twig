@@ -59,9 +59,7 @@
 							</div>
 							<div class="panel-body">
 								{% block checkout_options_reg_text %}
-									{% ifcontent ident "oxregistrationdescription" set oCont %}
-										{{ oCont.oxcontents__oxcontent.value|raw }}
-									{% endifcontent %}
+									{% include_content 'oxregistrationdescription' ignore missing %}
 								{% endblock %}
 							</div>
 							<div class="panel-footer text-right">
