@@ -124,7 +124,7 @@
     {% set basketitemlist = basket.getBasketArticles() %}
     {% for basketindex, basketitem in basket.getContents() %}
         {% block email_html_order_owner_basketitem %}
-            {% set basketproduct = basketitemlist.basketindex %}
+            {% set basketproduct = basketitemlist[basketindex] %}
             <tr valign="top">
                 {% if oViewConf.getViewThemeParam('blEmailsShowProductPictures') %}
                     <td>
