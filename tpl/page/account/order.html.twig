@@ -76,7 +76,7 @@
                                                 {% endif %}
                                             {% endfor %}
                                             {# Commented due to Trusted Shops precertification. Enable if needed #}
-                                            [{*
+                                            {#
                                             {% hasrights { "ident": "TOBASKET",} %}
                                             {% if oArticle.isBuyable() %}
                                               {% if oArticle.oxarticles__oxid.value %}
@@ -84,7 +84,7 @@
                                               {% endif %}
                                             {% endif %}
                                             {% endhasrights %}
-                                            *}]
+                                            #}
                                         </li>
                                     {% endfor %}
                                 </ol>
